@@ -133,33 +133,31 @@ class MyDataflowType extends AbstractDataflowType
 
 ### Step 2: Add a step for prepare the content
 
-To process eZ content into your Dataflow, you need transform the data in objet `ContentCreateStructure` or `ContentUpdateStructure`
+To process eZ Platform content into your Dataflow, you need transform the data in objet `ContentCreateStructure` or `ContentUpdateStructure`
 for create or update content respectively.
 
-But, for determine if the content exist or not, you need search into the eZ content.
+But, for determine if the content exist or not, you need search into the eZ Platform content.
 
-One way id use the remote id for search the content.
+One way is use the remote id for search the content.
 
-In the following example, the remote id pattern is `article-<id>` with the `<id>` replaced by the id provided by the reader.
+In the following example, the remote id pattern is `article-<id>` with the `<id>` replaced by the data id provided by the reader.
 For check if the content exist or not, I use the service `ContentService` provided by eZ Platform.
 
-The step is added with anonymous function and have 3 type of return:
+The step is added with anonymous function and has 3 types of return:
 
-* When the step return `false`, the data is dropped
-* When the step return a `ContentCreateStructure`, the data will be saved into en new eZ content
-* When the step return a `ContentUpdateStructure`, the data will be saved into the existing eZ content in overwriting all defined fields.
+* When the step return `false`, the data is dropped.
+* When the step return a `ContentCreateStructure`, the data will be saved into en new eZ Platform content.
+* When the step return a `ContentUpdateStructure`, the data will be saved into the existing eZ Platform content in overwriting all defined fields.
 
 For the new content, you must provide one or more "parent location id" in the 3th argument of the `ContentCreateStructure` constructor.
 
-In this exemple, I have add a new folder for store all article.
+In this exemple, I have add a new folder for store all articles.
 
-For get the location id of the parent eZ content, go to the admin UI and select the future parent content, click on the details tabs, and read the "Location id" like this:
+For get the location id of the parent eZ Platform content, go to the admin UI and select the future parent content, click on the details tabs, and read the "Location id" like this:
 
 ![parent folder](src/Resources/doc/dest_folder.jpg)
 
 > Note: the best practice is to define this parent id in your `parameter.yml` file or your `.env.local` file for each execution environment.
-
-
 
 ```php
 // In your DataflowType
@@ -227,7 +225,7 @@ class MyDataflowType extends AbstractDataflowType
 
 ## Access to the eZ Dataflow UI
 
-You can access to the eZ Dataflow administation UI from your admin back-office.
+You can access to the eZ Dataflow administation UI from your eZ Platform admin back-office.
 
 ![Admin menu](src/Resources/doc/ez_dataflow_admin_menu.jpg)
 
@@ -253,7 +251,7 @@ Finally, click on the "Create" button.
 
 ## Read the history
 
-When you click on the "History" tab in the eZ DAtaflow admin UI, you view the job history for all Dataflow configured and executed.
+When you click on the "History" tab in the eZ Dataflow admin UI, you view the job history for all Dataflow configured and executed.
 
 ![History list](src/Resources/doc/history_list.jpg)
 
@@ -265,7 +263,7 @@ Details of one scheduled job:
 
 ![Job execution details](src/Resources/doc/job_successful.jpg)
 
-## Oneshot job
+## One-shot job
 
 If you don't want run a Dataflow periodically, you can add a single execution at the time and date what you want.
 
@@ -273,21 +271,21 @@ Go to the eZ Dataflow admin UI and click on the "Oneshot" tabs.
 
 ![Oneshot list](src/Resources/doc/oneshot_list.jpg)
 
-1. This button, allow you to define the one shot job (see below).
+1. This button, allow you to define the one-shot job (see below).
 1. This column shows the number of objects that have been processed.
 1. Click on the question mark for display the job details.
 
-Details of one shot job:
+Details of one-shot job:
 
 ![onshot details](src/Resources/doc/job_fail.jpg)
 
 Here the job has fail.
 
-## Add a onshot job
+## Add a one-shot job
 
 Go to the eZ Dataflow admin UI and click on the "Oneshot" tabs. Click to the "+" orange button for open the adding popin.
 
-![The add oneshot popin](src/Resources/doc/one_shot_job.jpg)
+![The add one-shot popin](src/Resources/doc/one_shot_job.jpg)
 
 1. Type the Dataflow name
 1. Select the Dataflow type. The list is automaticaly generated from the list of Symfony service with the tags `coderhapsodie.dataflow.type`. If your dataflow type is not present, [check the configuration](https://github.com/code-rhapsodie/dataflow-bundle#check-if-your-dataflowtype-is-ready)
