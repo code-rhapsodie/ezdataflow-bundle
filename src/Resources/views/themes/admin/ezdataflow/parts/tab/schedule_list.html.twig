@@ -1,0 +1,55 @@
+{% if items|length %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>{{ 'coderhapsodie.ezdataflow.workflow.list.name'|trans }}</th>
+            <th>{{ 'coderhapsodie.ezdataflow.workflow.list.frequency'|trans }}</th>
+            <th>{{ 'coderhapsodie.ezdataflow.workflow.list.next_execution'|trans }}</th>
+            <th>{{ 'coderhapsodie.ezdataflow.workflow.list.enabled'|trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.label }}</td>
+                <td>{{ item.frequency }}</td>
+                <td>{{ item.next|date('d/m/Y H:i:s') }}</td>
+                <td>{{ item.enabled ? 'Oui' : 'Non' }}</td>
+                <td class="ez-table__cell ez-table__cell--has-action-btns text-right">
+                    <a href="{{ path('coderhapsodie.ezdataflow.history.workflow', {id: item.id}) }}" class="btn btn-icon mx-2 modal-history" title="{{ 'coderhapsodie.ezdataflow.workflow.list.history'|trans }}">
+                        <svg class="ez-icon ez-icon--small-medium">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#history"></use>
+                        </svg>
+                    </a>
+                    <a href="{{ path('coderhapsodie.ezdataflow.workflow.edit', {id: item.id}) }}" type="button" class="btn btn-icon mx-2 modal-edit" title="{{ 'coderhapsodie.ezdataflow.workflow.list.edit'|trans }}">
+                        <svg class="ez-icon ez-icon--small-medium ez-icon-edit">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#edit"></use>
+                        </svg>
+                    </a>
+                    {% if item.enabled %}
+                        <a href="{{ path('coderhapsodie.ezdataflow.workflow.disable', {id: item.id}) }}" class="btn btn-icon mx-2" title="{{ 'coderhapsodie.ezdataflow.workflow.list.disable'|trans }}">
+                            <svg class="ez-icon ez-icon--small-medium" style="fill: #f7d000;">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#logout"></use>
+                            </svg>
+                        </a>
+                    {% else %}
+                        <a href="{{ path('coderhapsodie.ezdataflow.workflow.enable', {id: item.id}) }}" class="btn btn-icon mx-2" title="{{ 'coderhapsodie.ezdataflow.workflow.list.enable'|trans }}">
+                            <svg class="ez-icon ez-icon--small-medium" style="fill: #00825c;">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#approved"></use>
+                            </svg>
+                        </a>
+                    {% endif %}
+                    <button type="button" class="btn btn-icon mx-2 ez-btn--content-trash modal-delete" data-name="{{ item.label }}" data-path="{{ path('coderhapsodie.ezdataflow.workflow.delete', {id: item.id}) }}" title="{{ 'coderhapsodie.ezdataflow.workflow.list.delete'|trans }}">
+                        <svg class="ez-icon ez-icon--small-medium ez-icon-trash">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#trash"></use>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="ez-table-no-content">{{ 'coderhapsodie.ezdataflow.workflow.list.empty'|trans }}</p>
+{% endif %}

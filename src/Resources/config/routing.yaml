@@ -1,0 +1,3 @@
+coderhapsodie.ezdataflow.controllers:
+    resource: '../../Controller/'
+    type: annotation

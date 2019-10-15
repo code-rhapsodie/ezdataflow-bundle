@@ -1,0 +1,57 @@
+{
+    "name": "code-rhapsodie/ezdataflow-bundle",
+    "description": "Import/export bundle for eZ Platform based on Code-Rhapsodie Dataflow",
+    "type": "symfony-bundle",
+    "keywords": ["dataflow", "import", "export", "data processing", "ez publish", "ez platform"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jérémy J.",
+            "email": "jeremy@code-rhapsodie.fr",
+            "role": "Developer"
+        },
+        {
+            "name": "Jean-Baptiste Nahan",
+            "email": "jean-baptiste@code-rhapsodie.fr",
+            "role": "Developer"
+        },
+        {
+            "name": "Manuel Farrica",
+            "email": "manuel@code-rhapsodie.fr",
+            "role": "Developer"
+        },
+        {
+            "name": "Code Rhapsodie",
+            "homepage": "https://www.code-rhapsodie.fr/"
+        },
+        {
+            "name": "Other contributors",
+            "homepage": "https://github.com/code-rhapsodie/ezdataflow-bundle/graphs/contributors"
+        }
+
+    ],
+    "autoload": {
+        "psr-4": {
+            "CodeRhapsodie\\EzDataflowBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodeRhapsodie\\EzDataflowBundle\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "code-rhapsodie/dataflow-bundle": "^1.0 || dev-master",
+        "ezsystems/ezplatform-admin-ui": "^1.0",
+        "ezsystems/ezpublish-kernel": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7||^8",
+        "doctrine/orm": "^2.4.5"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    }
+}

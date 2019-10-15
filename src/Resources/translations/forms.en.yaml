@@ -1,0 +1,4 @@
+role.policy.ezdataflow: eZ Dataflow
+role.policy.ezdataflow.all_functions: eZ Dataflow / All functions
+role.policy.ezdataflow.view: eZ Dataflow / View
+role.policy.ezdataflow.edit: eZ Dataflow / Edit

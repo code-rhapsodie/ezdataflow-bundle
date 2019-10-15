@@ -1,0 +1,69 @@
+coderhapsodie.ezdataflow: eZ Dataflow
+coderhapsodie.ezdataflow.repeating: Récurrent
+coderhapsodie.ezdataflow.repeating.title: Récurrent
+breadcrumb.admin: __breadcrumb.admin
+coderhapsodie.ezdataflow.oneshot: Ponctuel
+coderhapsodie.ezdataflow.oneshot.title: Ponctuel
+coderhapsodie.ezdataflow.workflow.list.title: 'Liste des workflow'
+coderhapsodie.ezdataflow.history: Historique
+coderhapsodie.ezdataflow.workflow.list.name: Nom
+coderhapsodie.ezdataflow.workflow.list.frequency: Fréquence
+coderhapsodie.ezdataflow.workflow.list.next_execution: 'Prochaine exécution'
+coderhapsodie.ezdataflow.workflow.list.enabled: 'Activé ?'
+coderhapsodie.ezdataflow.workflow.list.history: Historique
+coderhapsodie.ezdataflow.workflow.list.edit: Éditer
+coderhapsodie.ezdataflow.workflow.list.disable: Désactiver
+coderhapsodie.ezdataflow.workflow.list.enable: Activer
+coderhapsodie.ezdataflow.history.title: Historique
+coderhapsodie.ezdataflow.history.list.title: 'Liste des exécutions'
+coderhapsodie.ezdataflow.history.list.name: Nom
+coderhapsodie.ezdataflow.history.list.request: 'Demandé le'
+coderhapsodie.ezdataflow.history.list.count: 'Nombre d''objets'
+coderhapsodie.ezdataflow.history.list.start: 'Commencé le'
+coderhapsodie.ezdataflow.history.list.end: 'Terminé le'
+coderhapsodie.ezdataflow.history.list.view: 'Voir le détail'
+coderhapsodie.ezdataflow.history.list.status: État
+coderhapsodie.ezdataflow.job.status.pending: 'En attente'
+coderhapsodie.ezdataflow.job.status.running: 'En cours'
+coderhapsodie.ezdataflow.job.status.complete: Terminé
+coderhapsodie.ezdataflow.job.status.unknown: Inconnu
+coderhapsodie.ezdataflow.history.details.name: Nom
+coderhapsodie.ezdataflow.history.details.request: 'Demandé le'
+coderhapsodie.ezdataflow.history.details.status: État
+coderhapsodie.ezdataflow.history.details.start: 'Commencé le'
+coderhapsodie.ezdataflow.history.details.end: 'Terminé le'
+coderhapsodie.ezdataflow.history.details.count: 'Nombre d''objets mis à jour'
+coderhapsodie.ezdataflow.history.details.options: 'Options de lancement'
+coderhapsodie.ezdataflow.history.details.errors: Erreurs
+coderhapsodie.ezdataflow.history.details.type: 'Type de workflow'
+coderhapsodie.ezdataflow.workflow.repeating.new.title: 'Créer un nouveau workflow récurrent'
+coderhapsodie.ezdataflow.workflow.new.cancel: Annuler
+coderhapsodie.ezdataflow.workflow.new.create: Créer
+coderhapsodie.ezdataflow.history.list.empty: 'Aucune exécution pour le moment.'
+coderhapsodie.ezdataflow.workflow.list.empty: 'Aucun workflow n''a été configuré.'
+coderhapsodie.ezdataflow.workflow.history.title: 'Historique des exécutions'
+coderhapsodie.ezdataflow.workflow.list.delete: Supprimer
+coderhapsodie.ezdataflow.workflow.delete: 'Êtes-vous sûr de vouloir supprimer ce workflow ?'
+coderhapsodie.ezdataflow.workflow.create.success: 'Votre worklow a bien été créé.'
+coderhapsodie.ezdataflow.workflow.create.error: 'Une erreur a eu lieue lors de la création de votre workflow : "%message%".'
+coderhapsodie.ezdataflow.workflow.delete.success: 'Votre workflow a bien été supprimé.'
+coderhapsodie.ezdataflow.workflow.delete.error: 'Une erreur a eu lieue lors de la suppression de votre workflow : "%message%".'
+coderhapsodie.ezdataflow.workflow.oneshot.new.title: 'Nouveau workflow ponctuel'
+coderhapsodie.ezdataflow.job.create.success: 'Votre job a bien été créé.'
+coderhapsodie.ezdataflow.job.create.error: 'Une erreur a eu lieue lors de la création de votre job : "%message%".'
+coderhapsodie.dataflow.label: Nom
+coderhapsodie.dataflow.dataflowType: Type
+coderhapsodie.dataflow.options: Options
+coderhapsodie.dataflow.options.title: 'Entrez les options comme un tableau clé/valeur YAML'
+coderhapsodie.dataflow.options.placeholder: "option1: valeur1\noption2: valeur2\n"
+coderhapsodie.dataflow.requestedDate: 'Date de lancement'
+coderhapsodie.dataflow.frequency: Fréquence
+coderhapsodie.dataflow.frequency.title: 'Entrez un intervalle compatible avec strtotime (sans le signe +)'
+coderhapsodie.dataflow.frequency.placeholder: 'Exemple: 1 year 2 months 3 weeks 4 days 5 hours 6 minutes'
+coderhapsodie.dataflow.create.next: 'Première exécution'
+coderhapsodie.dataflow.create.enabled: 'Activé ?'
+coderhapsodie.ezdataflow.workflow.repeating.edit.title: "Édition d'un workflow"
+coderhapsodie.ezdataflow.workflow.edit.submit: Sauvegarder
+coderhapsodie.dataflow.update.next: 'Prochaine exécution'
+coderhapsodie.ezdataflow.workflow.edit.success: 'Votre workflow a été mis à jour avec succès.'
+coderhapsodie.ezdataflow.workflow.edit.error: 'Une erreur a eu lieue lors de l''édition de votre workflow : "%message%".'
