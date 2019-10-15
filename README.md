@@ -43,7 +43,7 @@ return [
 
 #### Symfony 3.4 (old tree)
 
-For Symfony 3.4, add two new line in the `app/AppKernel.php` file.
+For Symfony 3.4, add two new lines in the `app/AppKernel.php` file.
 
 Like this:
 
