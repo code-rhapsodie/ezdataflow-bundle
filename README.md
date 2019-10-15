@@ -77,7 +77,7 @@ For this step, refer you to the [Code-Rhapsodie Dataflow Bundle installation gui
 
 ### Step 5: Schedule the job runner
 
-For this step, refer you to the [Code-Rhapsodie Dataflow Bundle Queue section](https://github.com/code-rhapsodie/dataflow-bundle#queue).
+For this step, please refer to [Code-Rhapsodie Dataflow Bundle Queue section](https://github.com/code-rhapsodie/dataflow-bundle#queue).
 
 ## Configuration
 
