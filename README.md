@@ -93,7 +93,7 @@ code_rhapsodie_ez_dataflow:
 
 ## Define your Dataflow
 
-Before use the admin UI for manage your dataflows, you need define it. Please refer you to the [Code-Rhapsodie Dataflow type documentation](https://github.com/code-rhapsodie/dataflow-bundle#define-a-dataflow-type).
+Before using the admin UI for manage your dataflows, you need to define them. Please refer to [Code-Rhapsodie Dataflow type documentation](https://github.com/code-rhapsodie/dataflow-bundle#define-a-dataflow-type).
 
 ## Use the ContentWriter
 
