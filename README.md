@@ -271,7 +271,7 @@ Go to the eZ Dataflow admin UI and click on the "Oneshot" tabs.
 
 ![Oneshot list](src/Resources/doc/oneshot_list.jpg)
 
-1. This button, allow you to define the one-shot job (see below).
+1. This button allows you to define the one-shot job (see below).
 1. This column shows the number of objects that have been processed.
 1. Click on the question mark for display the job details.
 
