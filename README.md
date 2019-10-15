@@ -73,7 +73,7 @@ _cr.dataflow:
 
 ### Step 4: Update the database schema
 
-For this step, refer you to the [Code-Rhapsodie Dataflow Bundle installation guide](https://github.com/code-rhapsodie/dataflow-bundle#update-the-database).
+For this step, please refer to [Code-Rhapsodie Dataflow Bundle installation guide](https://github.com/code-rhapsodie/dataflow-bundle#update-the-database).
 
 ### Step 5: Schedule the job runner
 
