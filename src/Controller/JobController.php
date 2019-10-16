@@ -80,8 +80,9 @@ class JobController extends Controller
                 $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.job.create.error',
                     ['message' => $e->getMessage()]));
             }
+
             return new JsonResponse([
-                'redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main', ['_fragment' => 'oneshot'])
+                'redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main', ['_fragment' => 'oneshot']),
             ]);
         }
 
@@ -89,8 +90,8 @@ class JobController extends Controller
             'form' => $this->renderView('@ezdesign/ezdataflow/parts/schedule_form.html.twig', [
                 'form' => $form->createView(),
                 'type_action' => 'new',
-                'mode' => 'oneshot'
-            ])
+                'mode' => 'oneshot',
+            ]),
         ]);
     }
 }
