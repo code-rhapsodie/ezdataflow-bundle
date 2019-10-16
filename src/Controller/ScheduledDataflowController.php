@@ -65,9 +65,14 @@ class ScheduledDataflowController extends Controller
             } catch (\Exception $e) {
                 $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.create.error', ['message' => $e->getMessage()]));
             }
+            return new JsonResponse(['redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main')]);
         }
 
-        return $this->redirectToRoute('coderhapsodie.ezdataflow.main');
+        return new JsonResponse(['form'=>$this->renderView('@ezdesign/ezdataflow/parts/schedule_form.html.twig', [
+            'form' => $form->createView(),
+            'type_action' => 'new'
+        ])]);
+
     }
 
     /**
@@ -119,10 +124,13 @@ class ScheduledDataflowController extends Controller
                 $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.edit.error', ['message' => $e->getMessage()]));
             }
 
-            return $this->redirectToRoute('coderhapsodie.ezdataflow.main');
-        } else {
-            return $this->render('@ezdesign/ezdataflow/parts/schedule_edit.html.twig', ['form' => $form->createView()]);
+            return new JsonResponse(['redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main')]);
         }
+
+        return new JsonResponse(['form'=>$this->renderView('@ezdesign/ezdataflow/parts/schedule_form.html.twig', [
+            'form' => $form->createView(),
+            'type_action' => 'edit'
+        ])]);
     }
 
     /**

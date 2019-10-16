@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Controller;
 
+use CodeRhapsodie\DataflowBundle\Entity\Job;
 use CodeRhapsodie\EzDataflowBundle\Form\CreateOneshotType;
 use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
-use CodeRhapsodie\DataflowBundle\Entity\Job;
 use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute;
 use EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface;
 use EzSystems\EzPlatformAdminUiBundle\Controller\Controller;
@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/ezdataflow/job")
@@ -27,8 +28,11 @@ class JobController extends Controller
     /** @var TranslatorInterface */
     private $translator;
 
-    public function __construct(JobGateway $jobGateway, NotificationHandlerInterface $notificationHandler, TranslatorInterface $translator)
-    {
+    public function __construct(
+        JobGateway $jobGateway,
+        NotificationHandlerInterface $notificationHandler,
+        TranslatorInterface $translator
+    ) {
         $this->jobGateway = $jobGateway;
         $this->notificationHandler = $notificationHandler;
         $this->translator = $translator;
@@ -73,10 +77,20 @@ class JobController extends Controller
                 $this->jobGateway->save($newOneshot);
                 $this->notificationHandler->success($this->translator->trans('coderhapsodie.ezdataflow.job.create.success'));
             } catch (\Exception $e) {
-                $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.job.create.error', ['message' => $e->getMessage()]));
+                $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.job.create.error',
+                    ['message' => $e->getMessage()]));
             }
+            return new JsonResponse([
+                'redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main', ['_fragment' => 'oneshot'])
+            ]);
         }
 
-        return $this->redirectToRoute('coderhapsodie.ezdataflow.main', ['_fragment' => 'oneshot']);
+        return new JsonResponse([
+            'form' => $this->renderView('@ezdesign/ezdataflow/parts/schedule_form.html.twig', [
+                'form' => $form->createView(),
+                'type_action' => 'new',
+                'mode' => 'oneshot'
+            ])
+        ]);
     }
 }

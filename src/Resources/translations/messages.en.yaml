@@ -37,7 +37,7 @@ coderhapsodie.ezdataflow.history.details.errors: Errors
 coderhapsodie.ezdataflow.history.details.type: 'Dataflow type'
 coderhapsodie.ezdataflow.workflow.repeating.new.title: 'Create a new repeating workflow'
 coderhapsodie.ezdataflow.workflow.new.cancel: Cancel
-coderhapsodie.ezdataflow.workflow.new.create: Create
+coderhapsodie.ezdataflow.workflow.new.submit: Create
 coderhapsodie.ezdataflow.history.list.empty: 'No execution yet.'
 coderhapsodie.ezdataflow.workflow.list.empty: 'No repeating workflow configured yet'
 coderhapsodie.ezdataflow.workflow.history.title: 'Execution history'
