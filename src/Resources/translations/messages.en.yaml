@@ -3,7 +3,7 @@ coderhapsodie.ezdataflow.repeating: Repeating
 coderhapsodie.ezdataflow.repeating.title: Repeating
 coderhapsodie.ezdataflow.oneshot: Oneshot
 coderhapsodie.ezdataflow.oneshot.title: Oneshot
-coderhapsodie.ezdataflow.workflow.list.title: 'Workflow list'
+coderhapsodie.ezdataflow.workflow.list.title: 'Scheduled dataflow list'
 coderhapsodie.ezdataflow.history: History
 coderhapsodie.ezdataflow.workflow.list.name: Name
 coderhapsodie.ezdataflow.workflow.list.frequency: Frequency
@@ -34,21 +34,21 @@ coderhapsodie.ezdataflow.history.details.end: 'Finished on'
 coderhapsodie.ezdataflow.history.details.count: 'Items count'
 coderhapsodie.ezdataflow.history.details.options: 'Run options'
 coderhapsodie.ezdataflow.history.details.errors: Errors
-coderhapsodie.ezdataflow.history.details.type: 'Dataflow type'
-coderhapsodie.ezdataflow.workflow.repeating.new.title: 'Create a new repeating workflow'
+coderhapsodie.ezdataflow.history.details.type: 'Dataflow name to run'
+coderhapsodie.ezdataflow.workflow.repeating.new.title: 'Add a new repeating dataflow'
 coderhapsodie.ezdataflow.workflow.new.cancel: Cancel
 coderhapsodie.ezdataflow.workflow.new.create: Create
 coderhapsodie.ezdataflow.history.list.empty: 'No execution yet.'
 coderhapsodie.ezdataflow.workflow.list.empty: 'No repeating workflow configured yet'
 coderhapsodie.ezdataflow.workflow.history.title: 'Execution history'
 coderhapsodie.ezdataflow.workflow.list.delete: Delete
-coderhapsodie.ezdataflow.workflow.delete: 'Are you sure you want to delete this workflow?'
-coderhapsodie.ezdataflow.workflow.create.success: 'Workflow successfully created.'
-coderhapsodie.ezdataflow.workflow.create.error: 'An error occured during the workflow creation: "%message%".'
-coderhapsodie.ezdataflow.workflow.delete.success: 'Workflow successfully deleted.'
-coderhapsodie.ezdataflow.workflow.delete.error: 'An error occured during the workflow deletion: "%message%".'
+coderhapsodie.ezdataflow.workflow.delete: 'Are you sure you want to delete this dataflow schedule?'
+coderhapsodie.ezdataflow.workflow.create.success: 'Dataflow schedule successfully added.'
+coderhapsodie.ezdataflow.workflow.create.error: 'An error occured during the dataflow schedule creation: "%message%".'
+coderhapsodie.ezdataflow.workflow.delete.success: 'Dataflow schedule successfully deleted.'
+coderhapsodie.ezdataflow.workflow.delete.error: 'An error occured during the dataflow schedule deletion: "%message%".'
 coderhapsodie.ezdataflow.workflow.oneshot.new.title: 'New oneshot job'
-coderhapsodie.ezdataflow.job.create.success: 'Job successfully created.'
+coderhapsodie.ezdataflow.job.create.success: 'Job successfully added.'
 coderhapsodie.ezdataflow.job.create.error: 'An error occured during the job creation: "%message%".'
 coderhapsodie.dataflow.label: Name
 coderhapsodie.dataflow.dataflowType: Type
@@ -63,8 +63,8 @@ coderhapsodie.dataflow.frequency.title: 'Enter an interval in a format compatibl
 coderhapsodie.dataflow.frequency.placeholder: 'Example: 1 year 2 months 3 weeks 4 days 5 hours 6 minutes'
 coderhapsodie.dataflow.create.next: 'First run'
 coderhapsodie.dataflow.create.enabled: Enabled?
-coderhapsodie.ezdataflow.workflow.repeating.edit.title: "Workflow edit"
+coderhapsodie.ezdataflow.workflow.repeating.edit.title: "Dataflow schedule edit"
 coderhapsodie.ezdataflow.workflow.edit.submit: Save
 coderhapsodie.dataflow.update.next: 'Next execution'
-coderhapsodie.ezdataflow.workflow.edit.success: 'Workflow successfully updated.'
-coderhapsodie.ezdataflow.workflow.edit.error: 'An error occured during the workflow update: "%message%".'
+coderhapsodie.ezdataflow.workflow.edit.success: 'Dataflow schedule successfully updated.'
+coderhapsodie.ezdataflow.workflow.edit.error: 'An error occured during the dataflow schedule update: "%message%".'
