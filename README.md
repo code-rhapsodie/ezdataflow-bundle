@@ -282,7 +282,7 @@ Go to the eZ Dataflow admin UI and click on the "Oneshot" tab. Click to the "+" 
 ![The add one-shot popin](src/Resources/doc/one_shot_job.jpg)
 
 1. Type the Dataflow name
-1. Select the Dataflow type. The list is automaticaly generated from the list of Symfony service with the tags `coderhapsodie.dataflow.type`. If your dataflow type is not present, [check the configuration](https://github.com/code-rhapsodie/dataflow-bundle#check-if-your-dataflowtype-is-ready)
+1. Select the Dataflow type. The list is automatically generated from the list of Symfony services with the tags `coderhapsodie.dataflow.type`. If your dataflow type is not present, [check the configuration](https://github.com/code-rhapsodie/dataflow-bundle#check-if-your-dataflowtype-is-ready)
 1. Type here the Dataflow options. Basic expected format: one option per line and option name and value separated with `:`. For more complex options, the whole YAML format is supported.
 1. Choose the date and time of the first job.
 
