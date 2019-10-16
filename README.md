@@ -277,7 +277,7 @@ Here the job has fail.
 
 ## Add a one-shot job
 
-Go to the eZ Dataflow admin UI and click on the "Oneshot" tabs. Click to the "+" orange button to open the adding popin.
+Go to the eZ Dataflow admin UI and click on the "Oneshot" tab. Click to the "+" orange button to open the adding popin.
 
 ![The add one-shot popin](src/Resources/doc/one_shot_job.jpg)
 
