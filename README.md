@@ -290,12 +290,12 @@ Finally, click on the "Create" button.
 
 # Issues and feature requests
 
-Please report issues and request features at https://github.com/code-rhapsodie/dataflow-bundle/issues.
+Please report issues and request features at https://github.com/code-rhapsodie/ezdataflow-bundle/issues.
 
 # Contributing
 
 Contributions are very welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for
-details. Thanks to [everyone who has contributed](https://github.com/code-rhapsodie/dataflow-bundle/graphs/contributors)
+details. Thanks to [everyone who has contributed](https://github.com/code-rhapsodie/ezdataflow-bundle/graphs/contributors)
 already.
 
 # License
