@@ -239,7 +239,7 @@ Il the new popin, complete the fields:
 1. Type here the Dataflow options. Format: one option per line and option name and value with `:` separator.
 1. Type here the frequency. The value must be compatible with the the PHP [strtotime](https://www.php.net/manual/en/function.strtotime.php) function.
 1. Choice the date and time of the first job.
-1. Check if you want run this Dataflow.
+1. Check if you want to run this Dataflow.
 
 Finally, click on the "Create" button.
 
@@ -277,7 +277,7 @@ Here the job has fail.
 
 ## Add a one-shot job
 
-Go to the eZ Dataflow admin UI and click on the "Oneshot" tab. Click to the "+" orange button to open the adding popin.
+Go to the eZ Dataflow admin UI and click on the "Oneshot" tab. Click on the "+" orange button to open the adding popin.
 
 ![The add one-shot popin](src/Resources/doc/one_shot_job.jpg)
 
