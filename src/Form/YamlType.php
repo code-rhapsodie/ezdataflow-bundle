@@ -38,7 +38,12 @@ class YamlType extends AbstractType
                 }
 
                 try {
-                    return Yaml::parse($optionsAsString);
+                    $val = Yaml::parse($optionsAsString);
+                    if (!is_array($val)) {
+                        throw new ParseException('Result is not a array');
+                    }
+
+                    return $val;
                 } catch (ParseException $e) {
                     throw new TransformationFailedException('Invalid YAML format', 0, $e);
                 }
