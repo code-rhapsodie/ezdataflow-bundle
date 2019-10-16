@@ -261,7 +261,7 @@ Details of one scheduled job:
 
 If you don't want to run a Dataflow periodically, you can add a single execution at the time and date that you want.
 
-Go to the eZ Dataflow admin UI and click on the "Oneshot" tabs.
+Go to the eZ Dataflow admin UI and click on the "Oneshot" tab.
 
 ![Oneshot list](src/Resources/doc/oneshot_list.jpg)
 
