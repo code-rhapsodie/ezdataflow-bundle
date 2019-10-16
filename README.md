@@ -235,7 +235,7 @@ Il the new popin, complete the fields:
 ![Add a new schedule](src/Resources/doc/add_new_schedule.jpg)
 
 1. Type the Dataflow name
-1. Select the Dataflow type. The list is automaticaly generated from the list of Symfony service with the tags `coderhapsodie.dataflow.type`. If your dataflow type is not present, [check the configuration](https://github.com/code-rhapsodie/dataflow-bundle#check-if-your-dataflowtype-is-ready)
+1. Select the Dataflow type. The list is automatically generated from the list of Symfony services with the tags `coderhapsodie.dataflow.type`. If your dataflow type is not present, [check the configuration](https://github.com/code-rhapsodie/dataflow-bundle#check-if-your-dataflowtype-is-ready)
 1. Type here the Dataflow options. Format: one option per line and option name and value with `:` separator.
 1. Type here the frequency. The value must be compatible with the the PHP [strtotime](https://www.php.net/manual/en/function.strtotime.php) function.
 1. Choice the date and time of the first job.
