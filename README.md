@@ -151,7 +151,7 @@ For get the location id of the parent eZ Platform content, go to the admin UI an
 
 ![parent folder](src/Resources/doc/dest_folder.jpg)
 
-> Note: the best practice is to define this parent id in your `parameter.yml` file or your `.env.local` file for each execution environment.
+> Note: the best practice is to define this parent id in your `parameters.yml` file or your `.env.local` file for each execution environment.
 
 ```php
 // In your DataflowType
