@@ -1,16 +1,16 @@
-# Code-Rhapsodie EzDataflow Bundle
+# Code Rhapsodie eZ Dataflow Bundle
 
-EzDataflowBundle is a bundle to integrate the Code-Rhapsodie DataflowBundle into eZ Platfom 2.0+.
-These dataflows can be piloted from an UI integrated in eZ Platform Admin UI.
-The EzDataflow bundle is intended to manage content imports from external data sources.
+EzDataflowBundle is a bundle to integrate the Code Rhapsodie Dataflow bundle into eZ Platfom 2.0+.
+These dataflows can be piloted from an interface integrated in eZ Platform backoffice.
+EzDataflow bundle intends to manage content imports from external data sources.
 
 ## User Interface (UI)
 
-The UI lets you create workflow processes from any defined `DataflowTypes`, and set that process options.
+The UI lets you create workflow processes from any defined `DataflowTypes`, and set options to each.
 
 Processes can be set to run either:
-- as soon as possible, meaning the next time the queue is processed
-- at a given date and time
+- only once, at a given date and time
+- regularly, by defining the first run date and time, and the interval between subsequent runs
 
 ## Installation
 
@@ -24,11 +24,7 @@ $ composer require code-rhapsodie/ezdataflow-bundle
 
 #### Symfony 4 (new tree)
 
-For Symfony 4, add `CodeRhapsodie\DataflowBundle\CodeRhapsodieDataflowBundle::class => ['all' => true],`
-and `CodeRhapsodie\EzDataflowBundle\CodeRhapsodieEzDataflowBundle::class => ['all' => true],`
-in the `config/bundles.php` file.
-
-Like this:
+For Symfony 4, add those two lines in the `config/bundles.php` file:
 
 ```php
 <?php
@@ -43,9 +39,7 @@ return [
 
 #### Symfony 3.4 (old tree)
 
-For Symfony 3.4, add two new lines in the `app/AppKernel.php` file.
-
-Like this:
+For Symfony 3.4, add those two lines in the `app/AppKernel.php` file:
 
 ```php
 <?php
@@ -73,11 +67,11 @@ _cr.dataflow:
 
 ### Step 4: Update the database schema
 
-For this step, please refer to [Code-Rhapsodie Dataflow Bundle installation guide](https://github.com/code-rhapsodie/dataflow-bundle#update-the-database).
+Please refer to the [Code-Rhapsodie Dataflow Bundle installation guide](https://github.com/code-rhapsodie/dataflow-bundle#update-the-database).
 
 ### Step 5: Schedule the job runner
 
-For this step, please refer to [Code-Rhapsodie Dataflow Bundle Queue section](https://github.com/code-rhapsodie/dataflow-bundle#queue).
+Please refer to the [Code-Rhapsodie Dataflow Bundle Queue section](https://github.com/code-rhapsodie/dataflow-bundle#queue).
 
 ## Configuration
 
