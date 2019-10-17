@@ -95,7 +95,7 @@ Before using the admin UI to manage your dataflows, you need to define them. Ple
 
 To add or update eZ Platform contents, you can use the `CodeRhapsodie\EzDataflowBundle\Writer\ContentWriter` writer.
 
-### Step 1: Inject the dependencie and add the writer
+### Step 1: Inject the dependencies and add the writer
 
 Inject the `ContentWriter` service into the constructor of your DataflowType and add the content writter into the writer list like this:
 
