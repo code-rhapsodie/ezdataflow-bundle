@@ -137,19 +137,19 @@ But, in order to determine if the content already exists or not, you first need 
 One way is to use the remote id to search for the content.
 
 In the following example, the remote id pattern is `article-<id>` with the `<id>` replaced by the data id provided by the reader.
-For check if the content exist or not, I use the service `ContentService` provided by eZ Platform.
+To check if the content exists or not, I use the service `ContentService` provided by eZ Platform.
 
-The step is added with anonymous function and has 3 types of return:
+The step is added as an anonymous function and has 3 types of return values:
 
-* When the step return `false`, the data is dropped.
-* When the step return a `ContentCreateStructure`, the data will be saved into en new eZ Platform content.
-* When the step return a `ContentUpdateStructure`, the data will be saved into the existing eZ Platform content in overwriting all defined fields.
+* When the step returns `false`, the data is dropped.
+* When the step returns a `ContentCreateStructure`, the data will be saved into a new eZ Platform content.
+* When the step returns a `ContentUpdateStructure`, the existing eZ Platform content will be updated by overwriting all defined fields in the data.
 
-For the new content, you must provide one or more "parent location id" in the 3th argument of the `ContentCreateStructure` constructor.
+For the new content, you must provide one or more "parent location id" as the 3rd argument of the `ContentCreateStructure` constructor.
 
-In this exemple, I have add a new folder for store all articles.
+In this example, I have added a new folder to store all articles.
 
-For get the location id of the parent eZ Platform content, go to the admin UI and select the future parent content, click on the details tabs, and read the "Location id" like this:
+To get the location id of the parent eZ Platform content, go to the admin UI and select the future parent content, click on the details tabs, and read the "Location id" like this:
 
 ![parent folder](src/Resources/doc/dest_folder.jpg)
 
@@ -193,7 +193,7 @@ class MyDataflowType extends AbstractDataflowType
             $remoteId = sprintf('article-%d', $data['id']);
             unset($data['id']);
 
-            $parent_location_for_new_article = 54;
+            $parentLocationForNewArticle = 54;
 
             $lang = 'eng-GB';
             try {
@@ -203,7 +203,7 @@ class MyDataflowType extends AbstractDataflowType
                 $struct = new ContentCreateStructure(
                     'article',
                     $lang
-                    [$parent_location_for_new_article],
+                    [$parentLocationForNewArticle],
                     $data,
                     $remoteId,
                 );
@@ -221,7 +221,7 @@ class MyDataflowType extends AbstractDataflowType
 
 ## Access to the eZ Dataflow UI
 
-You can access to the eZ Dataflow administation UI from your eZ Platform admin back-office.
+You can access the eZ Dataflow administration UI from your eZ Platform admin back-office.
 
 ![Admin menu](src/Resources/doc/ez_dataflow_admin_menu.jpg)
 
@@ -232,28 +232,28 @@ You can access to the eZ Dataflow administation UI from your eZ Platform admin b
 
 Go to the eZ Dataflow admin, and click on the "+" orange button. 
 
-Il the new popin, complete the fields:
+In the new popin, fill in the fields:
 
 ![Add a new schedule](src/Resources/doc/add_new_schedule.jpg)
 
 1. Type the Dataflow name
 1. Select the Dataflow type. The list is automatically generated from the list of Symfony services with the tags `coderhapsodie.dataflow.type`. If your dataflow type is not present, [check the configuration](https://github.com/code-rhapsodie/dataflow-bundle#check-if-your-dataflowtype-is-ready)
-1. Type here the Dataflow options. Format: one option per line and option name and value with `:` separator.
+1. Type here the Dataflow options. Basic expected format: one option per line and option name and value separated with `:`. For more complex options, the whole YAML format is supported.
 1. Type here the frequency. The value must be compatible with the the PHP [strtotime](https://www.php.net/manual/en/function.strtotime.php) function.
-1. Choice the date and time of the first job.
+1. Choose the date and time of the first job.
 1. Check if you want to run this Dataflow.
 
 Finally, click on the "Create" button.
 
 ## Read the history
 
-When you click on the "History" tab in the eZ Dataflow admin UI, you view the job history for all Dataflow configured and executed.
+When you click on the "History" tab in the eZ Dataflow admin UI, the job history for all Dataflow configured and executed is displayed.
 
 ![History list](src/Resources/doc/history_list.jpg)
 
 1. The history list
 1. This column shows the number of objects that have been processed.
-1. Click on the question mark for display the job details.
+1. Click on the question mark to display the job details.
 
 Details of one scheduled job:
 
