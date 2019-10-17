@@ -15,7 +15,7 @@
                 <td>{{ item.label }}</td>
                 <td>{{ item.frequency }}</td>
                 <td>{{ item.next|date('d/m/Y H:i:s') }}</td>
-                <td>{{ item.enabled ? 'Oui' : 'Non' }}</td>
+                <td>{{ ('coderhapsodie.ezdataflow.' ~ (item.enabled ? 'yes' : 'no'))|trans }}</td>
                 <td class="ez-table__cell ez-table__cell--has-action-btns text-right">
                     <a href="{{ path('coderhapsodie.ezdataflow.history.workflow', {id: item.id}) }}" class="btn btn-icon mx-2 modal-history" title="{{ 'coderhapsodie.ezdataflow.workflow.list.history'|trans }}">
                         <svg class="ez-icon ez-icon--small-medium">

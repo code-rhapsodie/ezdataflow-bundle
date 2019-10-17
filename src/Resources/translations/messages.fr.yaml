@@ -1,8 +1,11 @@
 coderhapsodie.ezdataflow: eZ Dataflow
+coderhapsodie.ezdataflow.yes: Yes
+coderhapsodie.ezdataflow.no: No
 coderhapsodie.ezdataflow.repeating: Récurrent
 coderhapsodie.ezdataflow.repeating.title: Récurrent
 coderhapsodie.ezdataflow.oneshot: Ponctuel
 coderhapsodie.ezdataflow.oneshot.title: Ponctuel
+coderhapsodie.ezdataflow.oneshot.list.title: 'Liste des exécutions ponctuelles de dataflow'
 coderhapsodie.ezdataflow.workflow.list.title: 'Liste des programmations des dataflow'
 coderhapsodie.ezdataflow.history: Historique
 coderhapsodie.ezdataflow.workflow.list.name: Nom
