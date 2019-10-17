@@ -129,7 +129,7 @@ class MyDataflowType extends AbstractDataflowType
 
 ### Step 2: Add a step for prepare the content
 
-To process eZ Platform content into your Dataflow, you need transform the data in objet `ContentCreateStructure` or `ContentUpdateStructure`
+To process eZ Platform content into your Dataflow, you need to transform the data into `ContentCreateStructure` or `ContentUpdateStructure` objects.
 for create or update content respectively.
 
 But, for determine if the content exist or not, you need search into the eZ Platform content.
