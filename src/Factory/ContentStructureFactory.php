@@ -19,6 +19,7 @@ class ContentStructureFactory
 
     /**
      * ContentStructureFactory constructor.
+     *
      * @param ContentService $contentService
      */
     public function __construct(ContentService $contentService)
@@ -27,18 +28,19 @@ class ContentStructureFactory
     }
 
     /**
-     * @param array $data
-     * @param string $remoteId
-     * @param string $language
-     * @param string $contentType
+     * @param array     $data
+     * @param string    $remoteId
+     * @param string    $language
+     * @param string    $contentType
      * @param int|int[] $parentLocationId
+     *
      * @return ContentStructure
+     *
      * @throws \CodeRhapsodie\EzDataflowBundle\Exception\InvalidArgumentTypeException
      * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
      */
     public function transform(array $data, string $remoteId, string $language, string $contentType, $parentLocationId): ContentStructure
     {
-
         try {
             $content = $this->contentService->loadContentByRemoteId($remoteId);
 
@@ -50,7 +52,7 @@ class ContentStructureFactory
         return new ContentCreateStructure(
             $contentType,
             $language,
-            (is_array($parentLocationId))? $parentLocationId: [$parentLocationId],
+            (is_array($parentLocationId)) ? $parentLocationId : [$parentLocationId],
             $data,
             $remoteId
         );
