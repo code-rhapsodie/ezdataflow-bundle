@@ -134,7 +134,7 @@ in order to respectively create or update contents.
 
 But, in order to determine if the content already exists or not, you first need to look up for it.
 
-One way is use the remote id for search the content.
+One way is to use the remote id to search for the content.
 
 In the following example, the remote id pattern is `article-<id>` with the `<id>` replaced by the data id provided by the reader.
 For check if the content exist or not, I use the service `ContentService` provided by eZ Platform.
