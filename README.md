@@ -196,7 +196,7 @@ class MyDataflowType extends AbstractDataflowType
             return $this->contentStructureFactory->transform(
                     $data,
                     $remoteId,
-                    $lang,
+                    'eng-GB',
                     'article2',
                     54 //Parent location id
                 );
