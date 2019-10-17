@@ -242,7 +242,7 @@ When you access to the eZ Dataflow administration UI, you going here:
    1. Enable/Disable this dataflow schedule
    1. Delete this dataflow schedule
 
-> Note: You can define many schedule for one dataflow.
+> Note: You can define more than one schedule for any given dataflow.
 
 ## Add a new schedule
 
