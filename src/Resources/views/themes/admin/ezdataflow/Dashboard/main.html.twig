@@ -56,6 +56,13 @@
                 $('#ez-tab-list-coderhapsodie-ezdataflow li a:eq(1)').addClass('active');
                 $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(1)').addClass('active');
             }
+            if (window.location.hash && window.location.hash === '#history') {
+                $('#ez-tab-list-coderhapsodie-ezdataflow li a').removeClass('active');
+                $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane').removeClass('active');
+
+                $('#ez-tab-list-coderhapsodie-ezdataflow li a:eq(2)').addClass('active');
+                $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(2)').addClass('active');
+            }
         });
     </script>
 {% endblock %}
