@@ -97,7 +97,7 @@ To add or update eZ Platform contents, you can use the `CodeRhapsodie\EzDataflow
 
 ### Step 1: Inject the dependencies and add the writer
 
-Inject the `ContentWriter` service into the constructor of your DataflowType and add the content writter into the writer list like this:
+Inject the `ContentWriter` service into the constructor of your DataflowType and add the content writer into the writer list like this:
 
 ```php
 // In your DataflowType
