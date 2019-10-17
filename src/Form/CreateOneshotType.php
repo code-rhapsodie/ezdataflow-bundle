@@ -17,7 +17,7 @@ class CreateOneshotType extends AbstractType
     {
         $builder
             ->add('label', TextType::class, [
-                'label' => 'coderhapsodie.dataflow.label',
+                'label' => 'coderhapsodie.dataflow.oneshot.label',
             ])
             ->add('dataflowType', DataflowTypeChoiceType::class, [
                 'label' => 'coderhapsodie.dataflow.dataflowType',
