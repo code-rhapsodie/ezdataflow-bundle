@@ -1,6 +1,6 @@
 coderhapsodie.ezdataflow: eZ Dataflow
-coderhapsodie.ezdataflow.yes: Yes
-coderhapsodie.ezdataflow.no: No
+coderhapsodie.ezdataflow.yes: Oui
+coderhapsodie.ezdataflow.no: Non
 coderhapsodie.ezdataflow.repeating: Récurrent
 coderhapsodie.ezdataflow.repeating.title: Récurrent
 coderhapsodie.ezdataflow.oneshot: Ponctuel
@@ -29,6 +29,8 @@ coderhapsodie.ezdataflow.job.status.pending: 'En attente'
 coderhapsodie.ezdataflow.job.status.running: 'En cours'
 coderhapsodie.ezdataflow.job.status.complete: Terminé
 coderhapsodie.ezdataflow.job.status.unknown: Inconnu
+coderhapsodie.ezdataflow.history.job.title: 'Exécution'
+coderhapsodie.ezdataflow.history.details.title: 'Détails de l''exécution'
 coderhapsodie.ezdataflow.history.details.name: Nom
 coderhapsodie.ezdataflow.history.details.request: 'Demandé le'
 coderhapsodie.ezdataflow.history.details.status: État

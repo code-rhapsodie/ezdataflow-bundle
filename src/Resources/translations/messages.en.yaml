@@ -29,6 +29,8 @@ coderhapsodie.ezdataflow.job.status.pending: Pending
 coderhapsodie.ezdataflow.job.status.running: Running
 coderhapsodie.ezdataflow.job.status.complete: Completed
 coderhapsodie.ezdataflow.job.status.unknown: Unknown
+coderhapsodie.ezdataflow.history.job.title: 'Job'
+coderhapsodie.ezdataflow.history.details.title: 'Job details'
 coderhapsodie.ezdataflow.history.details.name: Name
 coderhapsodie.ezdataflow.history.details.request: 'Requested on'
 coderhapsodie.ezdataflow.history.details.status: Status
