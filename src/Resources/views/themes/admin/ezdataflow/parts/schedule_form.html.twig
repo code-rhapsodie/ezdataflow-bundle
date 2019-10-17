@@ -1,0 +1,24 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{{ form_start(form) }}
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">{{ ('coderhapsodie.ezdataflow.workflow.'~(mode|default('repeating'))~'.'~(type_action|default('new'))~'.title')|trans }}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <svg class="ez-icon ez-icon--medium" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#discard"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="modal-body">
+        {{ form_widget(form) }}
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-dark"
+                data-dismiss="modal">{{ 'coderhapsodie.ezdataflow.workflow.new.cancel'|trans }}</button>
+        <button type="submit"
+                class="btn btn-primary font-weight-bold">{{ ('coderhapsodie.ezdataflow.workflow.'~(type_action|default('new'))~'.submit')|trans }}</button>
+    </div>
+</div>
+{{ form_end(form) }}

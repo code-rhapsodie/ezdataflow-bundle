@@ -42,7 +42,7 @@ coderhapsodie.ezdataflow.history.details.errors: Erreurs
 coderhapsodie.ezdataflow.history.details.type: 'Nom du dataflow exécuté'
 coderhapsodie.ezdataflow.workflow.repeating.new.title: 'Nouvel programmation d''un dataflow récurrent'
 coderhapsodie.ezdataflow.workflow.new.cancel: Annuler
-coderhapsodie.ezdataflow.workflow.new.create: Créer
+coderhapsodie.ezdataflow.workflow.new.submit: Créer
 coderhapsodie.ezdataflow.history.list.empty: 'Aucune exécution pour le moment.'
 coderhapsodie.ezdataflow.workflow.list.empty: 'Aucun dataflow n''a été programmé.'
 coderhapsodie.ezdataflow.workflow.history.title: 'Historique des exécutions'
