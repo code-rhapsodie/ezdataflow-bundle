@@ -228,6 +228,20 @@ You can access the eZ Dataflow administration UI from your eZ Platform admin bac
 1. Click to "Admin"
 1. Click to "eZ Dataflow"
 
+## Sceduled dataflow list
+
+When you access to the eZ Dataflow administration UI, you going here:
+
+![Scheduled dataflow list](src/Resources/doc/scheduled_list.jpg)
+
+1. Scheduled dataflow list
+1. Button to add a new scheduled dataflow
+1. Tools available for each scheduled dataflow. In order from left to right :
+   1. Display the history for this dataflow schedule
+   1. Edit this dataflow schedule
+   1. Enable/Disable this dataflow schedule
+   1. Delete this dataflow schedule
+
 ## Add a new schedule
 
 Go to the eZ Dataflow admin, and click on the "+" orange button. 
