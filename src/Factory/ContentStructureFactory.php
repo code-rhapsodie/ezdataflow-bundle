@@ -32,27 +32,27 @@ class ContentStructureFactory
      * @param string    $remoteId
      * @param string    $language
      * @param string    $contentType
-     * @param int|int[] $parentLocationId
+     * @param mixed $parentLocations
      *
      * @return ContentStructure
      *
      * @throws \CodeRhapsodie\EzDataflowBundle\Exception\InvalidArgumentTypeException
      * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
      */
-    public function transform(array $data, string $remoteId, string $language, string $contentType, $parentLocationId): ContentStructure
+    public function transform(array $data, string $remoteId, string $language, string $contentType, $parentLocations): ContentStructure
     {
         try {
             $content = $this->contentService->loadContentByRemoteId($remoteId);
 
             return ContentUpdateStructure::createForContentId($content->id, $language, $data);
         } catch (NotFoundException $e) {
-            //Ignore error
+            // The content doesn't exist yet, so it will be created.
         }
 
         return new ContentCreateStructure(
             $contentType,
             $language,
-            (is_array($parentLocationId)) ? $parentLocationId : [$parentLocationId],
+            is_array($parentLocations) ? $parentLocations : [$parentLocations],
             $data,
             $remoteId
         );
