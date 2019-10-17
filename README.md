@@ -132,7 +132,7 @@ class MyDataflowType extends AbstractDataflowType
 To process eZ Platform content into your Dataflow, you need to transform the data into `ContentCreateStructure` or `ContentUpdateStructure` objects.
 in order to respectively create or update contents.
 
-But, for determine if the content exist or not, you need search into the eZ Platform content.
+But, in order to determine if the content already exists or not, you first need to look up for it.
 
 One way is use the remote id for search the content.
 
