@@ -37,7 +37,7 @@ coderhapsodie.ezdataflow.history.details.end: 'Finished on'
 coderhapsodie.ezdataflow.history.details.count: 'Items count'
 coderhapsodie.ezdataflow.history.details.options: 'Run options'
 coderhapsodie.ezdataflow.history.details.errors: Errors
-coderhapsodie.ezdataflow.history.details.type: 'Dataflow name to run'
+coderhapsodie.ezdataflow.history.details.type: 'Name of the dataflow executed'
 coderhapsodie.ezdataflow.workflow.repeating.new.title: 'Add a new repeating dataflow'
 coderhapsodie.ezdataflow.workflow.new.cancel: Cancel
 coderhapsodie.ezdataflow.workflow.new.create: Create
@@ -53,9 +53,10 @@ coderhapsodie.ezdataflow.workflow.delete.error: 'An error occured during the dat
 coderhapsodie.ezdataflow.workflow.oneshot.new.title: 'New oneshot job'
 coderhapsodie.ezdataflow.job.create.success: 'Job successfully added.'
 coderhapsodie.ezdataflow.job.create.error: 'An error occured during the job creation: "%message%".'
-coderhapsodie.dataflow.label: Name
-coderhapsodie.dataflow.dataflowType: Type
-coderhapsodie.dataflow.options: Options
+coderhapsodie.dataflow.label: 'Scheduled dataflow name'
+coderhapsodie.dataflow.oneshot.label: 'One-shot job name'
+coderhapsodie.dataflow.dataflowType: 'Select the dataflow to run'
+coderhapsodie.dataflow.options: 'Options passed to dataflow (YAML)'
 coderhapsodie.dataflow.options.title: 'Enter options as a key / value YAML array'
 coderhapsodie.dataflow.options.placeholder: |
   option1: value1

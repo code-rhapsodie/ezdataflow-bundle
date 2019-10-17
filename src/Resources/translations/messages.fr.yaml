@@ -37,7 +37,7 @@ coderhapsodie.ezdataflow.history.details.end: 'Terminé le'
 coderhapsodie.ezdataflow.history.details.count: 'Nombre d''objets mis à jour'
 coderhapsodie.ezdataflow.history.details.options: 'Options de lancement'
 coderhapsodie.ezdataflow.history.details.errors: Erreurs
-coderhapsodie.ezdataflow.history.details.type: 'Nom du dataflow à exécuter'
+coderhapsodie.ezdataflow.history.details.type: 'Nom du dataflow exécuté'
 coderhapsodie.ezdataflow.workflow.repeating.new.title: 'Nouvel programmation d''un dataflow récurrent'
 coderhapsodie.ezdataflow.workflow.new.cancel: Annuler
 coderhapsodie.ezdataflow.workflow.new.create: Créer
@@ -53,9 +53,10 @@ coderhapsodie.ezdataflow.workflow.delete.error: 'Une erreur est survenue lors de
 coderhapsodie.ezdataflow.workflow.oneshot.new.title: 'Nouvelle exécution ponctuelle'
 coderhapsodie.ezdataflow.job.create.success: 'Votre exécution a bien été ajoutée.'
 coderhapsodie.ezdataflow.job.create.error: 'Une erreur est survenue lors de l''ajout de l''exécution : "%message%".'
-coderhapsodie.dataflow.label: Nom
-coderhapsodie.dataflow.dataflowType: Type
-coderhapsodie.dataflow.options: Options
+coderhapsodie.dataflow.label: 'Nom de la programamtion du dataflow'
+coderhapsodie.dataflow.oneshot.label: 'Nom de l''exécution ponctuelle du dataflow'
+coderhapsodie.dataflow.dataflowType: 'Dataflow a exécuter'
+coderhapsodie.dataflow.options: 'Options passées au dataflow (YAML)'
 coderhapsodie.dataflow.options.title: 'Entrez les options comme un tableau clé/valeur YAML'
 coderhapsodie.dataflow.options.placeholder: "option1: valeur1\noption2: valeur2\n"
 coderhapsodie.dataflow.requestedDate: 'Date de lancement'
