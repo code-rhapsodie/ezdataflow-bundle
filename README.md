@@ -228,7 +228,7 @@ You can access the eZ Dataflow administration UI from your eZ Platform admin bac
 1. Click to "Admin"
 1. Click to "eZ Dataflow"
 
-## Sceduled dataflow list
+## Scheduled dataflow list
 
 When you access to the eZ Dataflow administration UI, you going here:
 
@@ -241,6 +241,8 @@ When you access to the eZ Dataflow administration UI, you going here:
    1. Edit this dataflow schedule
    1. Enable/Disable this dataflow schedule
    1. Delete this dataflow schedule
+
+> Note: You can define many schedule for one dataflow.
 
 ## Add a new schedule
 
