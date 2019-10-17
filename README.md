@@ -1,10 +1,10 @@
 # Code Rhapsodie eZ Dataflow Bundle
 
-EzDataflowBundle is a bundle to integrate the [Code Rhapsodie Dataflow bundle](https://github.com/code-rhapsodie/dataflow-bundle) into eZ Platfom 2.0+.
+EzDataflowBundle is a bundle integrating [Code Rhapsodie Dataflow bundle](https://github.com/code-rhapsodie/dataflow-bundle) into eZ Platfom 2.0+.
 Dataflows can be piloted from an interface integrated in eZ Platform backoffice.
-EzDataflow bundle intends to manage content imports from external data sources.
+EzDataflow bundle is intended to manage content imports from external data sources.
 
-> Note: before use this bundle, please read the [Code Rhapsodie Dataflow bundle documentation](https://github.com/code-rhapsodie/dataflow-bundle/blob/master/README.md).
+> Note: before using this bundle, please read the [Code Rhapsodie Dataflow bundle documentation](https://github.com/code-rhapsodie/dataflow-bundle/blob/master/README.md).
 
 ## User Interface (UI)
 
