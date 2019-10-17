@@ -206,7 +206,7 @@ class MyDataflowType extends AbstractDataflowType
 }
 ```
 
-This example use `ContentStructureFactory` for check if the content exist and return the good `ContentStrucure` for content writer.
+This example uses `ContentStructureFactory` to check if the content exists and returns the good `ContentStrucure` to the content writer.
 
 # Admin UI
 
