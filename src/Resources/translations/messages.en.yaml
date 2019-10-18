@@ -5,7 +5,7 @@ coderhapsodie.ezdataflow.repeating: Repeating
 coderhapsodie.ezdataflow.repeating.title: Repeating
 coderhapsodie.ezdataflow.oneshot: Oneshot
 coderhapsodie.ezdataflow.oneshot.title: Oneshot
-coderhapsodie.ezdataflow.oneshot.list.title: 'Oneshot  dataflow list'
+coderhapsodie.ezdataflow.oneshot.list.title: 'Oneshot dataflow list'
 coderhapsodie.ezdataflow.workflow.list.title: 'Scheduled dataflow list'
 coderhapsodie.ezdataflow.history: History
 coderhapsodie.ezdataflow.workflow.list.name: Name
@@ -49,9 +49,9 @@ coderhapsodie.ezdataflow.workflow.history.title: 'Execution history'
 coderhapsodie.ezdataflow.workflow.list.delete: Delete
 coderhapsodie.ezdataflow.workflow.delete: 'Are you sure you want to delete this dataflow schedule?'
 coderhapsodie.ezdataflow.workflow.create.success: 'Dataflow schedule successfully added.'
-coderhapsodie.ezdataflow.workflow.create.error: 'An error occured during the dataflow schedule creation: "%message%".'
+coderhapsodie.ezdataflow.workflow.create.error: 'An error occurred during the dataflow schedule creation: "%message%".'
 coderhapsodie.ezdataflow.workflow.delete.success: 'Dataflow schedule successfully deleted.'
-coderhapsodie.ezdataflow.workflow.delete.error: 'An error occured during the dataflow schedule deletion: "%message%".'
+coderhapsodie.ezdataflow.workflow.delete.error: 'An error occurred during the dataflow schedule deletion: "%message%".'
 coderhapsodie.ezdataflow.workflow.oneshot.new.title: 'New oneshot job'
 coderhapsodie.ezdataflow.job.create.success: 'Job successfully added.'
 coderhapsodie.ezdataflow.job.create.error: 'An error occured during the job creation: "%message%".'
@@ -73,4 +73,4 @@ coderhapsodie.ezdataflow.workflow.repeating.edit.title: "Dataflow schedule edit"
 coderhapsodie.ezdataflow.workflow.edit.submit: Save
 coderhapsodie.dataflow.update.next: 'Next execution'
 coderhapsodie.ezdataflow.workflow.edit.success: 'Dataflow schedule successfully updated.'
-coderhapsodie.ezdataflow.workflow.edit.error: 'An error occured during the dataflow schedule update: "%message%".'
+coderhapsodie.ezdataflow.workflow.edit.error: 'An error occurred during the dataflow schedule update: "%message%".'
