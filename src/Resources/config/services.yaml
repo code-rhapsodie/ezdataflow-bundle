@@ -77,6 +77,10 @@ services:
     CodeRhapsodie\EzDataflowBundle\EventSubscriber\MenuSubscriber:
         tags: ['kernel.event_subscriber']
 
+    CodeRhapsodie\EzDataflowBundle\Factory\ContentStructureFactory:
+        arguments:
+            $contentService: '@eZ\Publish\API\Repository\ContentService'
+
     CodeRhapsodie\EzDataflowBundle\Form\DataflowTypeChoiceType:
         arguments:
             $registry: '@CodeRhapsodie\DataflowBundle\Registry\DataflowTypeRegistryInterface'
