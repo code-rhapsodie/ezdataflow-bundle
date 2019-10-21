@@ -158,9 +158,9 @@ To get the location id of the parent eZ Platform content, go to the admin UI and
 ```php
 // In your DataflowType
 
+use CodeRhapsodie\EzDataflowBundle\Factory\ContentStructureFactory;
 use CodeRhapsodie\EzDataflowBundle\Writer\ContentWriter;
 use CodeRhapsodie\DataflowBundle\DataflowType\AbstractDataflowType;
-use eZ\Publish\API\Repository\ContentService;
 [...]
 
 class MyDataflowType extends AbstractDataflowType
@@ -172,14 +172,14 @@ class MyDataflowType extends AbstractDataflowType
     private $contentWriter;
 
     /**
-     * @var ContentService
+     * @var ContentStructureFactory
      */
-    private $contentService;
+    private contentStructureFactory;
 
-    public function __construct(ContentWriter $contentWriter, ContentService $contentService)
+    public function __construct(ContentWriter $contentWriter, ContentStructureFactory $contentStructureFactory)
     {
         $this->contentWriter = $contentWriter;
-        $this->contentService = $contentService;
+        $this->contentStructureFactory = $contentStructureFactory;
     }
     //[...]
     protected function buildDataflow(DataflowBuilder $builder, array $options): void
@@ -193,29 +193,20 @@ class MyDataflowType extends AbstractDataflowType
             $remoteId = sprintf('article-%d', $data['id']);
             unset($data['id']);
 
-            $parentLocationForNewArticle = 54;
-
-            $lang = 'eng-GB';
-            try {
-                $content = $this->contentService->loadContentByRemoteId($remoteId);
-                $struct = ContentUpdateStructure::createForContentId($content->id, $lang, $data);
-            } catch (NotFoundException $e) {
-                $struct = new ContentCreateStructure(
-                    'article',
-                    $lang
-                    [$parentLocationForNewArticle],
+            return $this->contentStructureFactory->transform(
                     $data,
                     $remoteId,
+                    'eng-GB',
+                    'article2',
+                    54 //Parent location id
                 );
-            }
-
-
-            return $struct;
         });
         $builder->addWriter($this->contentWriter);
     }
 }
 ```
+
+This example uses `ContentStructureFactory` to check if the content exists and returns the adequate `ContentStrucure` to pass to the content writer.
 
 # Admin UI
 
