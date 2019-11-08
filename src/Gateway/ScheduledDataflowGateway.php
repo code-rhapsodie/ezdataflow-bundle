@@ -6,6 +6,7 @@ namespace CodeRhapsodie\EzDataflowBundle\Gateway;
 
 use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
 use CodeRhapsodie\DataflowBundle\Repository\ScheduledDataflowRepository;
+use Doctrine\DBAL\Query\QueryBuilder;
 
 final class ScheduledDataflowGateway
 {
@@ -22,17 +23,10 @@ final class ScheduledDataflowGateway
         return $this->scheduledDataflowRepository->find($id);
     }
 
-    public function findAllOrderedByLabel(): iterable
+    public function getListQueryForAdmin(): QueryBuilder
     {
-        $qb = $this->scheduledDataflowRepository->createQueryBuilder();
-        $qb->orderBy('label', 'asc');
-
-        $stmt = $qb->execute();
-        if (0 === $stmt->rowCount()) {
-            return [];
-        }
-
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->scheduledDataflowRepository->createQueryBuilder('s')
+            ->addOrderBy('s.label', 'ASC');
     }
 
     /**

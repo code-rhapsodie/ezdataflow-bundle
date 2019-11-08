@@ -1,4 +1,13 @@
-{% if items|length %}
+{% set id = identifier|default('ezdataflow_schedule_results') %}
+
+<div id="loading_{{ id }}" class="text-center d-none">
+    <svg class="ez-icon ez-icon--extra-large">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#spinner"></use>
+    </svg>
+</div>
+
+<div id="{{ id }}" class="history-details-aware">
+    {% if pager.currentPageResults|length %}
     <table class="table">
         <thead>
         <tr>
@@ -10,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for item in items %}
+        {% for item in pager.currentPageResults %}
             <tr>
                 <td>{{ item.label }}</td>
                 <td>{{ item.frequency }}</td>
@@ -53,3 +62,23 @@
 {% else %}
     <p class="ez-table-no-content">{{ 'coderhapsodie.ezdataflow.workflow.list.empty'|trans }}</p>
 {% endif %}
+
+    {% if pager.haveToPaginate %}
+        <div class="ez-pagination justify-content-center align-items-center ez-pagination__spacing">
+            {{ pagerfanta(pager, 'ez', {routeName: paginate_route, routeParams: paginate_params|default({})}) }}
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    // Manage ajax pagination
+    $('#{{ id }}').delegate('.ez-pagination a', 'click', function (e) {
+        e.preventDefault();
+        $('#loading_{{ id }}').removeClass('d-none');
+        $('#{{ id }}')
+            .html('')
+            .load(this.href + ' #{{ id }}>*', null, function () {
+                $('#loading_{{ id }}').addClass('d-none');
+            });
+    });
+</script>

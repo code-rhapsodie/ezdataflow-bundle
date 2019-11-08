@@ -51,7 +51,7 @@ class DashboardController extends Controller
         return $this->render('@ezdesign/ezdataflow/Dashboard/main.html.twig');
     }
 
-    public function repeating(): Response
+    public function repeating(Request $request): Response
     {
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
 
@@ -62,8 +62,24 @@ class DashboardController extends Controller
         ]);
 
         return $this->render('@ezdesign/ezdataflow/Dashboard/repeating.html.twig', [
-            'items' => $this->scheduledDataflowGateway->findAllOrderedByLabel(),
+            'pager' => $this->getPager($this->scheduledDataflowGateway->getListQueryForAdmin(), $request),
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/repeating", name="coderhapsodie.ezdataflow.repeating")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function getRepeatingPage(Request $request): Response
+    {
+        $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
+
+        return $this->render('@ezdesign/ezdataflow/Dashboard/repeating.html.twig', [
+            'pager' => $this->getPager($this->scheduledDataflowGateway->getListQueryForAdmin(), $request),
         ]);
     }
 
