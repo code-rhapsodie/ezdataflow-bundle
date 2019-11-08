@@ -31,7 +31,7 @@ class JobGateway
             ->setMaxResults(20)
         ;
         $stmt = $qb->execute();
-        if ($stmt->rowCount() === 0) {
+        if (0 === $stmt->rowCount()) {
             return [];
         }
 
