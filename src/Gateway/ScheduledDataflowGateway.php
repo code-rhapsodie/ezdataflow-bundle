@@ -7,7 +7,7 @@ namespace CodeRhapsodie\EzDataflowBundle\Gateway;
 use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
 use CodeRhapsodie\DataflowBundle\Repository\ScheduledDataflowRepository;
 
-class ScheduledDataflowGateway
+final class ScheduledDataflowGateway
 {
     /** @var ScheduledDataflowRepository */
     private $scheduledDataflowRepository;

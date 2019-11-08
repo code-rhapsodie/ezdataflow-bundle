@@ -10,7 +10,7 @@ use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 
-class ContentStructureFactory
+final class ContentStructureFactory
 {
     /**
      * @var ContentService

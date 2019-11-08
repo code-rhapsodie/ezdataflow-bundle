@@ -8,7 +8,7 @@ use CodeRhapsodie\DataflowBundle\Entity\Job;
 use CodeRhapsodie\DataflowBundle\Repository\JobRepository;
 use Doctrine\DBAL\Query\QueryBuilder;
 
-class JobGateway
+final class JobGateway
 {
     /** @var JobRepository */
     private $jobRepository;
