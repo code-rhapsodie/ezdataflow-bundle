@@ -1,5 +1,3 @@
-{% form_theme form 'bootstrap_3_layout.html.twig' %}
-
 <h2>{{ 'coderhapsodie.ezdataflow.oneshot.title'|trans }}</h2>
 
 <div class="ez-table-header">
@@ -16,6 +14,7 @@
 {{ include('@ezdesign/ezdataflow/parts/tab/job_list.html.twig', {identifier: 'ezdataflow_oneshot_history', paginate_route: 'coderhapsodie.ezdataflow.oneshot'}) }}
 
 {% if form is defined %}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
     <div class="modal fade ez-modal show" id="ez-modal--new-oneshot" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog" role="document">
             {{ include('@ezdesign/ezdataflow/parts/schedule_form.html.twig', {mode: 'oneshot'}) }}
