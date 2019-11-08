@@ -2,6 +2,8 @@ services:
     _defaults:
         public: false
 
+    coderhapsodie.dataflow.connection: "@ezpublish.persistence.connection"
+
     CodeRhapsodie\EzDataflowBundle\Controller\DashboardController:
         public: true
         arguments:

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace CodeRhapsodie\EzDataflowBundle;
 
 use CodeRhapsodie\EzDataflowBundle\DependencyInjection\CodeRhapsodieEzDataflowExtension;
-use CodeRhapsodie\EzDataflowBundle\DependencyInjection\Compiler\DbalCompilerPass;
 use CodeRhapsodie\EzDataflowBundle\Security\PolicyProvider;
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -27,6 +26,5 @@ class CodeRhapsodieEzDataflowBundle extends Bundle
         /** @var EzPublishCoreExtension $eZExtension */
         $eZExtension = $container->getExtension('ezpublish');
         $eZExtension->addPolicyProvider(new PolicyProvider());
-        $container->addCompilerPass(new DbalCompilerPass());
     }
 }
