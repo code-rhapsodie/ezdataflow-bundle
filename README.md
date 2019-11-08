@@ -6,6 +6,8 @@ EzDataflow bundle is intended to manage content imports from external data sourc
 
 > Note: before using this bundle, please read the [Code Rhapsodie Dataflow bundle documentation](https://github.com/code-rhapsodie/dataflow-bundle/blob/master/README.md).
 
+> Command line notice: When you use Dataflow commands, use `--siteaccess` instead of `--connection`.
+
 ## User Interface (UI)
 
 The UI lets you create workflow processes from any defined `DataflowTypes`, and set options to each.
