@@ -31,6 +31,10 @@ class JobGateway
             ->setMaxResults(20)
         ;
         $stmt = $qb->execute();
+        if ($stmt->rowCount() === 0) {
+            return [];
+        }
+
         while (false !== ($row = $stmt->fetch(\PDO::FETCH_ASSOC))) {
             yield $row;
         }
