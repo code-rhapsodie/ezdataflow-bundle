@@ -6,68 +6,63 @@ namespace CodeRhapsodie\EzDataflowBundle\Gateway;
 
 use CodeRhapsodie\DataflowBundle\Entity\Job;
 use CodeRhapsodie\DataflowBundle\Repository\JobRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Query;
+use Doctrine\DBAL\Query\QueryBuilder;
+use function Doctrine\DBAL\Query\QueryBuilder;
 
 class JobGateway
 {
-    /** @var EntityManagerInterface */
-    private $em;
     /** @var JobRepository */
     private $jobRepository;
 
-    public function __construct(EntityManagerInterface $em, JobRepository $jobRepository)
+    public function __construct(JobRepository $jobRepository)
     {
-        $this->em = $em;
         $this->jobRepository = $jobRepository;
     }
 
-    public function find(int $id): Job
+    public function find(int $id): ?Job
     {
         return $this->jobRepository->find($id);
     }
 
     public function findForScheduled(int $id): iterable
     {
-        return $this->jobRepository->findBy(['scheduledDataflow' => $id], ['requestedDate' => 'desc'], 20);
+        $qb = $this->jobRepository->createQueryBuilder();
+        $qb->andWhere($qb->expr()->eq('scheduled_dataflow_id', $qb->createNamedParameter($id, \PDO::PARAM_INT)))
+            ->orderBy('requested_date', 'desc')
+            ->setMaxResults(20)
+        ;
+        $stmt = $qb->execute();
+        while (false !== ($row = $stmt->fetch(\PDO::FETCH_ASSOC))) {
+            yield $row;
+        }
     }
 
-    public function getOneshotListQueryForAdmin(): Query
+    public function getOneshotListQueryForAdmin(): QueryBuilder
     {
-        $query = $this->jobRepository->createQueryBuilder('i')
-            ->andWhere('i.scheduledDataflow IS NULL')
-            ->addOrderBy('i.requestedDate', 'DESC');
-
-        return $query->getQuery();
+        return $this->jobRepository->createQueryBuilder('i')
+            ->andWhere('i.scheduled_dataflow_id IS NULL')
+            ->addOrderBy('i.requested_date', 'DESC');
     }
 
-    public function getListQueryForAdmin(): Query
+    public function getListQueryForAdmin(): QueryBuilder
     {
-        $query = $this->jobRepository->createQueryBuilder('w')
-            ->addOrderBy('w.requestedDate', 'DESC');
-
-        return $query->getQuery();
+        return $this->jobRepository->createQueryBuilder('w')
+            ->addOrderBy('w.requested_date', 'DESC');
     }
 
-    public function getListQueryForScheduleAdmin(int $id): Query
+    public function getListQueryForScheduleAdmin(int $id): QueryBuilder
     {
-        $query = $this->jobRepository->createQueryBuilder('w')
-            ->where('w.scheduledDataflow = :schedule_id')
+        return $this->jobRepository->createQueryBuilder('w')
+            ->where('w.scheduled_dataflow_id = :schedule_id')
             ->setParameter('schedule_id', $id)
-            ->addOrderBy('w.requestedDate', 'DESC');
-
-        return $query->getQuery();
+            ->addOrderBy('w.requested_date', 'DESC');
     }
 
     /**
      * @param Job $job
-     *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function save(Job $job)
     {
-        $this->em->persist($job);
-        $this->em->flush();
+        $this->jobRepository->save($job);
     }
 }

@@ -35,6 +35,9 @@
                 contentType: false,
                 success: function (result) {
                     if (result.redirect) {
+                        if (window.location.href === result.redirect) {
+                            document.location.reload();
+                        }
                         window.location = result.redirect;
                         return;
                     }

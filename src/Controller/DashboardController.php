@@ -10,11 +10,11 @@ use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
 use CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway;
 use CodeRhapsodie\DataflowBundle\Entity\Job;
 use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
-use Doctrine\ORM\Query;
+use Doctrine\DBAL\Query\QueryBuilder;
 use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute;
 use EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface;
 use EzSystems\EzPlatformAdminUiBundle\Controller\Controller;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Adapter\DoctrineDbalAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -142,9 +142,12 @@ class DashboardController extends Controller
         ]);
     }
 
-    private function getPager(Query $query, Request $request): Pagerfanta
+    private function getPager(QueryBuilder $query, Request $request): Pagerfanta
     {
-        $pager = new Pagerfanta(new DoctrineORMAdapter($query));
+        $pager = new Pagerfanta(new DoctrineDbalAdapter($query, function ($queryBuilder) {
+            return $queryBuilder->select('COUNT(DISTINCT id) AS total_results')
+                ->setMaxResults(1);
+        }));
         $pager->setMaxPerPage(20);
         $pager->setCurrentPage($request->query->get('page', 1));
 

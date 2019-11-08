@@ -28,11 +28,11 @@ class ContentStructureFactory
     }
 
     /**
-     * @param array     $data
-     * @param string    $remoteId
-     * @param string    $language
-     * @param string    $contentType
-     * @param mixed $parentLocations
+     * @param array  $data
+     * @param string $remoteId
+     * @param string $language
+     * @param string $contentType
+     * @param mixed  $parentLocations
      *
      * @return ContentStructure
      *

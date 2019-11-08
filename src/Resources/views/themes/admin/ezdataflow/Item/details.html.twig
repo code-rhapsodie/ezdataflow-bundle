@@ -1,7 +1,9 @@
 {% import '@ezdesign/ezdataflow/macros.twig' as macros %}
 
 {% block content %}
+
     <div class="container ez-main-container">
+        {% if item is not null %}
         <h2>{{ 'coderhapsodie.ezdataflow.history.job.title'|trans }} n°{{ item.id }}</h2>
 
         <table class="table ez-table ez-table--list">
@@ -51,5 +53,8 @@
             </tr>
             </tbody>
         </table>
+        {% else %}
+            <p class="ez-table-no-content">{{ 'coderhapsodie.ezdataflow.notfound'|trans }}</p>
+        {% endif %}
     </div>
 {% endblock %}

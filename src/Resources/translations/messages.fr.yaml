@@ -72,3 +72,4 @@ coderhapsodie.ezdataflow.workflow.edit.submit: Sauvegarder
 coderhapsodie.dataflow.update.next: 'Prochaine exécution'
 coderhapsodie.ezdataflow.workflow.edit.success: 'La programmation du dataflow a été mis à jour avec succès.'
 coderhapsodie.ezdataflow.workflow.edit.error: 'Une erreur est survenue lors de la modification de la programmation du dataflow : "%message%".'
+coderhapsodie.ezdataflow.notfound: 'Les données demandées sont introuvables'

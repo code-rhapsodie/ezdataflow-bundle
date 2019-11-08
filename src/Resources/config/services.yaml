@@ -97,12 +97,10 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway:
         arguments:
-            $em: '@doctrine.orm.default_entity_manager'
             $scheduledDataflowRepository: '@CodeRhapsodie\DataflowBundle\Repository\ScheduledDataflowRepository'
 
     CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway:
         arguments:
-            $em: '@doctrine.orm.default_entity_manager'
             $jobRepository: '@CodeRhapsodie\DataflowBundle\Repository\JobRepository'
 
     CodeRhapsodie\EzDataflowBundle\Tab\RepeatingTab:
