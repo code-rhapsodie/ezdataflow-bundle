@@ -23,23 +23,6 @@ class JobGateway
         return $this->jobRepository->find($id);
     }
 
-    public function findForScheduled(int $id): iterable
-    {
-        $qb = $this->jobRepository->createQueryBuilder();
-        $qb->andWhere($qb->expr()->eq('scheduled_dataflow_id', $qb->createNamedParameter($id, \PDO::PARAM_INT)))
-            ->orderBy('requested_date', 'desc')
-            ->setMaxResults(20)
-        ;
-        $stmt = $qb->execute();
-        if (0 === $stmt->rowCount()) {
-            return [];
-        }
-
-        while (false !== ($row = $stmt->fetch(\PDO::FETCH_ASSOC))) {
-            yield $row;
-        }
-    }
-
     public function getOneshotListQueryForAdmin(): QueryBuilder
     {
         return $this->jobRepository->createQueryBuilder('i')
