@@ -7,7 +7,6 @@ namespace CodeRhapsodie\EzDataflowBundle\Gateway;
 use CodeRhapsodie\DataflowBundle\Entity\Job;
 use CodeRhapsodie\DataflowBundle\Repository\JobRepository;
 use Doctrine\DBAL\Query\QueryBuilder;
-use function Doctrine\DBAL\Query\QueryBuilder;
 
 class JobGateway
 {
