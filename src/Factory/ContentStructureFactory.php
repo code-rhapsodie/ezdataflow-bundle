@@ -10,7 +10,7 @@ use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 
-class ContentStructureFactory
+final class ContentStructureFactory
 {
     /**
      * @var ContentService
@@ -28,11 +28,11 @@ class ContentStructureFactory
     }
 
     /**
-     * @param array     $data
-     * @param string    $remoteId
-     * @param string    $language
-     * @param string    $contentType
-     * @param mixed $parentLocations
+     * @param array  $data
+     * @param string $remoteId
+     * @param string $language
+     * @param string $contentType
+     * @param mixed  $parentLocations
      *
      * @return ContentStructure
      *

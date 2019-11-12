@@ -74,3 +74,4 @@ coderhapsodie.ezdataflow.workflow.edit.submit: Save
 coderhapsodie.dataflow.update.next: 'Next execution'
 coderhapsodie.ezdataflow.workflow.edit.success: 'Dataflow schedule successfully updated.'
 coderhapsodie.ezdataflow.workflow.edit.error: 'An error occurred during the dataflow schedule update: "%message%".'
+coderhapsodie.ezdataflow.notfound: 'Requested data is not found'

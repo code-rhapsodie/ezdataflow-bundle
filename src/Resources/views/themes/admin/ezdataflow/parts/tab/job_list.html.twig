@@ -26,10 +26,10 @@
             {% for job in pager.currentPageResults %}
                 <tr>
                     <td>{{ job.label }}</td>
-                    <td>{{ job.requestedDate|date('d/m/Y H:i:s') }}</td>
+                    <td>{{ job.requested_date|date('d/m/Y H:i:s') }}</td>
                     <td>{{ job.count|default('-') }}</td>
-                    <td>{{ job.startTime ? job.startTime|date('d/m/Y H:i:s') : '-' }}</td>
-                    <td>{{ job.endTime ? job.endTime|date('d/m/Y H:i:s') : '-' }}</td>
+                    <td>{{ job.start_time ? job.start_time|date('d/m/Y H:i:s') : '-' }}</td>
+                    <td>{{ job.end_time ? job.end_time|date('d/m/Y H:i:s') : '-' }}</td>
                     <td>{{ macros.translateStatus(job.status) }}</td>
                     <td class="ez-table__cell ez-table__cell--has-action-btns text-right">
                         <a href="{{ path('coderhapsodie.ezdataflow.job.details', {id: job.id}) }}" class="btn btn-icon mx-2 modal-history-details" title="{{ 'coderhapsodie.ezdataflow.history.list.view'|trans }}">
