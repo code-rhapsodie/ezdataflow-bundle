@@ -31,12 +31,13 @@ final class ContentStructureFactory
     }
 
     /**
-     * @param array $data
+     * @param array  $data
      * @param string $remoteId
      * @param string $language
      * @param string $contentType
-     * @param mixed $parentLocations
-     * @param int $mode One of the constant ContentStructureFactory::MODE_*
+     * @param mixed  $parentLocations
+     * @param int    $mode            One of the constant ContentStructureFactory::MODE_*
+     *
      * @return false|ContentStructure
      *
      * @throws \CodeRhapsodie\EzDataflowBundle\Exception\InvalidArgumentTypeException
@@ -49,6 +50,7 @@ final class ContentStructureFactory
             if ($mode === static::MODE_INSERT_ONLY) {
                 return false;
             }
+
             return ContentUpdateStructure::createForContentId($content->id, $language, $data);
         } catch (NotFoundException $e) {
             // The content doesn't exist yet, so it will be created.
@@ -57,6 +59,7 @@ final class ContentStructureFactory
         if ($mode === static::MODE_UPDATE_ONLY) {
             return false;
         }
+
         return new ContentCreateStructure(
             $contentType,
             $language,
