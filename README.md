@@ -200,7 +200,8 @@ class MyDataflowType extends AbstractDataflowType
                     $remoteId,
                     'eng-GB',
                     'article2',
-                    54 //Parent location id
+                    54, //Parent location id
+                    ContentStructureFactory::MODE_INSERT_OR_UPDATE //Optional value. Other choice : ContentStructureFactory::MODE_INSERT_ONLY or ContentStructureFactory::MODE_UPDATE_ONLY
                 );
         });
         $builder->addWriter($this->contentWriter);
