@@ -6,7 +6,7 @@ EzDataflow bundle is intended to manage content imports from external data sourc
 
 > Note: before using this bundle, please read the [Code Rhapsodie Dataflow bundle documentation](https://github.com/code-rhapsodie/dataflow-bundle/blob/master/README.md).
 
-> Command line notice: When you use Dataflow commands, **use `--siteaccess` instead of `--connection`**.
+> Command line notice: When you use Dataflow commands, **use `--siteaccess` instead of `--connection`** expect for `code-rhapsodie:dataflow:dump-schema` command.
 
 ## User Interface (UI)
 
@@ -25,6 +25,8 @@ $ composer require code-rhapsodie/ezdataflow-bundle
 ```
 
 ### Step 2: Enable the bundle
+
+> Note: The loading order between the Dataflow bundle and Ez Dataflow bundle is important. Dataflow must be loaded first.
 
 #### Symfony 4 (new tree)
 
@@ -200,7 +202,8 @@ class MyDataflowType extends AbstractDataflowType
                     $remoteId,
                     'eng-GB',
                     'article2',
-                    54 //Parent location id
+                    54, //Parent location id
+                    ContentStructureFactoryInterface::MODE_INSERT_OR_UPDATE //Optional value. Other choice : ContentStructureFactoryInterface::MODE_INSERT_ONLY or ContentStructureFactoryInterface::MODE_UPDATE_ONLY
                 );
         });
         $builder->addWriter($this->contentWriter);

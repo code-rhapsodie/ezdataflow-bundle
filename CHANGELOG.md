@@ -3,6 +3,8 @@
 * Update to use Dataflow v2.0+
 * Add compiler pass to change the Dataflow DBAL connection factory
 * Use the DBAL connection from siteaccess
+* Add `mode` argument on `ContentStructureFactory::transform()` function
+* Add `CodeRhapsodie\EzDataflowBundle\Factory\ContentStructureFactoryInterface`
 
 # version 1.0.0
 
