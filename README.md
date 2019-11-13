@@ -26,6 +26,8 @@ $ composer require code-rhapsodie/ezdataflow-bundle
 
 ### Step 2: Enable the bundle
 
+> Note: The loading order between the Dataflow bundle and Ez Dataflow bundle is important. Dataflow must be loaded first.
+
 #### Symfony 4 (new tree)
 
 For Symfony 4, add those two lines in the `config/bundles.php` file:

@@ -79,6 +79,8 @@ services:
     CodeRhapsodie\EzDataflowBundle\EventSubscriber\MenuSubscriber:
         tags: ['kernel.event_subscriber']
 
+    CodeRhapsodie\EzDataflowBundle\Factory\ContentStructureFactoryInterface: '@CodeRhapsodie\EzDataflowBundle\Factory\ContentStructureFactory'
+
     CodeRhapsodie\EzDataflowBundle\Factory\ContentStructureFactory:
         arguments:
             $contentService: '@eZ\Publish\API\Repository\ContentService'
