@@ -110,17 +110,35 @@ services:
     CodeRhapsodie\EzDataflowBundle\Tab\RepeatingTab:
         parent: EzSystems\EzPlatformAdminUi\Tab\AbstractTab
         public: false
+        arguments:
+            $httpKernelRuntime: '@twig.runtime.httpkernel'
         tags:
             - {name: ezplatform.tab, group: coderhapsodie-ezdataflow}
 
     CodeRhapsodie\EzDataflowBundle\Tab\OneshotTab:
         parent: EzSystems\EzPlatformAdminUi\Tab\AbstractTab
         public: false
+        arguments:
+            $httpKernelRuntime: '@twig.runtime.httpkernel'
         tags:
             - {name: ezplatform.tab, group: coderhapsodie-ezdataflow}
 
     CodeRhapsodie\EzDataflowBundle\Tab\HistoryTab:
         parent: EzSystems\EzPlatformAdminUi\Tab\AbstractTab
         public: false
+        arguments:
+            $httpKernelRuntime: '@twig.runtime.httpkernel'
         tags:
             - {name: ezplatform.tab, group: coderhapsodie-ezdataflow}
+
+    _cr.admin_tabs.ezdataflow_group:
+        parent: EzSystems\EzPlatformAdminUi\Component\TabsComponent
+        autowire: true
+        autoconfigure: false
+        public: false
+        arguments:
+            $template: '@@ezdesign/ezdataflow/parts/tab/ezdataflow.html.twig'
+            $groupIdentifier: 'coderhapsodie-ezdataflow'
+        tags:
+            - { name: ezplatform.admin_ui.component, group: 'coderhapsodie-ezdataflow-tab-group' }
+
