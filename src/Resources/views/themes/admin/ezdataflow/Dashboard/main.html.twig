@@ -1,21 +1,21 @@
-{% extends "@ezdesign/ui/layout.html.twig" %}
+{% extends ["@ezdesign/layout.html.twig", "@ezdesign/ui/layout.html.twig"] %}
 
 {% block breadcrumbs %}
-    {% include '@ezdesign/ui/breadcrumbs.html.twig' with { items: [
+    {% include ['@ezdesign/parts/breadcrumbs.html.twig', '@ezdesign/ui/breadcrumbs.html.twig'] with { items: [
         { value: 'breadcrumb.admin'|trans(domain='messages')|desc('Admin') },
         { value: 'coderhapsodie.ezdataflow'|trans|desc('EzDataflow') }
     ]} %}
 {% endblock %}
 
 {% block page_title %}
-    {% include '@ezdesign/ui/page_title.html.twig' with {
+    {% include ['@ezdesign/parts/page_title.html.twig', '@ezdesign/ui/page_title.html.twig'] with {
         title: 'coderhapsodie.ezdataflow'|trans|desc('EzDataflow'),
         iconName: 'workflow'
     } %}
 {% endblock %}
 
 {% block content %}
-    {{ ez_render_component_group('coderhapsodie-ezdataflow-tab-group', {}) }}
+    {{ cr_add_ez_tabs('coderhapsodie-ezdataflow', {}, '@ezdesign/ezdataflow/parts/tab/ezdataflow.html.twig') }}
 
     <div class="modal fade ez-modal show" id="ez-modal--history-details" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog" role="document" style="max-width: 90%">
