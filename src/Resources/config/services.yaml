@@ -131,6 +131,6 @@ services:
         tags:
             - {name: ezplatform.tab, group: coderhapsodie-ezdataflow}
 
-    CodeRhapsodie\EzDataflowBundle\Twig\MethodExistsExtension:
+    CodeRhapsodie\EzDataflowBundle\Twig\EzTabRenderExtension:
         tags:
           - {name: twig.extension }

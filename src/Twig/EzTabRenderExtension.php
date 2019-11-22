@@ -8,7 +8,7 @@ use Twig\Environment;
 use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
 
-class MethodExistsExtension extends AbstractExtension
+class EzTabRenderExtension extends AbstractExtension
 {
 
     public function getFunctions()
