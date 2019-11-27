@@ -1,3 +1,6 @@
+# Version 2.2.0
+* added `NotModifiedContentFilter` and a bunch of `FieldComparator` classes
+
 # version 2.1.0
 * contentWriter return created content
 

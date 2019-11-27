@@ -178,7 +178,7 @@ class MyDataflowType extends AbstractDataflowType
     /**
      * @var ContentStructureFactory
      */
-    private contentStructureFactory;
+    private $contentStructureFactory;
 
     public function __construct(ContentWriter $contentWriter, ContentStructureFactory $contentStructureFactory)
     {
@@ -212,6 +212,83 @@ class MyDataflowType extends AbstractDataflowType
 ```
 
 This example uses `ContentStructureFactory` to check if the content exists and returns the adequate `ContentStrucure` to pass to the content writer.
+
+## Use the NotModifiedContentFilter
+
+When updating contents, you might want to ignore contents where the update would not result in any actual changes in fields values. In that case, you can add the `NotModifiedContentFilter` as one of your steps.
+
+```php
+// In your DataflowType
+public function __construct(NotModifiedContentFilter $notModifiedContentFilter)
+{
+    $this->notModifiedContentFilter = $notModifiedContentFilter;
+}
+
+//[...]
+protected function buildDataflow(DataflowBuilder $builder, array $options): void
+{
+    //[...]
+    $builder->addStep($this->notModifiedContentFilter);
+    //[...]
+}
+```
+
+This filter compares each field value in the `ContentUpdateStructure` received to the fields values in the existing content object. If all values are identical, this filter will return `false`, otherwise, the `ContentUpdateStructure` will be returned as is.
+
+Not all field types are supported by this filter. Il a field type is not supported, values will be assumed different. If your dataflow is dealing with content types containing unsupported field types, it is better to simply not use the `NotModifiedContentFilter` to prevent unnecessary overhead. 
+
+### Supported field types
+- ezstring
+- ezauthor
+- ezboolean
+- ezcountry
+- ezdate
+- ezdatetime
+- ezemail
+- ezfloat
+- ezisbn
+- ezobjectrelation
+- ezobjectrelationlist
+- ezkeyword
+- ezselection
+- eztext
+- eztime
+- eztags
+- novaseometas
+- ezurl
+- ezmatrix
+- ezgmaplocation
+- ezrichtext
+
+### Add custom field comparator
+
+If you want to add support for a field type, simply create your own comparator.
+
+```php
+<?php
+
+use CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\AbstractFieldComparator;
+use eZ\Publish\Core\FieldType\Value;
+//[...]
+
+class MyFieldComparator extends AbstractFieldComparator
+{
+    //[...]
+    protected function compareValues(Value $currentValue, Value $newValue): bool
+    {
+        // Return true if values are identical, false if values are different.
+    }
+}
+
+```
+
+```yaml
+# Service declaration
+    App\FieldComparator\MyFieldComparator:
+        parent: 'CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\AbstractFieldComparator'
+        tags:
+            - { name: 'coderhapsodie.ezdataflow.field_comparator', fieldType: 'my_field_type_identifier' }
+```
 
 # Admin UI
 

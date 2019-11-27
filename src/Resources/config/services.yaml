@@ -1,3 +1,6 @@
+imports:
+    - { resource: services/comparators.yaml }
+
 services:
     _defaults:
         public: false
@@ -124,3 +127,16 @@ services:
         public: false
         tags:
             - {name: ezplatform.tab, group: coderhapsodie-ezdataflow}
+
+    CodeRhapsodie\EzDataflowBundle\Filter\NotModifiedContentFilter:
+        arguments:
+            $contentService: '@eZ\Publish\API\Repository\ContentService'
+            $comparator: '@CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface'
+
+    CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface: '@CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\DelegatorFieldComparator'
+    CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\DelegatorFieldComparator:
+
+    CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\AbstractFieldComparator:
+        arguments:
+            $fieldTypeService: '@eZ\Publish\API\Repository\FieldTypeService'
+        abstract: true
