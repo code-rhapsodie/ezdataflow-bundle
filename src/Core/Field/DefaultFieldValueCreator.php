@@ -13,9 +13,6 @@ class DefaultFieldValueCreator implements FieldValueCreatorInterface
     /** @var FieldTypeService */
     private $fieldTypeService;
 
-    /** @var FieldType[] */
-    private $fieldTypes = [];
-
     public function __construct(FieldTypeService $fieldTypeService)
     {
         $this->fieldTypeService = $fieldTypeService;
@@ -28,22 +25,6 @@ class DefaultFieldValueCreator implements FieldValueCreatorInterface
 
     public function createValue(string $fieldTypeIdentifier, $hash): Value
     {
-        return $this->getFieldType($fieldTypeIdentifier)->fromHash($hash);
-    }
-
-    /**
-     * @param string $fieldTypeIdentifier
-     *
-     * @return FieldType
-     *
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
-     */
-    private function getFieldType(string $fieldTypeIdentifier): FieldType
-    {
-        if (!isset($this->fieldTypes[$fieldTypeIdentifier])) {
-            $this->fieldTypes[$fieldTypeIdentifier] = $this->fieldTypeService->getFieldType($fieldTypeIdentifier);
-        }
-
-        return $this->fieldTypes[$fieldTypeIdentifier];
+        return $this->fieldTypeService->getFieldType($fieldTypeIdentifier)->fromHash($hash);
     }
 }
