@@ -4,7 +4,8 @@
 
 <div id="loading_{{ id }}" class="text-center d-none">
     <svg class="ez-icon ez-icon--extra-large">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#spinner"></use>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+             xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#spinner"></use>
     </svg>
 </div>
 
@@ -32,9 +33,12 @@
                     <td>{{ job.end_time ? job.end_time|date('d/m/Y H:i:s') : '-' }}</td>
                     <td>{{ macros.translateStatus(job.status) }}</td>
                     <td class="ez-table__cell ez-table__cell--has-action-btns text-right">
-                        <a href="{{ path('coderhapsodie.ezdataflow.job.details', {id: job.id}) }}" class="btn btn-icon mx-2 modal-history-details" title="{{ 'coderhapsodie.ezdataflow.history.list.view'|trans }}">
+                        <a href="{{ path('coderhapsodie.ezdataflow.job.details', {id: job.id}) }}"
+                           class="btn btn-icon mx-2 modal-history-details"
+                           title="{{ 'coderhapsodie.ezdataflow.history.list.view'|trans }}">
                             <svg class="ez-icon ez-icon--small-medium">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#about-info"></use>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#about-info"></use>
                             </svg>
                         </a>
                     </td>
@@ -54,14 +58,19 @@
 </div>
 
 <script>
-    // Manage ajax pagination
-    $('#{{ id }}').delegate('.ez-pagination a', 'click', function (e) {
-        e.preventDefault();
-        $('#loading_{{ id }}').removeClass('d-none');
-        $('#{{ id }}')
-            .html('')
-            .load(this.href + ' #{{ id }}>*', null, function () {
-                $('#loading_{{ id }}').addClass('d-none');
+
+    (function ($) {
+        $(document).ready(function ($) {
+            // Manage ajax pagination
+            $('#{{ id }}').delegate('.ez-pagination a', 'click', function (e) {
+                e.preventDefault();
+                $('#loading_{{ id }}').removeClass('d-none');
+                $('#{{ id }}')
+                    .html('')
+                    .load(this.href + ' #{{ id }}>*', null, function () {
+                        $('#loading_{{ id }}').addClass('d-none');
+                    });
             });
-    });
+        });
+    })(jQuery);
 </script>
