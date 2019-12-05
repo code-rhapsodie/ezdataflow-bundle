@@ -3,9 +3,11 @@
 <div class="ez-table-header">
     <div class="ez-table-header__headline">{{ 'coderhapsodie.ezdataflow.oneshot.list.title'|trans }}</div>
     <div>
-        <button type="button" class="btn btn-primary btn-modal-launcher" data-toggle="modal" data-target="#ez-modal--new-oneshot">
+        <button type="button" class="btn btn-primary btn-modal-launcher" data-toggle="modal"
+                data-target="#ez-modal--new-oneshot">
             <svg class="ez-icon ez-icon--medium ez-icon--light ez-icon-create">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#create"></use>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#create"></use>
             </svg>
         </button>
     </div>
@@ -22,30 +24,35 @@
     </div>
 
     <script>
-        $('#ez-modal--new-oneshot').on('submit', 'form', function (e) {
-            e.preventDefault();
-            url = $(this).attr('action');
-            data = new FormData(this);
-            $.ajax({
-                'type': 'POST',
-                'url': url,
-                'data': data,
-                processData: false,
-                contentType: false,
-                success: function (result) {
-                    if (result.redirect) {
-                        if (window.location.href === result.redirect) {
-                            document.location.reload();
-                        }
-                        window.location = result.redirect;
-                        return;
-                    }
 
-                    let obj = $(result.form).find('.modal-body');
-                    $('#ez-modal--new-oneshot .modal-body').html($(obj).html());
-                }
+        (function ($) {
+            $(document).ready(function ($) {
+                $('#ez-modal--new-oneshot').on('submit', 'form', function (e) {
+                    e.preventDefault();
+                    url = $(this).attr('action');
+                    data = new FormData(this);
+                    $.ajax({
+                        'type': 'POST',
+                        'url': url,
+                        'data': data,
+                        processData: false,
+                        contentType: false,
+                        success: function (result) {
+                            if (result.redirect) {
+                                if (window.location.href === result.redirect) {
+                                    document.location.reload();
+                                }
+                                window.location = result.redirect;
+                                return;
+                            }
+
+                            let obj = $(result.form).find('.modal-body');
+                            $('#ez-modal--new-oneshot .modal-body').html($(obj).html());
+                        }
+                    });
+                });
             });
-        });
+        })(jQuery);
     </script>
 
 

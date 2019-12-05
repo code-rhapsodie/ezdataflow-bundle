@@ -71,6 +71,9 @@
 </div>
 
 <script>
+
+    (function ($) {
+        $(document).ready(function ($) {
     // Manage ajax pagination
     $('#{{ id }}').delegate('.ez-pagination a', 'click', function (e) {
         e.preventDefault();
@@ -81,4 +84,6 @@
                 $('#loading_{{ id }}').addClass('d-none');
             });
     });
+    });
+    })(jQuery);
 </script>

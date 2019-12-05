@@ -34,6 +34,9 @@
     </div>
 
     <script>
+
+        (function ($) {
+            $(document).ready(function ($) {
         $('#ez-modal--history-details').modal({keyboard: false, show: false});
         $('.history-details-aware').delegate('.modal-history-details', 'click', function(e) {
             e.preventDefault();
@@ -64,5 +67,7 @@
                 $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(2)').addClass('active');
             }
         });
+        });
+        })(jQuery);
     </script>
 {% endblock %}
