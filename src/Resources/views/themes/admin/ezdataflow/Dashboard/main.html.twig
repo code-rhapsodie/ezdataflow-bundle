@@ -24,7 +24,8 @@
                     <h3 class="modal-title">{{ 'coderhapsodie.ezdataflow.workflow.history.title'|trans }}</h3>
                     <button type="button" class="close" aria-label="Close">
                         <svg class="ez-icon ez-icon--medium" aria-hidden="true">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#discard"></use>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#discard"></use>
                         </svg>
                     </button>
                 </div>
@@ -34,35 +35,40 @@
     </div>
 
     <script>
-        $('#ez-modal--history-details').modal({keyboard: false, show: false});
-        $('.history-details-aware').delegate('.modal-history-details', 'click', function(e) {
-            e.preventDefault();
-            $('#modal_content-details').html('');
-            $('#ez-modal--history-details').modal('show');
-            $.ajax(this.href, {
-                success: function(result) {
-                    $('#modal_content-details').html(result);
-                }
+
+        (function ($) {
+            $(document).ready(function ($) {
+                $('#ez-modal--history-details').modal({keyboard: false, show: false});
+                $('.history-details-aware').delegate('.modal-history-details', 'click', function (e) {
+                    e.preventDefault();
+                    $('#modal_content-details').html('');
+                    $('#ez-modal--history-details').modal('show');
+                    $.ajax(this.href, {
+                        success: function (result) {
+                            $('#modal_content-details').html(result);
+                        }
+                    });
+                });
+                $('#ez-modal--history-details .close').click(function () {
+                    $('#ez-modal--history-details').modal('hide');
+                });
+                $(document).ready(function () {
+                    if (window.location.hash && window.location.hash === '#oneshot') {
+                        $('#ez-tab-list-coderhapsodie-ezdataflow li a').removeClass('active');
+                        $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane').removeClass('active');
+
+                        $('#ez-tab-list-coderhapsodie-ezdataflow li a:eq(1)').addClass('active');
+                        $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(1)').addClass('active');
+                    }
+                    if (window.location.hash && window.location.hash === '#history') {
+                        $('#ez-tab-list-coderhapsodie-ezdataflow li a').removeClass('active');
+                        $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane').removeClass('active');
+
+                        $('#ez-tab-list-coderhapsodie-ezdataflow li a:eq(2)').addClass('active');
+                        $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(2)').addClass('active');
+                    }
+                });
             });
-        });
-        $('#ez-modal--history-details .close').click(function () {
-            $('#ez-modal--history-details').modal('hide');
-        });
-        $(document).ready(function () {
-            if (window.location.hash && window.location.hash === '#oneshot') {
-                $('#ez-tab-list-coderhapsodie-ezdataflow li a').removeClass('active');
-                $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane').removeClass('active');
-
-                $('#ez-tab-list-coderhapsodie-ezdataflow li a:eq(1)').addClass('active');
-                $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(1)').addClass('active');
-            }
-            if (window.location.hash && window.location.hash === '#history') {
-                $('#ez-tab-list-coderhapsodie-ezdataflow li a').removeClass('active');
-                $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane').removeClass('active');
-
-                $('#ez-tab-list-coderhapsodie-ezdataflow li a:eq(2)').addClass('active');
-                $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(2)').addClass('active');
-            }
-        });
+        })(jQuery);
     </script>
 {% endblock %}
