@@ -302,6 +302,10 @@ Go to the eZ Dataflow admin UI and click on the "Oneshot" tab. Click on the "+" 
 
 Finally, click on the "Create" button.
 
+# Rights
+
+If a non-administrator user needs read-only access to the dataflow interface, add the `Setup / Administrate` and `eZ Dataflow / View` policies in one of their roles.
+
 # Issues and feature requests
 
 Please report issues and request features at https://github.com/code-rhapsodie/ezdataflow-bundle/issues.
@@ -315,4 +319,3 @@ already.
 # License
 
 This package is licensed under the [MIT license](LICENSE).
-
