@@ -304,7 +304,7 @@ Finally, click on the "Create" button.
 
 # Rights
 
-If a no administrator user needs access to read dataflow interface, add policy `Setup / Administrate` and `eZ Dataflow / View` in the wanted role.
+If a non-administrator user needs read-only access to the dataflow interface, add the `Setup / Administrate` and `eZ Dataflow / View` policies in one of their roles.
 
 # Issues and feature requests
 
@@ -319,4 +319,3 @@ already.
 # License
 
 This package is licensed under the [MIT license](LICENSE).
-
