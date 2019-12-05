@@ -1,3 +1,7 @@
+# version 2.0.1
+
+* Enclosure js code into anonymous function
+
 # version 2.0.0
 
 * Update to use Dataflow v2.0+
