@@ -302,6 +302,10 @@ Go to the eZ Dataflow admin UI and click on the "Oneshot" tab. Click on the "+" 
 
 Finally, click on the "Create" button.
 
+# Rights
+
+If a no administrator user needs access to read dataflow interface, add policy `Setup / Administrate` and `eZ Dataflow / View` in the wanted role.
+
 # Issues and feature requests
 
 Please report issues and request features at https://github.com/code-rhapsodie/ezdataflow-bundle/issues.
