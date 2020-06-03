@@ -1,3 +1,6 @@
+# version 2.1.0
+* contentWriter return created content
+
 # version 2.0.1
 
 * Enclosure js code into anonymous function
