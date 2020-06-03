@@ -35,11 +35,11 @@ class ContentWriter extends RepositoryWriter implements WriterInterface
         }
 
         if ($item instanceof ContentCreateStructure) {
-            $this->creator->createFromStructure($item);
+            return $this->creator->createFromStructure($item);
         }
 
         if ($item instanceof ContentUpdateStructure) {
-            $this->updater->updateFromStructure($item);
+            return $this->updater->updateFromStructure($item);
         }
     }
 }
