@@ -6,6 +6,8 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Controller\DashboardController:
         public: true
+        autoconfigure: true
+        autowire: true
         tags:
             - { name: controller.service_arguments }
         arguments:
@@ -15,6 +17,8 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Controller\ScheduledDataflowController:
         public: true
+        autoconfigure: true
+        autowire: true
         tags:
             - { name: controller.service_arguments }
         arguments:
@@ -25,6 +29,8 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Controller\JobController:
         public: true
+        autoconfigure: true
+        autowire: true
         tags:
             - { name: controller.service_arguments }
         arguments:
