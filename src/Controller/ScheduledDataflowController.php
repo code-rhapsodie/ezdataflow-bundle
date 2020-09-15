@@ -41,10 +41,10 @@ class ScheduledDataflowController extends Controller
         $this->notificationHandler = $notificationHandler;
         $this->scheduledDataflowGateway = $scheduledDataflowGateway;
         // Backward compatibility with Symfony 3.4
-        if (interface_exists('Symfony\Contracts\Translation\TranslatorInterface') && $translator instanceof Symfony\Contracts\Translation\TranslatorInterface === false) {
+        if (interface_exists('Symfony\Contracts\Translation\TranslatorInterface') && $translator instanceof \Symfony\Contracts\Translation\TranslatorInterface === false) {
             throw new \TypeError('The argument $translator does not implement Symfony\Contracts\Translation\TranslatorInterface');
         }
-        if (interface_exists('Symfony\Component\Translation\TranslatorInterface') && $translator instanceof Symfony\Component\Translation\TranslatorInterface === false) {
+        if (interface_exists('Symfony\Component\Translation\TranslatorInterface') && $translator instanceof \Symfony\Component\Translation\TranslatorInterface === false) {
             throw new \TypeError('The argument $translator does not implement Symfony\Component\Translation\TranslatorInterface');
         }
         $this->translator = $translator;
