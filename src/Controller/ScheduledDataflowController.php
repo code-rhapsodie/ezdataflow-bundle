@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Controller;
 
+use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
 use CodeRhapsodie\EzDataflowBundle\Form\CreateScheduledType;
 use CodeRhapsodie\EzDataflowBundle\Form\UpdateScheduledType;
-use CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway;
 use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
-use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
+use CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway;
 use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute;
 use EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface;
 use EzSystems\EzPlatformAdminUiBundle\Controller\Controller;
@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/ezdataflow/scheduled_workflow")
@@ -29,14 +28,25 @@ class ScheduledDataflowController extends Controller
     private $notificationHandler;
     /** @var ScheduledDataflowGateway */
     private $scheduledDataflowGateway;
-    /** @var TranslatorInterface */
+    /** @var Symfony\Component\Translation\TranslatorInterface|Symfony\Contracts\Translation\TranslatorInterface */
     private $translator;
 
-    public function __construct(JobGateway $jobGateway, NotificationHandlerInterface $notificationHandler, ScheduledDataflowGateway $scheduledDataflowGateway, TranslatorInterface $translator)
-    {
+    public function __construct(
+        JobGateway $jobGateway,
+        NotificationHandlerInterface $notificationHandler,
+        ScheduledDataflowGateway $scheduledDataflowGateway,
+        $translator
+    ) {
         $this->jobGateway = $jobGateway;
         $this->notificationHandler = $notificationHandler;
         $this->scheduledDataflowGateway = $scheduledDataflowGateway;
+        // Backward compatibility with Symfony 3.4
+        if (interface_exists('Symfony\Contracts\Translation\TranslatorInterface') && $translator instanceof Symfony\Contracts\Translation\TranslatorInterface === false) {
+            throw new \TypeError('The argument $translator does not implement Symfony\Contracts\Translation\TranslatorInterface');
+        }
+        if (interface_exists('Symfony\Component\Translation\TranslatorInterface') && $translator instanceof Symfony\Component\Translation\TranslatorInterface === false) {
+            throw new \TypeError('The argument $translator does not implement Symfony\Component\Translation\TranslatorInterface');
+        }
         $this->translator = $translator;
     }
 
@@ -63,7 +73,8 @@ class ScheduledDataflowController extends Controller
                 $this->scheduledDataflowGateway->save($newWorkflow);
                 $this->notificationHandler->success($this->translator->trans('coderhapsodie.ezdataflow.workflow.create.success'));
             } catch (\Exception $e) {
-                $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.create.error', ['message' => $e->getMessage()]));
+                $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.create.error',
+                    ['message' => $e->getMessage()]));
             }
 
             return new JsonResponse(['redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main')]);
@@ -94,7 +105,8 @@ class ScheduledDataflowController extends Controller
 
             return new JsonResponse(['code' => 200]);
         } catch (\Exception $e) {
-            $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.delete.error', ['message' => $e->getMessage()]));
+            $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.delete.error',
+                ['message' => $e->getMessage()]));
 
             return new JsonResponse(['code' => $e->getCode()]);
         }
@@ -104,7 +116,7 @@ class ScheduledDataflowController extends Controller
      * @Route("/{id}/edit", name="coderhapsodie.ezdataflow.workflow.edit")
      *
      * @param Request $request
-     * @param int     $id
+     * @param int $id
      *
      * @return Response
      */
@@ -123,7 +135,8 @@ class ScheduledDataflowController extends Controller
                 $this->scheduledDataflowGateway->save($editDataflow);
                 $this->notificationHandler->success($this->translator->trans('coderhapsodie.ezdataflow.workflow.edit.success'));
             } catch (\Exception $e) {
-                $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.edit.error', ['message' => $e->getMessage()]));
+                $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.edit.error',
+                    ['message' => $e->getMessage()]));
             }
 
             return new JsonResponse(['redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main')]);
@@ -153,6 +166,20 @@ class ScheduledDataflowController extends Controller
         return $this->redirectToRoute('coderhapsodie.ezdataflow.main');
     }
 
+    private function changeDataflowStatus(int $id, bool $status)
+    {
+        try {
+            /** @var ScheduledDataflow $workflow */
+            $workflow = $this->scheduledDataflowGateway->find($id);
+            $workflow->setEnabled($status);
+            $this->scheduledDataflowGateway->save($workflow);
+
+            $this->notificationHandler->success(sprintf('Workflow "%s" updated successfully.', $workflow->getLabel()));
+        } catch (\Exception $e) {
+            $this->notificationHandler->error(sprintf('An error occured : "%s".', $e->getMessage()));
+        }
+    }
+
     /**
      * @Route("/{id}/disable", name="coderhapsodie.ezdataflow.workflow.disable")
      *
@@ -167,19 +194,5 @@ class ScheduledDataflowController extends Controller
         $this->changeDataflowStatus($id, false);
 
         return $this->redirectToRoute('coderhapsodie.ezdataflow.main');
-    }
-
-    private function changeDataflowStatus(int $id, bool $status)
-    {
-        try {
-            /** @var ScheduledDataflow $workflow */
-            $workflow = $this->scheduledDataflowGateway->find($id);
-            $workflow->setEnabled($status);
-            $this->scheduledDataflowGateway->save($workflow);
-
-            $this->notificationHandler->success(sprintf('Workflow "%s" updated successfully.', $workflow->getLabel()));
-        } catch (\Exception $e) {
-            $this->notificationHandler->error(sprintf('An error occured : "%s".', $e->getMessage()));
-        }
     }
 }
