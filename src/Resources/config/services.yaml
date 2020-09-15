@@ -6,6 +6,8 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Controller\DashboardController:
         public: true
+        tags:
+            - { name: controller.service_arguments }
         arguments:
             $jobGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway'
             $notificationHandler: '@EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface'
@@ -13,6 +15,8 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Controller\ScheduledDataflowController:
         public: true
+        tags:
+            - { name: controller.service_arguments }
         arguments:
             $jobGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway'
             $notificationHandler: '@EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface'
@@ -21,6 +25,8 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Controller\JobController:
         public: true
+        tags:
+            - { name: controller.service_arguments }
         arguments:
             $jobGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway'
             $notificationHandler: '@EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface'
