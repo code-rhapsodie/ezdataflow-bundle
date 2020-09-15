@@ -41,10 +41,10 @@ class ScheduledDataflowController extends Controller
         $this->notificationHandler = $notificationHandler;
         $this->scheduledDataflowGateway = $scheduledDataflowGateway;
         // Backward compatibility with Symfony 3.4
-        if (interface_exists('Symfony\Contracts\Translation\TranslatorInterface') && $translator instanceof \Symfony\Contracts\Translation\TranslatorInterface === false) {
+        if (interface_exists('Symfony\Contracts\Translation\TranslatorInterface') && false === $translator instanceof \Symfony\Contracts\Translation\TranslatorInterface) {
             throw new \TypeError('The argument $translator does not implement Symfony\Contracts\Translation\TranslatorInterface');
         }
-        if (interface_exists('Symfony\Component\Translation\TranslatorInterface') && $translator instanceof \Symfony\Component\Translation\TranslatorInterface === false) {
+        if (interface_exists('Symfony\Component\Translation\TranslatorInterface') && false === $translator instanceof \Symfony\Component\Translation\TranslatorInterface) {
             throw new \TypeError('The argument $translator does not implement Symfony\Component\Translation\TranslatorInterface');
         }
         $this->translator = $translator;
@@ -52,10 +52,6 @@ class ScheduledDataflowController extends Controller
 
     /**
      * @Route("/create", name="coderhapsodie.ezdataflow.workflow.create", methods={"POST"})
-     *
-     * @param Request $request
-     *
-     * @return Response
      */
     public function create(Request $request): Response
     {
@@ -90,10 +86,6 @@ class ScheduledDataflowController extends Controller
 
     /**
      * @Route("/{id}/delete", name="coderhapsodie.ezdataflow.workflow.delete", methods={"post"})
-     *
-     * @param int $id
-     *
-     * @return Response
      */
     public function delete(int $id): Response
     {
@@ -114,11 +106,6 @@ class ScheduledDataflowController extends Controller
 
     /**
      * @Route("/{id}/edit", name="coderhapsodie.ezdataflow.workflow.edit")
-     *
-     * @param Request $request
-     * @param int $id
-     *
-     * @return Response
      */
     public function edit(Request $request, int $id): Response
     {
@@ -152,10 +139,6 @@ class ScheduledDataflowController extends Controller
 
     /**
      * @Route("/{id}/enable", name="coderhapsodie.ezdataflow.workflow.enable")
-     *
-     * @param int $id
-     *
-     * @return Response
      */
     public function enableDataflow(int $id): Response
     {
@@ -182,10 +165,6 @@ class ScheduledDataflowController extends Controller
 
     /**
      * @Route("/{id}/disable", name="coderhapsodie.ezdataflow.workflow.disable")
-     *
-     * @param int $id
-     *
-     * @return Response
      */
     public function disableDataflow(int $id): Response
     {

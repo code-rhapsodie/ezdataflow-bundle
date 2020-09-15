@@ -8,18 +8,10 @@ use eZ\Publish\Core\FieldType\Value;
 
 interface FieldValueCreatorInterface
 {
-    /**
-     * @param string $fieldTypeIdentifier
-     *
-     * @return bool
-     */
     public function supports(string $fieldTypeIdentifier): bool;
 
     /**
-     * @param string $fieldTypeIdentifier
-     * @param mixed  $hash
-     *
-     * @return Value
+     * @param mixed $hash
      */
     public function createValue(string $fieldTypeIdentifier, $hash): Value;
 }

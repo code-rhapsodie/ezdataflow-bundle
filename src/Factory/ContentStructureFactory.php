@@ -19,8 +19,6 @@ final class ContentStructureFactory implements ContentStructureFactoryInterface
 
     /**
      * ContentStructureFactory constructor.
-     *
-     * @param ContentService $contentService
      */
     public function __construct(ContentService $contentService)
     {
@@ -28,12 +26,8 @@ final class ContentStructureFactory implements ContentStructureFactoryInterface
     }
 
     /**
-     * @param array  $data
-     * @param string $remoteId
-     * @param string $language
-     * @param string $contentType
-     * @param mixed  $parentLocations
-     * @param int    $mode            One of the constant ContentStructureFactoryInterface::MODE_*
+     * @param mixed $parentLocations
+     * @param int   $mode            One of the constant ContentStructureFactoryInterface::MODE_*
      *
      * @return false|ContentStructure
      *

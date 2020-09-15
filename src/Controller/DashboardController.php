@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Controller;
 
+use CodeRhapsodie\DataflowBundle\Entity\Job;
+use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
 use CodeRhapsodie\EzDataflowBundle\Form\CreateOneshotType;
 use CodeRhapsodie\EzDataflowBundle\Form\CreateScheduledType;
 use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
 use CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway;
-use CodeRhapsodie\DataflowBundle\Entity\Job;
-use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
 use Doctrine\DBAL\Query\QueryBuilder;
 use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute;
 use EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface;
@@ -41,8 +41,6 @@ class DashboardController extends Controller
 
     /**
      * @Route("/", name="coderhapsodie.ezdataflow.main")
-     *
-     * @return Response
      */
     public function main(): Response
     {
@@ -69,10 +67,6 @@ class DashboardController extends Controller
 
     /**
      * @Route("/repeating", name="coderhapsodie.ezdataflow.repeating")
-     *
-     * @param Request $request
-     *
-     * @return Response
      */
     public function getRepeatingPage(Request $request): Response
     {
@@ -101,10 +95,6 @@ class DashboardController extends Controller
 
     /**
      * @Route("/oneshot", name="coderhapsodie.ezdataflow.oneshot")
-     *
-     * @param Request $request
-     *
-     * @return Response
      */
     public function getOneshotPage(Request $request): Response
     {
@@ -126,10 +116,6 @@ class DashboardController extends Controller
 
     /**
      * @Route("/history", name="coderhapsodie.ezdataflow.history")
-     *
-     * @param Request $request
-     *
-     * @return Response
      */
     public function getHistoryPage(Request $request): Response
     {
@@ -142,11 +128,6 @@ class DashboardController extends Controller
 
     /**
      * @Route("/history/schedule/{id}", name="coderhapsodie.ezdataflow.history.workflow")
-     *
-     * @param Request $request
-     * @param int     $id
-     *
-     * @return Response
      */
     public function getHistoryForScheduled(Request $request, int $id): Response
     {

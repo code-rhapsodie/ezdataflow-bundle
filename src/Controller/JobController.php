@@ -41,10 +41,6 @@ class JobController extends Controller
 
     /**
      * @Route("/details/{id}", name="coderhapsodie.ezdataflow.job.details")
-     *
-     * @param int $id
-     *
-     * @return Response
      */
     public function displayDetails(int $id): Response
     {
@@ -57,10 +53,6 @@ class JobController extends Controller
 
     /**
      * @Route("/create", name="coderhapsodie.ezdataflow.job.create", methods={"POST"})
-     *
-     * @param Request $request
-     *
-     * @return Response
      */
     public function create(Request $request): Response
     {

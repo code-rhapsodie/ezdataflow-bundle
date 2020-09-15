@@ -32,10 +32,6 @@ class DefaultFieldValueCreator implements FieldValueCreatorInterface
     }
 
     /**
-     * @param string $fieldTypeIdentifier
-     *
-     * @return FieldType
-     *
      * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
      */
     private function getFieldType(string $fieldTypeIdentifier): FieldType

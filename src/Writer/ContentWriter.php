@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Writer;
 
+use CodeRhapsodie\DataflowBundle\DataflowType\Writer\WriterInterface;
 use CodeRhapsodie\EzDataflowBundle\Core\Content\ContentCreatorInterface;
 use CodeRhapsodie\EzDataflowBundle\Core\Content\ContentUpdaterInterface;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentCreateStructure;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentStructure;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
-use CodeRhapsodie\DataflowBundle\DataflowType\Writer\WriterInterface;
 
 class ContentWriter extends RepositoryWriter implements WriterInterface
 {

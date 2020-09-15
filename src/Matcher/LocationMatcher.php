@@ -22,8 +22,6 @@ class LocationMatcher implements LocationMatcherInterface
     /**
      * @param mixed $valueToMatch
      *
-     * @return Location
-     *
      * @throws NoMatchFoundException
      * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
      */
