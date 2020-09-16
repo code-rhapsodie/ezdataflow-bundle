@@ -30,10 +30,6 @@ class ContentUpdater implements ContentUpdaterInterface
     }
 
     /**
-     * @param ContentUpdateStructure $structure
-     *
-     * @return Content
-     *
      * @throws NoMatchFoundException
      * @throws \eZ\Publish\API\Repository\Exceptions\BadStateException
      * @throws \eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException

@@ -16,10 +16,6 @@ class ContentUpdateStructure extends ContentStructure
     }
 
     /**
-     * @param int    $id
-     * @param string $languageCode
-     * @param array  $fields
-     *
      * @return ContentUpdateStructure
      */
     public static function createForContentId(int $id, string $languageCode, array $fields): self
@@ -31,10 +27,6 @@ class ContentUpdateStructure extends ContentStructure
     }
 
     /**
-     * @param string $remoteId
-     * @param string $languageCode
-     * @param array  $fields
-     *
      * @return ContentUpdateStructure
      */
     public static function createForContentRemoteId(string $remoteId, string $languageCode, array $fields): self
@@ -45,9 +37,6 @@ class ContentUpdateStructure extends ContentStructure
         return $struct;
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;

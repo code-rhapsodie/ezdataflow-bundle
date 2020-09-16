@@ -9,10 +9,5 @@ use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 
 interface ContentStructFieldFillerInterface
 {
-    /**
-     * @param ContentType   $contentType
-     * @param ContentStruct $contentStruct
-     * @param array         $fieldHashes
-     */
     public function fillFields(ContentType $contentType, ContentStruct $contentStruct, array $fieldHashes): void;
 }

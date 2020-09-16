@@ -17,8 +17,6 @@ class ContentStructFieldFiller implements ContentStructFieldFillerInterface
 
     /**
      * ContentStructFieldFiller constructor.
-     *
-     * @param iterable $fieldValueCreators
      */
     public function __construct(iterable $fieldValueCreators)
     {
@@ -47,10 +45,7 @@ class ContentStructFieldFiller implements ContentStructFieldFillerInterface
     }
 
     /**
-     * @param string $fieldTypeIdentifier
-     * @param mixed  $hash
-     *
-     * @return Value
+     * @param mixed $hash
      *
      * @throws UnsupportedFieldTypeException
      */

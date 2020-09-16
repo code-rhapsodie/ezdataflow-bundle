@@ -11,10 +11,6 @@ interface ContentStructureFactoryInterface
     public const MODE_UPDATE_ONLY = 3;
 
     /**
-     * @param array      $data
-     * @param string     $remoteId
-     * @param string     $language
-     * @param string     $contentType
      * @param int|string $parentLocations Int for location id or string for remote location id
      * @param int        $mode            ContentStructureFactoryInterface
      *

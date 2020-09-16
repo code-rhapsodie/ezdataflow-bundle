@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Writer;
 
+use CodeRhapsodie\DataflowBundle\DataflowType\Writer\WriterInterface;
 use CodeRhapsodie\EzDataflowBundle\UserSwitcher\UserSwitcherAwareInterface;
 use CodeRhapsodie\EzDataflowBundle\UserSwitcher\UserSwitcherAwareTrait;
-use CodeRhapsodie\DataflowBundle\DataflowType\Writer\WriterInterface;
 
 abstract class RepositoryWriter implements WriterInterface, UserSwitcherAwareInterface
 {

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Core\Field;
 
-use eZ\Publish\API\Repository\FieldType;
 use eZ\Publish\API\Repository\FieldTypeService;
 use eZ\Publish\Core\FieldType\Value;
 
