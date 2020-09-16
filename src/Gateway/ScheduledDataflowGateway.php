@@ -29,17 +29,12 @@ final class ScheduledDataflowGateway
             ->addOrderBy('s.label', 'ASC');
     }
 
-    /**
-     * @param ScheduledDataflow $scheduledDataflow
-     */
     public function save(ScheduledDataflow $scheduledDataflow)
     {
         $this->scheduledDataflowRepository->save($scheduledDataflow);
     }
 
     /**
-     * @param int $id
-     *
      * @throws \Throwable
      */
     public function delete(int $id): void

@@ -18,17 +18,13 @@ class ContentCreateStructure extends ContentStructure
     /**
      * ContentCreateStructure constructor.
      *
-     * @param string      $contentTypeIdentifier
-     * @param string      $languageCode
-     * @param array       $locations
-     *                                           A location can be any of the following:
-     *                                           <ul>
-     *                                           <li>an integer, the id of the Location object</li>
-     *                                           <li>a string, the remote id of the Location object</li>
-     *                                           <li>a Location object</li>
-     *                                           </ul>
-     * @param array       $fields
-     * @param string|null $remoteId
+     * @param array $locations
+     *                         A location can be any of the following:
+     *                         <ul>
+     *                         <li>an integer, the id of the Location object</li>
+     *                         <li>a string, the remote id of the Location object</li>
+     *                         <li>a Location object</li>
+     *                         </ul>
      *
      * @throws InvalidArgumentTypeException
      */
@@ -41,25 +37,17 @@ class ContentCreateStructure extends ContentStructure
         $this->remoteId = $remoteId;
     }
 
-    /**
-     * @return string
-     */
     public function getContentTypeIdentifier(): string
     {
         return $this->contentTypeIdentifier;
     }
 
-    /**
-     * @return array
-     */
     public function getLocations(): array
     {
         return $this->locations;
     }
 
     /**
-     * @param array $locations
-     *
      * @throws InvalidArgumentTypeException
      */
     private function setLocations(array $locations)

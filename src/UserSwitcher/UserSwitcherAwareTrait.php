@@ -9,9 +9,6 @@ trait UserSwitcherAwareTrait
     /** @var UserSwitcherInterface */
     protected $userSwitcher;
 
-    /**
-     * @param UserSwitcherInterface $userSwitcher
-     */
     public function setUserSwitcher(UserSwitcherInterface $userSwitcher): void
     {
         $this->userSwitcher = $userSwitcher;
