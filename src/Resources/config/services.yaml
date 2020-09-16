@@ -6,19 +6,18 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Controller\DashboardController:
         public: true
-        autoconfigure: true
-        autowire: true
         tags:
             - { name: controller.service_arguments }
         arguments:
             $jobGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway'
             $notificationHandler: '@EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface'
             $scheduledDataflowGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway'
+        calls:
+            - ['setContainer', ['@service_container']]
+            - ['performAccessCheck', []]
 
     CodeRhapsodie\EzDataflowBundle\Controller\ScheduledDataflowController:
         public: true
-        autoconfigure: true
-        autowire: true
         tags:
             - { name: controller.service_arguments }
         arguments:
@@ -26,17 +25,21 @@ services:
             $notificationHandler: '@EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface'
             $scheduledDataflowGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway'
             $translator: '@translator'
+        calls:
+            - [ 'setContainer', [ '@service_container' ] ]
+            - [ 'performAccessCheck', [ ] ]
 
     CodeRhapsodie\EzDataflowBundle\Controller\JobController:
         public: true
-        autoconfigure: true
-        autowire: true
         tags:
             - { name: controller.service_arguments }
         arguments:
             $jobGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway'
             $notificationHandler: '@EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface'
             $translator: '@translator'
+        calls:
+            - [ 'setContainer', [ '@service_container' ] ]
+            - [ 'performAccessCheck', [ ] ]
 
     CodeRhapsodie\EzDataflowBundle\Writer\RepositoryWriter:
         abstract: true
@@ -145,4 +148,4 @@ services:
 
     CodeRhapsodie\EzDataflowBundle\Twig\EzTabRenderExtension:
         tags:
-          - {name: twig.extension }
+            - {name: twig.extension }

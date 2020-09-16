@@ -24,11 +24,11 @@ class EzTabRenderExtension extends AbstractExtension
     public function crAddEzTabs(Environment $twig, string $param1, array $options = [], string $template = '')
     {
         $function = $twig->getFunction('ez_platform_tabs');
-        if (false !== $function && null !== $function) {
+        if ($function instanceof TwigFunction) {
             return $function->getCallable()($param1, $options, $template);
         }
         $function = $twig->getFunction('ez_render_component_group');
-        if (false !== $function && null !== $function) {
+        if ($function instanceof TwigFunction) {
             return $function->getCallable()($param1, $options, $template);
         }
 
