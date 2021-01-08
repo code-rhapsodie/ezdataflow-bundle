@@ -41,6 +41,14 @@
                                      xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#about-info"></use>
                             </svg>
                         </a>
+                        <a href="{{ path('coderhapsodie.ezdataflow.job.log', {id: job.id}) }}"
+                           class="btn btn-icon mx-2 modal-history-details modal-history-log"
+                           title="{{ 'coderhapsodie.ezdataflow.history.details.log'|trans }}">
+                            <svg class="ez-icon ez-icon--small-medium">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#article"></use>
+                            </svg>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
