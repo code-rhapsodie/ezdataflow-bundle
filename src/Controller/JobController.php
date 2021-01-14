@@ -56,6 +56,26 @@ class JobController extends Controller
     }
 
     /**
+     * @Route("/details/log/{id}", name="coderhapsodie.ezdataflow.job.log")
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function displayLog(int $id): Response
+    {
+        $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
+        $item = $this->jobGateway->find($id);
+        $log = array_map(function ($line) {
+            return preg_replace('~#\d+~', "\n$0", $line);
+        }, $item->getExceptions());
+
+        return $this->render('@ezdesign/ezdataflow/Item/log.html.twig', [
+            'log' => $log,
+        ]);
+    }
+
+    /**
      * @Route("/create", name="coderhapsodie.ezdataflow.job.create", methods={"POST"})
      *
      * @param Request $request

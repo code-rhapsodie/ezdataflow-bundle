@@ -42,6 +42,10 @@
                 $('.history-details-aware').delegate('.modal-history-details', 'click', function (e) {
                     e.preventDefault();
                     $('#modal_content-details').html('');
+                    $('#ez-modal--history-details h3').html("{{ 'coderhapsodie.ezdataflow.workflow.history.title'|trans }}");
+                    if ($(this).hasClass('modal-history-log')) {
+                        $('#ez-modal--history-details h3').html("{{ 'coderhapsodie.ezdataflow.workflow.log.title'|trans }}");
+                    }
                     $('#ez-modal--history-details').modal('show');
                     $.ajax(this.href, {
                         success: function (result) {
