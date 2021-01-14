@@ -1,8 +1,14 @@
+# Version 2.3.0
+
+* Added a button to display exceptions / log in a modal
+
 # Version 2.2.0
-* added `NotModifiedContentFilter` and a bunch of `FieldComparator` classes
+
+* Added `NotModifiedContentFilter` and a bunch of `FieldComparator` classes
 
 # version 2.1.0
-* contentWriter return created content
+
+* ContentWriter return created content
 
 # version 2.0.1
 
