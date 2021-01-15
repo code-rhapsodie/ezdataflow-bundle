@@ -206,6 +206,8 @@ class MyDataflowType extends AbstractDataflowType
                     ContentStructureFactoryInterface::MODE_INSERT_OR_UPDATE //Optional value. Other choice : ContentStructureFactoryInterface::MODE_INSERT_ONLY or ContentStructureFactoryInterface::MODE_UPDATE_ONLY
                 );
         });
+        // If you want the writer log
+        $this->contentWriter->setLogger($this->logger);
         $builder->addWriter($this->contentWriter);
     }
 }
@@ -228,6 +230,8 @@ public function __construct(NotModifiedContentFilter $notModifiedContentFilter)
 protected function buildDataflow(DataflowBuilder $builder, array $options): void
 {
     //[...]
+    // If you want the filter log
+    $this->notModifiedContentFilter->setLogger($this->logger);
     $builder->addStep($this->notModifiedContentFilter);
     //[...]
 }

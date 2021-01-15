@@ -1,6 +1,7 @@
 # Version 2.3.0
 
 * Added a button to display exceptions / log in a modal
+* Add log in `CodeRhapsodie\EzDataflowBundle\Filter\NotModifiedContentFilter` and `CodeRhapsodie\EzDataflowBundle\Writer\ContentWriter`
 
 # Version 2.2.0
 
