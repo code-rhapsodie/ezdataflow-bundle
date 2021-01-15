@@ -11,8 +11,12 @@ use CodeRhapsodie\EzDataflowBundle\Model\ContentCreateStructure;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentStructure;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
 
+use Psr\Log\LoggerAwareTrait;
+
 class ContentWriter extends RepositoryWriter implements DelegateWriterInterface
 {
+    use LoggerAwareTrait;
+
     /** @var ContentCreatorInterface */
     private $creator;
 
@@ -31,14 +35,20 @@ class ContentWriter extends RepositoryWriter implements DelegateWriterInterface
     public function write($item)
     {
         if (!$item instanceof ContentStructure) {
+            $this->log('warning', "Data is not a ContentStucture");
             return;
         }
 
         if ($item instanceof ContentCreateStructure) {
+            $this->log('info', 'Save content', [
+                'content_type' => $item->getContentTypeIdentifier(),
+                'content_location' => $item->getLocations()
+            ]);
             return $this->creator->createFromStructure($item);
         }
 
         if ($item instanceof ContentUpdateStructure) {
+            $this->log('info', 'Update content', ['id' => $item->getId(), 'remote_id' => $item->getRemoteId()]);
             return $this->updater->updateFromStructure($item);
         }
     }
@@ -49,5 +59,13 @@ class ContentWriter extends RepositoryWriter implements DelegateWriterInterface
     public function supports($item): bool
     {
         return $item instanceof ContentStructure;
+    }
+
+    private function log(string $level, string $message, array $context = [])
+    {
+        if ($this->logger === null) {
+            return;
+        }
+        $this->logger->log($level, $message, $context);
     }
 }

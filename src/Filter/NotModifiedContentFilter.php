@@ -7,17 +7,21 @@ namespace CodeRhapsodie\EzDataflowBundle\Filter;
 use CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
 use eZ\Publish\API\Repository\ContentService;
+use Psr\Log\LoggerAwareTrait;
 
 /**
  * Filters ContentUpdateStructure that would not result in any actual changes in the content.
  */
 class NotModifiedContentFilter
 {
+    use LoggerAwareTrait;
+
     /** @var ContentService */
     private $contentService;
 
     /** @var FieldComparatorInterface */
     private $comparator;
+
 
     public function __construct(ContentService $contentService, FieldComparatorInterface $comparator)
     {
@@ -46,6 +50,15 @@ class NotModifiedContentFilter
         }
 
         // All fields are identical, filter this item out.
+        $this->log('info', 'Not modified content skipped', ['id' => $data->getId(), 'remote_id' => $data->getRemoteId()]);
         return false;
+    }
+
+    private function log(string $level, string $message, array $context = [])
+    {
+        if ($this->logger === null) {
+            return;
+        }
+        $this->logger->log($level, $message, $context);
     }
 }
