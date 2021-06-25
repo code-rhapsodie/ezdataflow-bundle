@@ -1,3 +1,8 @@
+# Version 3.0.0
+
+* Add compatibility with Ibexa Content 3.3
+* Add compatibility with Symfony 5.x
+
 # Version 2.3.0
 
 * Added a button to display exceptions / log in a modal

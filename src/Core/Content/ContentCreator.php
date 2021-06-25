@@ -35,10 +35,6 @@ class ContentCreator implements ContentCreatorInterface
     }
 
     /**
-     * @param ContentCreateStructure $structure
-     *
-     * @return Content
-     *
      * @throws \eZ\Publish\API\Repository\Exceptions\BadStateException
      * @throws \eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException
      * @throws \eZ\Publish\API\Repository\Exceptions\ContentValidationException
@@ -58,8 +54,6 @@ class ContentCreator implements ContentCreatorInterface
     }
 
     /**
-     * @param array $locations
-     *
      * @return LocationCreateStruct[]
      */
     private function getLocationCreateStructs(array $locations): array

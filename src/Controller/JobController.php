@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/ezdataflow/job")
@@ -26,7 +26,7 @@ class JobController extends Controller
     private $jobGateway;
     /** @var NotificationHandlerInterface */
     private $notificationHandler;
-    /** @var TranslatorInterface */
+    /** @var Symfony\Component\Translation\TranslatorInterface|Symfony\Contracts\Translation\TranslatorInterface */
     private $translator;
 
     public function __construct(
@@ -41,10 +41,6 @@ class JobController extends Controller
 
     /**
      * @Route("/details/{id}", name="coderhapsodie.ezdataflow.job.details")
-     *
-     * @param int $id
-     *
-     * @return Response
      */
     public function displayDetails(int $id): Response
     {
@@ -77,10 +73,6 @@ class JobController extends Controller
 
     /**
      * @Route("/create", name="coderhapsodie.ezdataflow.job.create", methods={"POST"})
-     *
-     * @param Request $request
-     *
-     * @return Response
      */
     public function create(Request $request): Response
     {

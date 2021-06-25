@@ -7,9 +7,6 @@ namespace CodeRhapsodie\EzDataflowBundle\Exception;
 class UnknownFieldException extends \Exception
 {
     /**
-     * @param string $fieldIdentifier
-     * @param string $contentTypeIdentifier
-     *
      * @return UnknownFieldException
      */
     public static function create(string $fieldIdentifier, string $contentTypeIdentifier): self

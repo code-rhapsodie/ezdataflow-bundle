@@ -15,25 +15,16 @@ abstract class ContentStructure
     /** @var array */
     protected $fields;
 
-    /**
-     * @return string|null
-     */
     public function getRemoteId(): ?string
     {
         return $this->remoteId;
     }
 
-    /**
-     * @return string
-     */
     public function getLanguageCode(): string
     {
         return $this->languageCode;
     }
 
-    /**
-     * @return array
-     */
     public function getFields(): array
     {
         return $this->fields;

@@ -10,8 +10,6 @@ interface LocationMatcherInterface
 {
     /**
      * @param mixed $valueToMatch
-     *
-     * @return Location
      */
     public function matchLocation($valueToMatch): Location;
 }
