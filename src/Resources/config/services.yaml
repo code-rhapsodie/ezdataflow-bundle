@@ -173,8 +173,3 @@ services:
             $groupIdentifier: 'coderhapsodie-ezdataflow'
         tags:
             - { name: ezplatform.admin_ui.component, group: 'coderhapsodie-ezdataflow' }
-
-
-    CodeRhapsodie\EzDataflowBundle\Twig\EzTabRenderExtension:
-        tags:
-            - {name: twig.extension }
