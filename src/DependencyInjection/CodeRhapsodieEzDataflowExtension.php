@@ -26,8 +26,5 @@ class CodeRhapsodieEzDataflowExtension extends Extension
             ->registerForAutoconfiguration(FieldValueCreatorInterface::class)
             ->addTag('coderhapsodie.ezdataflow.field_value_creator')
         ;
-        if (class_exists('EzSystems\EzPlatformAdminUi\Component\TabsComponent')) {
-            $loader->load('services_platform3.yaml');
-        }
     }
 }

@@ -172,7 +172,7 @@ services:
             $template: '@@ezdesign/ezdataflow/parts/tab/ezdataflow.html.twig'
             $groupIdentifier: 'coderhapsodie-ezdataflow'
         tags:
-            - { name: ezplatform.admin_ui.component, group: 'coderhapsodie-ezdataflow-tab-group' }
+            - { name: ezplatform.admin_ui.component, group: 'coderhapsodie-ezdataflow' }
 
 
     CodeRhapsodie\EzDataflowBundle\Twig\EzTabRenderExtension:

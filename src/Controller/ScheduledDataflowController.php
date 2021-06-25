@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/ezdataflow/scheduled_workflow")
@@ -28,25 +29,18 @@ class ScheduledDataflowController extends Controller
     private $notificationHandler;
     /** @var ScheduledDataflowGateway */
     private $scheduledDataflowGateway;
-    /** @var Symfony\Component\Translation\TranslatorInterface|Symfony\Contracts\Translation\TranslatorInterface */
+    /** @var TranslatorInterface */
     private $translator;
 
     public function __construct(
         JobGateway $jobGateway,
         NotificationHandlerInterface $notificationHandler,
         ScheduledDataflowGateway $scheduledDataflowGateway,
-        $translator
+        TranslatorInterface $translator
     ) {
         $this->jobGateway = $jobGateway;
         $this->notificationHandler = $notificationHandler;
         $this->scheduledDataflowGateway = $scheduledDataflowGateway;
-        // Backward compatibility with Symfony 3.4
-        if (interface_exists('Symfony\Contracts\Translation\TranslatorInterface') && false === $translator instanceof \Symfony\Contracts\Translation\TranslatorInterface) {
-            throw new \TypeError('The argument $translator does not implement Symfony\Contracts\Translation\TranslatorInterface');
-        }
-        if (interface_exists('Symfony\Component\Translation\TranslatorInterface') && false === $translator instanceof \Symfony\Component\Translation\TranslatorInterface) {
-            throw new \TypeError('The argument $translator does not implement Symfony\Component\Translation\TranslatorInterface');
-        }
         $this->translator = $translator;
     }
 
