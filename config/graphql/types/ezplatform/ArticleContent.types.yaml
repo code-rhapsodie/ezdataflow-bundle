@@ -1,0 +1,30 @@
+ArticleContent:
+    type: object
+    inherits:
+        - AbstractDomainContent
+    config:
+        interfaces:
+            - DomainContent
+            - Node
+        fields:
+            title:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "title"])'
+            shortTitle:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "short_title"])'
+            author:
+                type: '[AuthorFieldValue]'
+                resolve: '@=resolver("DomainFieldValue", [value, "author"]).authors'
+            intro:
+                type: RichTextFieldValue
+                resolve: '@=resolver("DomainFieldValue", [value, "intro"])'
+            body:
+                type: RichTextFieldValue
+                resolve: '@=resolver("DomainFieldValue", [value, "body"])'
+            enableComments:
+                type: Boolean
+                resolve: '@=resolver("DomainFieldValue", [value, "enable_comments"]).bool'
+            image:
+                type: DomainContent
+                resolve: '@=resolver("DomainRelationFieldValue", [resolver("DomainFieldValue", [value, "image"]), false])'

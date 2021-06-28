@@ -1,0 +1,7 @@
+RepositoryLanguage:
+    type: enum
+    config:
+        values:
+            eng-GB:
+                value: eng-GB
+                description: 'English (United Kingdom)'

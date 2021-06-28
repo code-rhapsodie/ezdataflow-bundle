@@ -1,0 +1,10 @@
+ImageContentUpdateInput:
+    type: input-object
+    config:
+        fields:
+            name:
+                type: String
+            caption:
+                type: RichTextFieldInput
+            image:
+                type: ImageFieldInput

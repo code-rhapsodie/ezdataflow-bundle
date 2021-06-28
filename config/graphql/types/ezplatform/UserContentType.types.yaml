@@ -1,0 +1,23 @@
+UserContentType:
+    type: object
+    inherits:
+        - BaseDomainContentType
+    config:
+        interfaces:
+            - DomainContentType
+        fields:
+            firstName:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("first_name")'
+            lastName:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("last_name")'
+            userAccount:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("user_account")'
+            signature:
+                type: TextBlockFieldDefinition
+                resolve: '@=value.getFieldDefinition("signature")'
+            image:
+                type: BinaryFieldDefinition
+                resolve: '@=value.getFieldDefinition("image")'

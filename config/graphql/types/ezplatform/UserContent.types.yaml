@@ -1,0 +1,24 @@
+UserContent:
+    type: object
+    inherits:
+        - AbstractDomainContent
+    config:
+        interfaces:
+            - DomainContent
+            - Node
+        fields:
+            firstName:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "first_name"])'
+            lastName:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "last_name"])'
+            userAccount:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "user_account"])'
+            signature:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "signature"])'
+            image:
+                type: ImageFieldValue
+                resolve: '@=resolver("DomainFieldValue", [value, "image"])'

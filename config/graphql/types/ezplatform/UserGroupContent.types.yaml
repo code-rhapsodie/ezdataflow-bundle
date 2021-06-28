@@ -1,0 +1,15 @@
+UserGroupContent:
+    type: object
+    inherits:
+        - AbstractDomainContent
+    config:
+        interfaces:
+            - DomainContent
+            - Node
+        fields:
+            name:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "name"])'
+            description:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "description"])'

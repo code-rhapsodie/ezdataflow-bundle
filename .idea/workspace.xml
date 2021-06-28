@@ -1,30 +1,481 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fcd534ec-9ef2-4d26-84de-891bb3c58e43" name="Default Changelist" comment="" />
+    <list default="true" id="fcd534ec-9ef2-4d26-84de-891bb3c58e43" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/pull_request_template.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/release_tag.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/controllers/hello_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/conversation-chat-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/file-text-info-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/folder-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/scss/welcome-page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/phpunit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ArticleContent.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ArticleContentConnection.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ArticleContentCreateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ArticleContentType.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ArticleContentUpdateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ContentTypeIdentifier.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/Domain.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/DomainContentMutation.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/DomainGroupContent.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/DomainGroupContentTypes.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/DomainGroupMedia.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/DomainGroupMediaTypes.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/DomainGroupUsers.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/DomainGroupUsersTypes.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FileContent.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FileContentConnection.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FileContentCreateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FileContentType.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FileContentUpdateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FolderContent.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FolderContentConnection.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FolderContentCreateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FolderContentType.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/FolderContentUpdateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ImageContent.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ImageContentConnection.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ImageContentCreateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ImageContentType.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ImageContentUpdateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/ImageVariationIdentifier.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/RepositoryLanguage.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserContent.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserContentConnection.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserContentCreateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserContentType.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserContentUpdateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserGroupContent.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserGroupContentConnection.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserGroupContentCreateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserGroupContentType.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/graphql/types/ezplatform/UserGroupContentUpdateInput.types.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/assets.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/cache.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/cache_pool/cache.memcached.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/cache_pool/cache.redis.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/cache_pool/cache.tagaware.filesystem.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/dev/debug.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/dev/swiftmailer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/dfs/dfs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/ezplatform.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/ezplatform_admin_ui.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/ezplatform_assets.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/ezplatform_doctrine_schema.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/ezplatform_http_cache.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/ezplatform_solr.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/ezplatform_welcome_page.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/graphql.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/liip_imagine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/lock.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/mailer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/notifier.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/oneup_flysystem.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/deprecations.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/routing.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/webpack_encore.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/routing.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/sensio_framework_extra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/doctrine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/framework.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/monolog.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/swiftmailer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/twig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/validator.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/web_profiler.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/webpack_encore.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/validator.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/preload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/annotations.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/dev/framework.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/dev/graphiql.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/dev/web_profiler.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform_admin_ui.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform_content_forms.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform_http_cache.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform_query_field_type.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform_rest.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform_search.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform_support_tools.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/ezplatform_user.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/fos_js_routing.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/graphql.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/js_translation.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/liip_imagine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ezdataflow-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ezdataflow-bundle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.php_cs.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UPGRADE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CodeRhapsodieEzDataflowBundle.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DashboardController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/JobController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ScheduledDataflowController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Content/ContentCreator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Content/ContentCreatorInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Content/ContentUpdater.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Content/ContentUpdaterInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Field/ContentStructFieldFiller.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Field/ContentStructFieldFillerInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Field/DefaultFieldValueCreator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Field/FieldValueCreatorInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DependencyInjection/CodeRhapsodieEzDataflowExtension.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DependencyInjection/Configuration.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/MenuSubscriber.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exception/InvalidArgumentTypeException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exception/NoMatchFoundException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exception/UnknownFieldException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exception/UnsupportedFieldTypeException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Factory/ContentStructureFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Factory/ContentStructureFactoryInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CreateOneshotType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CreateScheduledType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/DataflowTypeChoiceType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/FrequencyType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UpdateScheduledType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/YamlType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gateway/JobGateway.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gateway/ScheduledDataflowGateway.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Matcher/LocationMatcher.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Matcher/LocationMatcherInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ContentCreateStructure.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ContentStructure.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ContentUpdateStructure.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/config/policies.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/config/routing.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/config/services.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/config/services_platform3.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/add_new_schedule.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/dest_folder.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/ez_dataflow_admin1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/ez_dataflow_admin_menu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/history_list.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/job_fail.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/job_successful.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/one_shot_job.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/oneshot_list.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/doc/scheduled_list.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/translations/forms.en.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/translations/forms.fr.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/translations/messages.en.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/translations/messages.fr.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/Dashboard/history.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/Dashboard/main.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/Dashboard/oneshot.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/Dashboard/repeating.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/Dashboard/schedule_history.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/Item/details.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/macros.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/parts/schedule_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/parts/tab/ezdataflow.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/parts/tab/job_list.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/views/themes/admin/ezdataflow/parts/tab/schedule_list.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/PolicyProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tab/HistoryTab.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tab/OneshotTab.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tab/RepeatingTab.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Twig/EzTabRenderExtension.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserSwitcher/UserSwitcher.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserSwitcher/UserSwitcherAwareInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserSwitcher/UserSwitcherAwareTrait.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserSwitcher/UserSwitcherInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Writer/ContentWriter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Writer/RepositoryWriter.php" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/password-hasher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/lock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/php-http/client-common" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-kernel" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message" />
+      <path value="$PROJECT_DIR$/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/vendor/php-http/guzzle6-adapter" />
+      <path value="$PROJECT_DIR$/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/vendor/php-http/curl-client" />
+      <path value="$PROJECT_DIR$/vendor/php-http/discovery" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-rest" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-admin-ui" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-http-cache" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-richtext" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-content-forms" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/doctrine-dbal-schema" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-design-engine" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-user" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/hautelook/templated-uri-bundle" />
+      <path value="$PROJECT_DIR$/vendor/hautelook/templated-uri-router" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-search" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/js-translation-bundle" />
+      <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
+      <path value="$PROJECT_DIR$/vendor/pagerfanta/pagerfanta" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/http-cache" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/jsrouting-bundle" />
+      <path value="$PROJECT_DIR$/vendor/code-rhapsodie/dataflow-bundle" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/symfony-cmf/routing" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/http-cache-bundle" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/jms/translation-bundle" />
+      <path value="$PROJECT_DIR$/vendor/liip/imagine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/clue/stream-filter" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/oneup/flysystem-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/mck89/peast" />
+      <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twig/intl-extra" />
+      <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twig/string-extra" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/toflar/psr6-symfony-http-cache-store" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/babdev/pagerfanta-bundle" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-menu-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-menu" />
+      <path value="$PROJECT_DIR$/vendor/imagine/imagine" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/cron/cron" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-standard-design" />
+      <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
+      <path value="$PROJECT_DIR$/vendor/ibexa/post-install" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-admin-ui-assets" />
+      <path value="$PROJECT_DIR$/vendor/webonyx/graphql-php" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-matrix-fieldtype" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-graphql" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/overblog/graphql-bundle" />
+      <path value="$PROJECT_DIR$/vendor/overblog/graphiql-bundle" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-core" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ez-support-tools" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-cron" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/zetacomponents/base" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/platformsh/config-reader" />
+      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/vendor/netgen/query-translator" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-solr-search-engine" />
+      <path value="$PROJECT_DIR$/vendor/platformsh/symfonyflex-bridge" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/ezsystems/ezplatform-query-fieldtype" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/thanks" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/zetacomponents/system-information" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/proxy-manager-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/orm-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/vendor/symfony/notifier" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+    </include_path>
+  </component>
   <component name="ProjectId" id="1uOh37L3yOgbCfYHNtH7XPq0f0D" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/vendor" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -35,6 +486,9 @@
       <option name="presentableId" value="Default" />
       <updated>1624542340407</updated>
       <workItem from="1624542342053" duration="625000" />
+      <workItem from="1624563298513" duration="7657000" />
+      <workItem from="1624883142090" duration="971000" />
+      <workItem from="1624885923460" duration="1582000" />
     </task>
     <servers />
   </component>

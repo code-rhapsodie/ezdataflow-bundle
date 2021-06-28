@@ -1,0 +1,13 @@
+version: '3.4'
+services:
+  mysql:
+    image: mariadb:10.3
+    environment:
+      MYSQL_ROOT_PASSWORD: nopassword
+      MYSQL_DATABASE: ibexa
+    ports:
+      - "3306:3306"
+    volumes:
+      -  mysqldata:/var/lib/mysql
+volumes:
+  mysqldata:

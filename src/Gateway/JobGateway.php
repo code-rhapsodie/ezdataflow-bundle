@@ -44,6 +44,9 @@ final class JobGateway
             ->addOrderBy('w.requested_date', 'DESC');
     }
 
+    /**
+     * @param Job $job
+     */
     public function save(Job $job)
     {
         $this->jobRepository->save($job);

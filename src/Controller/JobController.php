@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * @Route("/ezdataflow/job")
@@ -25,28 +26,25 @@ class JobController extends Controller
     private $jobGateway;
     /** @var NotificationHandlerInterface */
     private $notificationHandler;
-    /** @var Symfony\Component\Translation\TranslatorInterface|Symfony\Contracts\Translation\TranslatorInterface */
+    /** @var TranslatorInterface */
     private $translator;
 
     public function __construct(
         JobGateway $jobGateway,
         NotificationHandlerInterface $notificationHandler,
-        $translator
+        TranslatorInterface $translator
     ) {
         $this->jobGateway = $jobGateway;
         $this->notificationHandler = $notificationHandler;
-        // Backward compatibility with Symfony 3.4
-        if (interface_exists('Symfony\Contracts\Translation\TranslatorInterface') && false === $translator instanceof \Symfony\Contracts\Translation\TranslatorInterface) {
-            throw new \TypeError('The argument $translator does not implement Symfony\Contracts\Translation\TranslatorInterface');
-        }
-        if (interface_exists('Symfony\Component\Translation\TranslatorInterface') && false === $translator instanceof \Symfony\Component\Translation\TranslatorInterface) {
-            throw new \TypeError('The argument $translator does not implement Symfony\Component\Translation\TranslatorInterface');
-        }
         $this->translator = $translator;
     }
 
     /**
      * @Route("/details/{id}", name="coderhapsodie.ezdataflow.job.details")
+     *
+     * @param int $id
+     *
+     * @return Response
      */
     public function displayDetails(int $id): Response
     {
@@ -58,7 +56,31 @@ class JobController extends Controller
     }
 
     /**
+     * @Route("/details/log/{id}", name="coderhapsodie.ezdataflow.job.log")
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function displayLog(int $id): Response
+    {
+        $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
+        $item = $this->jobGateway->find($id);
+        $log = array_map(function ($line) {
+            return preg_replace('~#\d+~', "\n$0", $line);
+        }, $item->getExceptions());
+
+        return $this->render('@ezdesign/ezdataflow/Item/log.html.twig', [
+            'log' => $log,
+        ]);
+    }
+
+    /**
      * @Route("/create", name="coderhapsodie.ezdataflow.job.create", methods={"POST"})
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function create(Request $request): Response
     {

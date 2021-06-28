@@ -1,0 +1,12 @@
+FolderContentUpdateInput:
+    type: input-object
+    config:
+        fields:
+            name:
+                type: String
+            shortName:
+                type: String
+            shortDescription:
+                type: RichTextFieldInput
+            description:
+                type: RichTextFieldInput

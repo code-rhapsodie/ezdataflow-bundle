@@ -1,0 +1,10 @@
+FileContentUpdateInput:
+    type: input-object
+    config:
+        fields:
+            name:
+                type: String
+            description:
+                type: RichTextFieldInput
+            file:
+                type: BinaryFieldInput

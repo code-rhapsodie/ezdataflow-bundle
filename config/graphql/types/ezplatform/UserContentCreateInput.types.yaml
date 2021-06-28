@@ -1,0 +1,14 @@
+UserContentCreateInput:
+    type: input-object
+    config:
+        fields:
+            firstName:
+                type: String!
+            lastName:
+                type: String!
+            userAccount:
+                type: String!
+            signature:
+                type: String
+            image:
+                type: ImageFieldInput

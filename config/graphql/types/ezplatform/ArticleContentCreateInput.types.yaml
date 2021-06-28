@@ -1,0 +1,18 @@
+ArticleContentCreateInput:
+    type: input-object
+    config:
+        fields:
+            title:
+                type: String!
+            shortTitle:
+                type: String
+            author:
+                type: '[AuthorInput]'
+            intro:
+                type: RichTextFieldInput!
+            body:
+                type: RichTextFieldInput
+            enableComments:
+                type: Boolean
+            image:
+                type: Int

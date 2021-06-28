@@ -1,0 +1,18 @@
+FileContent:
+    type: object
+    inherits:
+        - AbstractDomainContent
+    config:
+        interfaces:
+            - DomainContent
+            - Node
+        fields:
+            name:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "name"])'
+            description:
+                type: RichTextFieldValue
+                resolve: '@=resolver("DomainFieldValue", [value, "description"])'
+            file:
+                type: BinaryFileFieldValue
+                resolve: '@=resolver("DomainFieldValue", [value, "file"])'

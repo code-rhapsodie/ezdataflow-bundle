@@ -1,0 +1,14 @@
+UserGroupContentType:
+    type: object
+    inherits:
+        - BaseDomainContentType
+    config:
+        interfaces:
+            - DomainContentType
+        fields:
+            name:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("name")'
+            description:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("description")'

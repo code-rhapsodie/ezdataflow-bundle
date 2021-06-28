@@ -1,0 +1,21 @@
+FolderContent:
+    type: object
+    inherits:
+        - AbstractDomainContent
+    config:
+        interfaces:
+            - DomainContent
+            - Node
+        fields:
+            name:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "name"])'
+            shortName:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "short_name"])'
+            shortDescription:
+                type: RichTextFieldValue
+                resolve: '@=resolver("DomainFieldValue", [value, "short_description"])'
+            description:
+                type: RichTextFieldValue
+                resolve: '@=resolver("DomainFieldValue", [value, "description"])'

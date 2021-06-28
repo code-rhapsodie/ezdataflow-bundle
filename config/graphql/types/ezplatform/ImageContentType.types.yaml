@@ -1,0 +1,17 @@
+ImageContentType:
+    type: object
+    inherits:
+        - BaseDomainContentType
+    config:
+        interfaces:
+            - DomainContentType
+        fields:
+            name:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("name")'
+            caption:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("caption")'
+            image:
+                type: BinaryFieldDefinition
+                resolve: '@=value.getFieldDefinition("image")'

@@ -1,0 +1,10 @@
+DomainGroupUsersTypes:
+    type: object
+    config:
+        fields:
+            user:
+                type: UserContentType
+                resolve: '@=resolver("ContentType", [{"identifier": "user"}])'
+            userGroup:
+                type: UserGroupContentType
+                resolve: '@=resolver("ContentType", [{"identifier": "user_group"}])'

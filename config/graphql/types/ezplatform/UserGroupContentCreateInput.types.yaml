@@ -1,0 +1,8 @@
+UserGroupContentCreateInput:
+    type: input-object
+    config:
+        fields:
+            name:
+                type: String!
+            description:
+                type: String

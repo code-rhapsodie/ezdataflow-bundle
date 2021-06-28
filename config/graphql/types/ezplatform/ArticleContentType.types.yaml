@@ -1,0 +1,29 @@
+ArticleContentType:
+    type: object
+    inherits:
+        - BaseDomainContentType
+    config:
+        interfaces:
+            - DomainContentType
+        fields:
+            title:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("title")'
+            shortTitle:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("short_title")'
+            author:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("author")'
+            intro:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("intro")'
+            body:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("body")'
+            enableComments:
+                type: CheckboxFieldDefinition
+                resolve: '@=value.getFieldDefinition("enable_comments")'
+            image:
+                type: RelationFieldDefinition
+                resolve: '@=value.getFieldDefinition("image")'

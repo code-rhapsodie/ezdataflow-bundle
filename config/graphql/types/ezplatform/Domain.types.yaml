@@ -1,0 +1,15 @@
+Domain:
+    type: object
+    inherits:
+        - Platform
+    config:
+        fields:
+            content:
+                type: DomainGroupContent
+                resolve: '@=resolver("ContentTypeGroupByIdentifier", ["Content"])'
+            users:
+                type: DomainGroupUsers
+                resolve: '@=resolver("ContentTypeGroupByIdentifier", ["Users"])'
+            media:
+                type: DomainGroupMedia
+                resolve: '@=resolver("ContentTypeGroupByIdentifier", ["Media"])'
