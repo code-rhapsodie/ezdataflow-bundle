@@ -1,3 +1,9 @@
+# Version 3.0.1
+
+* Bump minimum PHP version to PHP 7.3 like code-rhapsodie/dataflow-bundle dependency.
+* Allow PHP 8.x.
+* Add GitHub Action to run tests.
+
 # Version 3.0.0
 
 * Add compatibility with Ibexa Content 3.3
