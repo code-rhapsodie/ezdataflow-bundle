@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         php-version: [7.1, 7.2, 7.3, 7.4, 8.0, 8.1]
-        
+
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +25,10 @@ jobs:
         extensions: xdebug
     - name: PHP Version
       run: php -v
-      
+
+    - name: PHP Lint
+      run: find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
+
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
@@ -40,7 +43,7 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-scripts
-      
+
     - name: PHPUnit
       run: vendor/bin/phpunit
 
