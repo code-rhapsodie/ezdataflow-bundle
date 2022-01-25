@@ -41,7 +41,7 @@
         }
     },
     "require": {
-        "php": "^7.1",
+        "php": "^7.3||^8.0",
         "code-rhapsodie/dataflow-bundle": "^3.0",
         "ezsystems/ezplatform-admin-ui": "^2.3",
         "ezsystems/ezplatform-kernel": "^1.3"
