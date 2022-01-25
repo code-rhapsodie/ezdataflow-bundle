@@ -45,15 +45,6 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-scripts
 
     - name: PHPUnit
-      run: vendor/bin/phpunit
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
-
-    - name: PHP Unit
       run: php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit junit.xml
 
     - name: Publish Unit Test Results
