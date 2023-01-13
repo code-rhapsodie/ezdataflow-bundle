@@ -6,6 +6,7 @@ namespace CodeRhapsodie\EzDataflowBundle\Model;
 
 use CodeRhapsodie\EzDataflowBundle\Exception\InvalidArgumentTypeException;
 use eZ\Publish\API\Repository\Values\Content\Location;
+use eZ\Publish\API\Repository\Values\Content\LocationCreateStruct;
 
 class ContentCreateStructure extends ContentStructure
 {
@@ -24,6 +25,7 @@ class ContentCreateStructure extends ContentStructure
      *                         <li>an integer, the id of the Location object</li>
      *                         <li>a string, the remote id of the Location object</li>
      *                         <li>a Location object</li>
+     *                         <li>a LocationCreateStruct object</li>
      *                         </ul>
      *
      * @throws InvalidArgumentTypeException
@@ -52,12 +54,13 @@ class ContentCreateStructure extends ContentStructure
      */
     private function setLocations(array $locations)
     {
-        foreach ($locations as $locationOrIdOrRemoteId) {
-            if (!is_int($locationOrIdOrRemoteId)
-                && !is_string($locationOrIdOrRemoteId)
-                && !$locationOrIdOrRemoteId instanceof Location
+        foreach ($locations as $locationOrIdOrRemoteIdOrStruct) {
+            if (!is_int($locationOrIdOrRemoteIdOrStruct)
+                && !is_string($locationOrIdOrRemoteIdOrStruct)
+                && !$locationOrIdOrRemoteIdOrStruct instanceof Location
+                && !$locationOrIdOrRemoteIdOrStruct instanceof LocationCreateStruct
             ) {
-                throw InvalidArgumentTypeException::create(['int', 'string', Location::class], $locationOrIdOrRemoteId);
+                throw InvalidArgumentTypeException::create(['int', 'string', Location::class, LocationCreateStruct::class], $locationOrIdOrRemoteIdOrStruct);
             }
         }
 
