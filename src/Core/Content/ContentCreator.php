@@ -60,9 +60,15 @@ class ContentCreator implements ContentCreatorInterface
     {
         $locationCreateStructs = [];
 
-        foreach ($locations as $locationOrIdOrRemoteId) {
+        foreach ($locations as $locationOrIdOrRemoteIdOrStruct) {
+            if ($locationOrIdOrRemoteIdOrStruct instanceof LocationCreateStruct) {
+                $locationCreateStructs[] = $locationOrIdOrRemoteIdOrStruct;
+
+                continue;
+            }
+
             $locationCreateStructs[] = new LocationCreateStruct([
-                'parentLocationId' => $this->matcher->matchLocation($locationOrIdOrRemoteId)->id,
+                'parentLocationId' => $this->matcher->matchLocation($locationOrIdOrRemoteIdOrStruct)->id,
             ]);
         }
 

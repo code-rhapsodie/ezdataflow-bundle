@@ -1,3 +1,7 @@
+# Version 3.1.0
+
+* Allow `LocationCreateStruct` objects inside the `$locations` argument of `ContentCreateStructure` to have more control over the created locations.
+
 # Version 3.0.1
 
 * Bump minimum PHP version to PHP 7.3 like code-rhapsodie/dataflow-bundle dependency.
