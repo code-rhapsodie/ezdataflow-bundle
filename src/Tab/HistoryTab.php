@@ -16,7 +16,7 @@ class HistoryTab extends AbstractControllerBasedTab implements OrderedTabInterfa
      */
     public function getControllerReference(array $parameters): ControllerReference
     {
-        return new ControllerReference(DashboardController::class.'::history');
+        return new ControllerReference(DashboardController::class.'::history', [], $parameters);
     }
 
     /**

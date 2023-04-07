@@ -22,7 +22,6 @@ class NotModifiedContentFilter
     /** @var FieldComparatorInterface */
     private $comparator;
 
-
     public function __construct(ContentService $contentService, FieldComparatorInterface $comparator)
     {
         $this->contentService = $contentService;
@@ -43,7 +42,7 @@ class NotModifiedContentFilter
 
         foreach ($data->getFields() as $identifier => $hash) {
             $field = $content->getField($identifier, $data->getLanguageCode());
-            if ($field === null || !$this->comparator->compare($field, $hash)) {
+            if (null === $field || !$this->comparator->compare($field, $hash)) {
                 // At least one field is different, continue the dataflow.
                 return $data;
             }
@@ -51,12 +50,13 @@ class NotModifiedContentFilter
 
         // All fields are identical, filter this item out.
         $this->log('info', 'Not modified content skipped', ['id' => $data->getId(), 'remote_id' => $data->getRemoteId()]);
+
         return false;
     }
 
     private function log(string $level, string $message, array $context = [])
     {
-        if ($this->logger === null) {
+        if (null === $this->logger) {
             return;
         }
         $this->logger->log($level, $message, $context);

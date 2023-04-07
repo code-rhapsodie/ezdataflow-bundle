@@ -26,7 +26,7 @@ abstract class AbstractFieldComparator implements FieldComparatorInterface
     }
 
     /**
-     * Returns true if values are equals, false otherwise
+     * Returns true if values are equals, false otherwise.
      */
     abstract protected function compareValues(Value $currentValue, Value $newValue): bool;
 }

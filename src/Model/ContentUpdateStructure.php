@@ -15,9 +15,6 @@ class ContentUpdateStructure extends ContentStructure
         $this->fields = $fields;
     }
 
-    /**
-     * @return ContentUpdateStructure
-     */
     public static function createForContentId(int $id, string $languageCode, array $fields): self
     {
         $struct = new self($languageCode, $fields);
@@ -26,9 +23,6 @@ class ContentUpdateStructure extends ContentStructure
         return $struct;
     }
 
-    /**
-     * @return ContentUpdateStructure
-     */
     public static function createForContentRemoteId(string $remoteId, string $languageCode, array $fields): self
     {
         $struct = new self($languageCode, $fields);

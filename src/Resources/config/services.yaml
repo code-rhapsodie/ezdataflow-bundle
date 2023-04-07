@@ -13,7 +13,6 @@ services:
             - { name: controller.service_arguments }
         arguments:
             $jobGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway'
-            $notificationHandler: '@EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface'
             $scheduledDataflowGateway: '@CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway'
         calls:
             - ['setContainer', ['@service_container']]
@@ -115,6 +114,11 @@ services:
         tags: ['form.type']
 
     CodeRhapsodie\EzDataflowBundle\Form\CreateOneshotType:
+        tags: ['form.type']
+
+    CodeRhapsodie\EzDataflowBundle\Form\UserTimezoneAwareDateTimeType:
+        arguments:
+            $userPreferenceService: '@eZ\Publish\API\Repository\UserPreferenceService'
         tags: ['form.type']
 
     CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway:

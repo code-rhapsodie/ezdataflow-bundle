@@ -58,7 +58,6 @@ class ScheduledDataflowController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var ScheduledDataflow $newWorkflow */
             $newWorkflow = $form->getData();
-
             try {
                 $this->scheduledDataflowGateway->save($newWorkflow);
                 $this->notificationHandler->success($this->translator->trans('coderhapsodie.ezdataflow.workflow.create.success'));

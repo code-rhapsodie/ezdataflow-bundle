@@ -6,7 +6,6 @@ namespace CodeRhapsodie\EzDataflowBundle\Form;
 
 use CodeRhapsodie\DataflowBundle\Entity\Job;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,7 +29,7 @@ class CreateOneshotType extends AbstractType
                     'placeholder' => 'coderhapsodie.dataflow.options.placeholder',
                 ],
             ])
-            ->add('requestedDate', DateTimeType::class, [
+            ->add('requestedDate', UserTimezoneAwareDateTimeType::class, [
                 'label' => 'coderhapsodie.dataflow.requestedDate',
                 'years' => range(date('Y'), date('Y') + 5),
             ])
