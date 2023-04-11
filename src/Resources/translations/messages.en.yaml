@@ -21,10 +21,15 @@ coderhapsodie.ezdataflow.history.list.title: 'Executions list'
 coderhapsodie.ezdataflow.history.list.name: Name
 coderhapsodie.ezdataflow.history.list.request: 'Requested on'
 coderhapsodie.ezdataflow.history.list.count: 'Items count'
+coderhapsodie.ezdataflow.history.list.error_count: 'Errors count'
 coderhapsodie.ezdataflow.history.list.start: 'Started on'
 coderhapsodie.ezdataflow.history.list.end: 'Finished on'
 coderhapsodie.ezdataflow.history.list.view: 'View details'
 coderhapsodie.ezdataflow.history.list.status: Status
+coderhapsodie.ezdataflow.history.filter.label: Filter results
+coderhapsodie.ezdataflow.history.filter.none: All results
+coderhapsodie.ezdataflow.history.filter.non_empty_only: Only non empty
+coderhapsodie.ezdataflow.history.filter.with_error_only: Only with errors
 coderhapsodie.ezdataflow.job.status.pending: Pending
 coderhapsodie.ezdataflow.job.status.running: Running
 coderhapsodie.ezdataflow.job.status.complete: Completed

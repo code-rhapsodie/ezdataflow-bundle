@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.request'|trans }}</td>
-                <td>{{ item.requestedDate|date('d/m/Y H:i:s') }}</td>
+                <td>{{ date(item.requestedDate)|ez_short_datetime }}</td>
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.status'|trans }}</td>
@@ -28,11 +28,11 @@
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.start'|trans }}</td>
-                <td>{{ item.startTime|date('d/m/Y H:i:s') }}</td>
+                <td>{{ item.startTime ? date(item.startTime)|ez_short_datetime : '—' }}</td>
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.end'|trans }}</td>
-                <td>{{ item.endTime|date('d/m/Y H:i:s') }}</td>
+                <td>{{ item.endTime ? date(item.endTime)|ez_short_datetime : '—' }}</td>
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.count'|trans }}</td>

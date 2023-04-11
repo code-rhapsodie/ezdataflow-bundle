@@ -53,10 +53,6 @@ class JobController extends Controller
 
     /**
      * @Route("/details/log/{id}", name="coderhapsodie.ezdataflow.job.log")
-     *
-     * @param int $id
-     *
-     * @return Response
      */
     public function displayLog(int $id): Response
     {

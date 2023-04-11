@@ -12,7 +12,6 @@ use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
 use CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway;
 use Doctrine\DBAL\Query\QueryBuilder;
 use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute;
-use EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface;
 use EzSystems\EzPlatformAdminUiBundle\Controller\Controller;
 use Pagerfanta\Adapter\DoctrineDbalAdapter;
 use Pagerfanta\Pagerfanta;
@@ -27,15 +26,12 @@ class DashboardController extends Controller
 {
     /** @var JobGateway */
     private $jobGateway;
-    /** @var NotificationHandlerInterface */
-    private $notificationHandler;
     /** @var ScheduledDataflowGateway */
     private $scheduledDataflowGateway;
 
-    public function __construct(JobGateway $jobGateway, NotificationHandlerInterface $notificationHandler, ScheduledDataflowGateway $scheduledDataflowGateway)
+    public function __construct(JobGateway $jobGateway, ScheduledDataflowGateway $scheduledDataflowGateway)
     {
         $this->jobGateway = $jobGateway;
-        $this->notificationHandler = $notificationHandler;
         $this->scheduledDataflowGateway = $scheduledDataflowGateway;
     }
 
@@ -108,9 +104,11 @@ class DashboardController extends Controller
     public function history(Request $request): Response
     {
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
+        $filter = (int) $request->query->get('filter', JobGateway::FILTER_NONE);
 
         return $this->render('@ezdesign/ezdataflow/Dashboard/history.html.twig', [
-            'pager' => $this->getPager($this->jobGateway->getListQueryForAdmin(), $request),
+            'pager' => $this->getPager($this->jobGateway->getListQueryForAdmin($filter), $request),
+            'filter' => $filter,
         ]);
     }
 
@@ -120,9 +118,11 @@ class DashboardController extends Controller
     public function getHistoryPage(Request $request): Response
     {
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
+        $filter = (int) $request->query->get('filter', JobGateway::FILTER_NONE);
 
         return $this->render('@ezdesign/ezdataflow/Dashboard/history.html.twig', [
-            'pager' => $this->getPager($this->jobGateway->getListQueryForAdmin(), $request),
+            'pager' => $this->getPager($this->jobGateway->getListQueryForAdmin($filter), $request),
+            'filter' => $filter,
         ]);
     }
 
@@ -143,6 +143,7 @@ class DashboardController extends Controller
     {
         $pager = new Pagerfanta(new DoctrineDbalAdapter($query, function ($queryBuilder) {
             return $queryBuilder->select('COUNT(DISTINCT id) AS total_results')
+                ->resetQueryPart('orderBy')
                 ->setMaxResults(1);
         }));
         $pager->setMaxPerPage(20);

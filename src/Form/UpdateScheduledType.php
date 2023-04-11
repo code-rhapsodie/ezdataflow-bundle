@@ -6,7 +6,6 @@ namespace CodeRhapsodie\EzDataflowBundle\Form;
 
 use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -32,7 +31,7 @@ class UpdateScheduledType extends AbstractType
                 ],
                 'label' => 'coderhapsodie.dataflow.frequency',
             ])
-            ->add('next', DateTimeType::class, [
+            ->add('next', UserTimezoneAwareDateTimeType::class, [
                 'years' => range(date('Y'), date('Y') + 5),
                 'label' => 'coderhapsodie.dataflow.update.next',
             ])

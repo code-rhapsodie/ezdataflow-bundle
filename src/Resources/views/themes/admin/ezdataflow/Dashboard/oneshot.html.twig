@@ -40,9 +40,10 @@
                         success: function (result) {
                             if (result.redirect) {
                                 if (window.location.href === result.redirect) {
-                                    document.location.reload();
+                                    window.location.reload();
                                 }
                                 window.location = result.redirect;
+                                window.location.reload();
                                 return;
                             }
 

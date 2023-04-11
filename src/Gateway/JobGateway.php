@@ -10,6 +10,9 @@ use Doctrine\DBAL\Query\QueryBuilder;
 
 final class JobGateway
 {
+    public const FILTER_NONE = 0;
+    public const FILTER_NON_EMPTY = 1;
+
     /** @var JobRepository */
     private $jobRepository;
 
@@ -30,10 +33,17 @@ final class JobGateway
             ->addOrderBy('i.requested_date', 'DESC');
     }
 
-    public function getListQueryForAdmin(): QueryBuilder
+    public function getListQueryForAdmin(int $filter): QueryBuilder
     {
-        return $this->jobRepository->createQueryBuilder('w')
-            ->addOrderBy('w.requested_date', 'DESC');
+        $qb = $this->jobRepository->createQueryBuilder('w')
+            ->addOrderBy('w.requested_date', 'DESC')
+        ;
+
+        if (self::FILTER_NON_EMPTY === $filter) {
+            $qb->andWhere('w.count > 0');
+        }
+
+        return $qb;
     }
 
     public function getListQueryForScheduleAdmin(int $id): QueryBuilder

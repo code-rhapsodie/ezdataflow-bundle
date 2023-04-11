@@ -9,8 +9,6 @@ class InvalidArgumentTypeException extends \Exception
     /**
      * @param string|array $expectedTypes
      * @param mixed        $received
-     *
-     * @return InvalidArgumentTypeException
      */
     public static function create($expectedTypes, $received): self
     {

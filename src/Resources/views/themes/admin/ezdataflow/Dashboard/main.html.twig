@@ -1,5 +1,7 @@
 {% extends ["@ezdesign/layout.html.twig", "@ezdesign/ui/layout.html.twig"] %}
 
+{% block body_class %}ez-has-full-width-footer{% endblock %}
+
 {% block breadcrumbs %}
     {% include ['@ezdesign/parts/breadcrumbs.html.twig', '@ezdesign/ui/breadcrumbs.html.twig'] with { items: [
         { value: 'breadcrumb.admin'|trans(domain='messages')|desc('Admin') },
@@ -15,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-    {{ ez_render_component_group('coderhapsodie-ezdataflow', {}, '@ezdesign/ezdataflow/parts/tab/ezdataflow.html.twig') }}
+    {{ ez_render_component_group('coderhapsodie-ezdataflow', {'filter': app.request.query.get('filter', 0)}, '@ezdesign/ezdataflow/parts/tab/ezdataflow.html.twig') }}
 
     <div class="modal fade ez-modal show" id="ez-modal--history-details" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog" role="document" style="max-width: 90%">
