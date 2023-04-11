@@ -1,3 +1,9 @@
+# Version 3.2.0
+
+* Fixed History page pagination is hidden by footer on Ibexa 3.3 #38
+* Added filter on history page to filter out jobs with 0 items
+* Date and times will now be displayed using the user defined timezone, and stored using php timezone 
+
 # Version 3.1.0
 
 * Allow `LocationCreateStruct` objects inside the `$locations` argument of `ContentCreateStructure` to have more control over the created locations.
