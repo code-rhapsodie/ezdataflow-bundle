@@ -1,83 +1,117 @@
 {% set id = identifier|default('ezdataflow_history_results') %}
 
-{% import '@ezdesign/ezdataflow/macros.twig' as macros %}
+{% import '@ibexadesign/ezdataflow/macros.twig' as macros %}
 
-<div id="loading_{{ id }}" class="text-center d-none">
+<div id="loading_{{ id }}" class="text-center" hidden>
     <svg class="ez-icon ez-icon--extra-large">
         <use xmlns:xlink="http://www.w3.org/1999/xlink"
-             xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#spinner"></use>
+             xlink:href="{{ ibexa_icon_path('spinner') }}"></use>
     </svg>
 </div>
 
 <div id="{{ id }}" class="history-details-aware">
-    {% if pager.currentPageResults|length %}
-        <table class="table">
-            <thead>
-            <tr>
-                <th>{{ 'coderhapsodie.ezdataflow.history.list.name'|trans }}</th>
-                <th>{{ 'coderhapsodie.ezdataflow.history.list.request'|trans }}</th>
-                <th>{{ 'coderhapsodie.ezdataflow.history.list.count'|trans }}</th>
-                <th>{{ 'coderhapsodie.ezdataflow.history.list.start'|trans }}</th>
-                <th>{{ 'coderhapsodie.ezdataflow.history.list.end'|trans }}</th>
-                <th>{{ 'coderhapsodie.ezdataflow.history.list.status'|trans }}</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for job in pager.currentPageResults %}
-                <tr>
-                    <td>{{ job.label }}</td>
-                    <td>{{ date(job.requested_date)|ez_short_datetime }}</td>
-                    <td>{{ job.count|default('—') }}</td>
-                    <td>{{ job.start_time ? date(job.start_time)|ez_short_datetime : '—' }}</td>
-                    <td>{{ job.end_time ? date(job.end_time)|ez_short_datetime : '—' }}</td>
-                    <td>{{ macros.translateStatus(job.status) }}</td>
-                    <td class="ez-table__cell ez-table__cell--has-action-btns text-right">
-                        <a href="{{ path('coderhapsodie.ezdataflow.job.details', {id: job.id}) }}"
-                           class="btn btn-icon mx-2 modal-history-details"
-                           title="{{ 'coderhapsodie.ezdataflow.history.list.view'|trans }}">
-                            <svg class="ez-icon ez-icon--small-medium">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#about-info"></use>
-                            </svg>
-                        </a>
-                        <a href="{{ path('coderhapsodie.ezdataflow.job.log', {id: job.id}) }}"
-                           class="btn btn-icon mx-2 modal-history-details modal-history-log"
-                           title="{{ 'coderhapsodie.ezdataflow.history.details.log'|trans }}">
-                            <svg class="ez-icon ez-icon--small-medium">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#article"></use>
-                            </svg>
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p class="ez-table-no-content">{{ 'coderhapsodie.ezdataflow.history.list.empty'|trans }}</p>
-    {% endif %}
+
+    {% set body_rows = [] %}
+
+    {% for job in pager.currentPageResults %}
+        {% set body_row_cols = [] %}
+        {% set body_row_cols = body_row_cols|merge([
+            {content: job.label},
+            {content: date(job.requested_date)|ibexa_short_datetime},
+            {content: job.count|default('—')},
+            {content: job.start_time ? date(job.start_time)|ibexa_short_datetime : '—'},
+            {content: job.end_time ? date(job.end_time)|ibexa_short_datetime : '—'},
+            {content: macros.translateStatus(job.status)},
+        ]) %}
+
+        {% set col_raw %}
+            <a href="{{ path('coderhapsodie.ezdataflow.job.details', {id: job.id}) }}"
+               class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text modal-history-details"
+               title="{{ 'coderhapsodie.ezdataflow.history.list.view'|trans }}"
+               data-bs-toggle="modal"
+               data-bs-target="#modal-history-details"
+            >
+                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--about-info">
+                    <use xlink:href="{{ ibexa_icon_path('about-info') }}"></use>
+                </svg>
+            </a>
+            <a href="{{ path('coderhapsodie.ezdataflow.job.log', {id: job.id}) }}"
+               class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text modal-history-log"
+               data-bs-toggle="modal"
+               data-bs-target="#modal-history-log"
+               title="{{ 'coderhapsodie.ezdataflow.history.details.log'|trans }}"
+            >
+                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--article">
+                    <use xlink:href="{{ ibexa_icon_path('article') }}"></use>
+                </svg>
+            </a>
+        {% endset %}
+        {% set body_row_cols = body_row_cols|merge([{
+            has_action_btns: true,
+            content: col_raw,
+            raw: true,
+        }]) %}
+
+        {% set body_rows = body_rows|merge([{ cols: body_row_cols }]) %}
+    {% endfor %}
+
+    {% embed '@ibexadesign/ui/component/table/table.html.twig' with {
+        headline: headline ?? null,
+        head_cols: [
+            { content: 'coderhapsodie.ezdataflow.history.list.name'|trans },
+            { content: 'coderhapsodie.ezdataflow.history.list.request'|trans },
+            { content: 'coderhapsodie.ezdataflow.history.list.count'|trans },
+            { content: 'coderhapsodie.ezdataflow.history.list.start'|trans },
+            { content: 'coderhapsodie.ezdataflow.history.list.end'|trans },
+            { content: 'coderhapsodie.ezdataflow.history.list.status'|trans },
+            { },
+        ],
+        body_rows,
+        empty_table_info_text: 'coderhapsodie.ezdataflow.history.list.empty'|trans,
+    } %}
+        {% block header %}
+            {% embed '@ibexadesign/ui/component/table/table_header.html.twig' %}
+                {% block actions %}
+                    {{ actions ?? '' }}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
 
     {% if pager.haveToPaginate %}
-        <div class="ez-pagination justify-content-center align-items-center ez-pagination__spacing">
-            {{ pagerfanta(pager, 'ez', {routeName: paginate_route, routeParams: paginate_params|default({})}) }}
-        </div>
+        {% include '@ibexadesign/ui/pagination.html.twig' with {
+            'pager': pager,
+            'paginaton_params': {
+                'routeName': paginate_route,
+                'routeParams': paginate_params|default({})
+            }
+        } %}
     {% endif %}
 </div>
 
 <script>
-    (function ($) {
-        $(document).ready(function ($) {
-            // Manage ajax pagination
-            $('#{{ id }}').delegate('.ez-pagination a', 'click', function (e) {
-                e.preventDefault();
-                $('#loading_{{ id }}').removeClass('d-none');
-                $('#{{ id }}')
-                    .html('')
-                    .load(this.href + ' #{{ id }}>*', null, function () {
-                        $('#loading_{{ id }}').addClass('d-none');
-                    });
-            });
+    document.addEventListener('DOMContentLoaded', () => {
+        // Manage ajax pagination
+        const display = document.getElementById('{{ id }}');
+        display.addEventListener('click', (e) => {
+            const link = e.target.closest('.ibexa-pagination a');
+            if (!link) {
+                return;
+            }
+
+            const loader = document.getElementById('loading_{{ id }}');
+            e.preventDefault();
+            loader.hidden = false;
+            display.innerHTML = '';
+            fetch(link.href)
+                .then((r) => r.text())
+                .then((content) => {
+                    const node = document.createElement('div');
+                    node.innerHTML = content;
+                    display.innerHTML = node.querySelector('#{{ id }}').innerHTML;
+                    loader.hidden = true;
+                })
+            ;
         });
-    })(jQuery);
+    });
 </script>

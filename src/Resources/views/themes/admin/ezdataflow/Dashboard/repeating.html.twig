@@ -1,185 +1,158 @@
-<h2>{{ 'coderhapsodie.ezdataflow.repeating.title'|trans }}</h2>
+{%- block content -%}
 
-<div class="ez-table-header">
-    <div class="ez-table-header__headline">{{ 'coderhapsodie.ezdataflow.workflow.list.title'|trans }}</div>
-    <div>
-        <button type="button" class="btn btn-primary btn-modal-launcher" data-toggle="modal"
-                data-target="#ez-modal--new-scheduled">
-            <svg class="ez-icon ez-icon--medium ez-icon--light ez-icon-create">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#create"></use>
-            </svg>
-        </button>
-    </div>
-</div>
+    {{ include('@ibexadesign/ezdataflow/parts/tab/schedule_list.html.twig', {
+        identifier: 'ezdataflow_schedule_results',
+        paginate_route: 'coderhapsodie.ezdataflow.repeating'
+    }) }}
 
-{{ include('@ezdesign/ezdataflow/parts/tab/schedule_list.html.twig', {identifier: 'ezdataflow_schedule_results', paginate_route: 'coderhapsodie.ezdataflow.repeating'}) }}
+    {{ include('@ibexadesign/ezdataflow/parts/form_modal.html.twig', {
+        'id': 'modal-new-scheduled',
+        'form': form
+    }) }}
 
-{% if form is defined %}
-    {% form_theme form 'bootstrap_3_layout.html.twig' %}
-    <div class="modal fade ez-modal show" id="ez-modal--new-scheduled" tabindex="-1" role="dialog" aria-modal="true">
-        <div class="modal-dialog" role="document">
-            {{ include('@ezdesign/ezdataflow/parts/schedule_form.html.twig') }}
-        </div>
-    </div>
+    {% embed '@ibexadesign/ui/component/modal/modal.html.twig' with {
+        id: 'modal-edit-scheduled',
+        title: 'coderhapsodie.ezdataflow.workflow.repeating.edit.title'|trans,
+    } %}
+        {% block body_content %}
+            <form action="" method="post">
+                <div class="form-fields"></div>
+                <button id="modal-edit-submit" type="submit" hidden />
+            </form>
+        {% endblock %}
+        {% block footer_content %}
+            <button type="button" class="btn ibexa-btn ibexa-btn--primary ibexa-btn--trigger" data-click="#modal-edit-submit">
+                {{ 'coderhapsodie.ezdataflow.workflow.edit.submit'|trans }}
+            </button>
+            <button class="btn ibexa-btn ibexa-btn--secondary" data-bs-dismiss="modal">
+                {{ 'coderhapsodie.ezdataflow.workflow.new.cancel'|trans }}
+            </button>
+        {% endblock %}
+    {% endembed %}
 
-    <!-- Modal -->
-    <div class="modal fade ez-modal ez-modal--delete-workflow show" id="ez-modal--delete-workflow" tabindex="-1"
-         role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <svg class="ez-icon ez-icon--medium" aria-hidden="true">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 xlink:href="../../ez-icons.svg#discard"></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="font-weight-bold" id="delete-modal--workflow-name"></p>
-                    <p class="ez-modal-body__main">{{ 'coderhapsodie.ezdataflow.workflow.delete'|trans }}</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark"
-                            data-dismiss="modal">{{ 'coderhapsodie.ezdataflow.workflow.new.cancel'|trans }}</button>
-                    <button type="button" class="btn btn-danger font-weight-bold"
-                            id="ez-modal--delete-workflow-confirm">{{ 'coderhapsodie.ezdataflow.workflow.list.delete'|trans }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade ez-modal show" id="ez-modal--history" tabindex="-1" role="dialog" aria-modal="true">
-        <div class="modal-dialog" role="document" style="max-width: 80%">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">{{ 'coderhapsodie.ezdataflow.workflow.history.title'|trans }}</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <svg class="ez-icon ez-icon--medium" aria-hidden="true">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#discard"></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body history-details-aware" id="modal_content"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade ez-modal show" id="ez-modal--edit-scheduled" tabindex="-1" role="dialog" aria-modal="true">
-        <div class="modal-dialog" role="document">
-            <div id="schedule_edit"></div>
-        </div>
-    </div>
+    {% embed '@ibexadesign/ui/component/modal/modal.html.twig' with {
+        id: 'modal-delete-confirm',
+        title: 'coderhapsodie.ezdataflow.workflow.delete'|trans,
+    } %}
+        {% block body_content %}
+            <form action="" method="post">
+                <div class="item-name"></div>
+                <button id="modal-delete-submit" type="submit" hidden />
+            </form>
+        {% endblock %}
+        {% block footer_content %}
+            <button type="button" class="btn ibexa-btn ibexa-btn--primary ibexa-btn--trigger" data-click="#modal-delete-submit">
+                {{ 'coderhapsodie.ezdataflow.workflow.list.delete'|trans }}
+            </button>
+            <button class="btn ibexa-btn ibexa-btn--secondary" data-bs-dismiss="modal">
+                {{ 'coderhapsodie.ezdataflow.workflow.new.cancel'|trans }}
+            </button>
+        {% endblock %}
+    {% endembed %}
 
     <script>
-        (function ($) {
-            $(document).ready(function ($) {
-                $('#ez-modal--history').modal({keyboard: false, show: false});
-                $('.modal-history').each(function (index, elem) {
-                    $(elem).click(function (e) {
-                        e.preventDefault();
-                        $('#modal_content').html('');
-                        $('#ez-modal--history').modal('show');
-                        $.ajax(elem.href, {
-                            success: function (result) {
-                                $('#modal_content').html(result);
-                            }
-                        });
-                    });
-                });
-                $('#ez-modal--history .close').click(function () {
-                    $('#ez-modal--history').modal('hide');
-                });
+        document.addEventListener('DOMContentLoaded', () => {
+            // $('#ez-modal--edit-scheduled').modal({keyboard: true, show: false});
+            // $('.modal-edit').each(function (index, elem) {
+            //     $(elem).click(function (e) {
+            //         e.preventDefault();
+            //         $('#schedule_edit').html('');
+            //         $('#ez-modal--edit-scheduled').modal('show');
+            //         $.ajax(elem.href, {
+            //             success: function (result) {
+            //                 if (result.redirect) {
+            //                     if (window.location.href === result.redirect) {
+            //                         window.location.reload();
+            //                     }
+            //                     window.location = result.redirect;
+            //                     window.location.reload();
+            //                     return;
+            //                 }
+            //
+            //                 $('#schedule_edit').html(result.form);
+            //             }
+            //         });
+            //     });
+            // });
+            //
+            // $('#ez-modal--edit-scheduled').on('submit', 'form', function (e) {
+            //     e.preventDefault();
+            //     url = $(this).attr('action');
+            //     data = new FormData(this);
+            //     $.ajax({
+            //         'type': 'POST',
+            //         'url': url,
+            //         'data': data,
+            //         processData: false,
+            //         contentType: false,
+            //         success: function (result) {
+            //             if (result.redirect) {
+            //                 window.location = result.redirect;
+            //                 return;
+            //             }
+            //
+            //             $('#schedule_edit').html(result.form);
+            //         }
+            //     });
+            // });
 
-                $('#ez-modal--delete-workflow').modal({keyboard: true, show: false});
-                $('.modal-delete').each(function (index, elem) {
-                    $(elem).click(function (e) {
-                        e.preventDefault();
-                        $('#delete-modal--workflow-name').html($(elem).data('name'));
-                        $('#ez-modal--delete-workflow').modal('show');
-                        $('#ez-modal--delete-workflow-confirm').data('target', $(elem).data('path'));
-                    });
-                });
-                $('#ez-modal--delete-workflow-confirm').click(function () {
-                    let target = $(this).data('target');
-                    if (target && target !== '') {
-                        $.ajax(target, {
-                            method: 'POST',
-                            complete: function () {
-                                $('#ez-modal--delete-workflow').modal('hide');
-                                window.location.reload();
-                            }
-                        });
-                    }
-                });
-
-                $('#ez-modal--edit-scheduled').modal({keyboard: true, show: false});
-                $('.modal-edit').each(function (index, elem) {
-                    $(elem).click(function (e) {
-                        e.preventDefault();
-                        $('#schedule_edit').html('');
-                        $('#ez-modal--edit-scheduled').modal('show');
-                        $.ajax(elem.href, {
-                            success: function (result) {
-                                if (result.redirect) {
-                                    if (window.location.href === result.redirect) {
-                                        window.location.reload();
-                                    }
-                                    window.location = result.redirect;
-                                    window.location.reload();
-                                    return;
-                                }
-
-                                $('#schedule_edit').html(result.form);
-                            }
-                        });
-                    });
-                });
-
-                $('#ez-modal--edit-scheduled').on('submit', 'form', function (e) {
+            const bindFormSubmit = (modalId) => {
+                document.querySelector('#'+modalId+' form').addEventListener('submit', function (e) {
                     e.preventDefault();
-                    url = $(this).attr('action');
+                    url = this.getAttribute('action');
                     data = new FormData(this);
-                    $.ajax({
-                        'type': 'POST',
-                        'url': url,
-                        'data': data,
-                        processData: false,
-                        contentType: false,
-                        success: function (result) {
+                    fetch(url, {
+                        'method': 'post',
+                        'body': data,
+                    })
+                        .then((r) => r.json())
+                        .then((result) => {
                             if (result.redirect) {
                                 window.location = result.redirect;
                                 return;
                             }
-
-                            $('#schedule_edit').html(result.form);
-                        }
-                    });
+                            const node = document.createElement('div');
+                            node.innerHTML = result.form;
+                            document.querySelector('#'+modalId+' .form-fields').innerHTML = node.querySelector('.form-fields').innerHTML;
+                        })
+                    ;
                 });
+            };
+            bindFormSubmit('modal-new-scheduled');
+            bindFormSubmit('modal-edit-scheduled');
 
-                $('#ez-modal--new-scheduled form').on('submit', function (e) {
+            const editModal = document.getElementById('modal-edit-scheduled')
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('.modal-edit');
+                if (link) {
                     e.preventDefault();
-                    url = $(this).attr('action');
-                    data = new FormData(this);
-                    $.ajax({
-                        'type': 'POST',
-                        'url': url,
-                        'data': data,
-                        processData: false,
-                        contentType: false,
-                        success: function (result) {
-                            if (result.redirect) {
-                                window.location = result.redirect;
-                                return;
-                            }
-                            let obj = $(result.form).find('.modal-body');
-                            $('#ez-modal--new-scheduled .modal-body').html($(obj).html());
-                        }
-                    });
-                });
-            });
-        })(jQuery);
+                    fetch(link.href, {
+                        'method': 'post'
+                    })
+                        .then((r) => r.json())
+                        .then((result) => {
+                            const node = document.createElement('div');
+                            node.innerHTML = result.form;
+                            editModal.querySelector('form').action = link.href;
+                            editModal.querySelector('.form-fields').innerHTML = node.querySelector('.form-fields').innerHTML;
+                        })
+                    ;
+
+                    return;
+                }
+            })
+
+            const deleteModal = document.getElementById('modal-delete-confirm')
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('.modal-delete');
+                if (link) {
+                    e.preventDefault();
+                    deleteModal.querySelector('.item-name').textContent = link.dataset.name;
+                    deleteModal.querySelector('form').action = link.href;
+
+                    return;
+                }
+            })
+        });
     </script>
-{% endif %}
+{%- endblock -%}

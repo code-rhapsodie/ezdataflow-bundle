@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Core\Field;
 
-use eZ\Publish\API\Repository\FieldTypeService;
-use eZ\Publish\Core\FieldType\Value;
+use Ibexa\Contracts\Core\FieldType\Value;
+use Ibexa\Contracts\Core\Repository\FieldTypeService;
 
 class DefaultFieldValueCreator implements FieldValueCreatorInterface
 {
-    /** @var FieldTypeService */
+    /** @var \Ibexa\Contracts\Core\Repository\FieldTypeService */
     private $fieldTypeService;
 
     public function __construct(FieldTypeService $fieldTypeService)

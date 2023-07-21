@@ -1,60 +1,57 @@
-<h2>{{ 'coderhapsodie.ezdataflow.oneshot.title'|trans }}</h2>
-
-<div class="ez-table-header">
-    <div class="ez-table-header__headline">{{ 'coderhapsodie.ezdataflow.oneshot.list.title'|trans }}</div>
-    <div>
-        <button type="button" class="btn btn-primary btn-modal-launcher" data-toggle="modal"
-                data-target="#ez-modal--new-oneshot">
-            <svg class="ez-icon ez-icon--medium ez-icon--light ez-icon-create">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#create"></use>
+{%- block content -%}
+    {% set actions %}
+        <button
+            type="button"
+            class="btn ibexa-btn ibexa-btn--tertiary ibexa-btn--small"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-new-oneshot"
+        >
+            <svg class="ibexa-icon ibexa-icon--small ibexa-icon--create">
+                <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
             </svg>
+            <span class="ibexa-btn__label">
+                {{ 'coderhapsodie.ezdataflow.workflow.new.submit'|trans|desc('Create') }}
+            </span>
         </button>
-    </div>
-</div>
+    {% endset %}
 
-{{ include('@ezdesign/ezdataflow/parts/tab/job_list.html.twig', {identifier: 'ezdataflow_oneshot_history', paginate_route: 'coderhapsodie.ezdataflow.oneshot'}) }}
+    {{ include('@ibexadesign/ezdataflow/parts/tab/job_list.html.twig', {
+        identifier: 'ezdataflow_oneshot_history',
+        paginate_route: 'coderhapsodie.ezdataflow.oneshot',
+        headline: 'coderhapsodie.ezdataflow.oneshot.title'|trans,
+        actions: actions,
+    }) }}
 
-{% if form is defined %}
-    {% form_theme form 'bootstrap_3_layout.html.twig' %}
-    <div class="modal fade ez-modal show" id="ez-modal--new-oneshot" tabindex="-1" role="dialog" aria-modal="true">
-        <div class="modal-dialog" role="document">
-            {{ include('@ezdesign/ezdataflow/parts/schedule_form.html.twig', {mode: 'oneshot'}) }}
-        </div>
-    </div>
+    {% if form is defined %}
+        {{ include('@ibexadesign/ezdataflow/parts/form_modal.html.twig', {
+            'id': 'modal-new-oneshot',
+            'form': form,
+            'mode': 'oneshot'
+        }) }}
+    {% endif %}
 
     <script>
-
-        (function ($) {
-            $(document).ready(function ($) {
-                $('#ez-modal--new-oneshot').on('submit', 'form', function (e) {
-                    e.preventDefault();
-                    url = $(this).attr('action');
-                    data = new FormData(this);
-                    $.ajax({
-                        'type': 'POST',
-                        'url': url,
-                        'data': data,
-                        processData: false,
-                        contentType: false,
-                        success: function (result) {
-                            if (result.redirect) {
-                                if (window.location.href === result.redirect) {
-                                    window.location.reload();
-                                }
-                                window.location = result.redirect;
-                                window.location.reload();
-                                return;
-                            }
-
-                            let obj = $(result.form).find('.modal-body');
-                            $('#ez-modal--new-oneshot .modal-body').html($(obj).html());
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#modal-new-oneshot form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                url = this.getAttribute('action');
+                data = new FormData(this);
+                fetch(url, {
+                    'method': 'post',
+                    'body': data,
+                })
+                    .then((r) => r.json())
+                    .then((result) => {
+                        if (result.redirect) {
+                            window.location = result.redirect;
+                            return;
                         }
-                    });
-                });
+                        const node = document.createElement('div');
+                        node.innerHTML = result.form;
+                        document.querySelector('#modal-new-oneshot .form-fields').innerHTML = node.querySelector('.form-fields').innerHTML;
+                    })
+                ;
             });
-        })(jQuery);
+        });
     </script>
-
-
-{% endif %}
+{%- endblock -%}

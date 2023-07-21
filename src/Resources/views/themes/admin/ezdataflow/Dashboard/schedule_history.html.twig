@@ -1,7 +1,5 @@
-<h2>{{ 'coderhapsodie.ezdataflow.history.title'|trans }}</h2>
-
-<div class="ez-table-header">
-    <div class="ez-table-header__headline">{{ 'coderhapsodie.ezdataflow.history.list.title'|trans }}</div>
-</div>
-
-{% include '@ezdesign/ezdataflow/parts/tab/job_list.html.twig' with {identifier: 'ezdataflow_schedule_history_results', paginate_route: 'coderhapsodie.ezdataflow.history.workflow', paginate_params: {id: id}} %}
+{% include '@ibexadesign/ezdataflow/parts/tab/job_list.html.twig' with {
+    identifier: 'ezdataflow_schedule_history_results',
+    paginate_route: 'coderhapsodie.ezdataflow.history.workflow',
+    paginate_params: {id: id}
+} %}

@@ -6,9 +6,9 @@ namespace CodeRhapsodie\EzDataflowBundle\Core\Field;
 
 use CodeRhapsodie\EzDataflowBundle\Exception\UnknownFieldException;
 use CodeRhapsodie\EzDataflowBundle\Exception\UnsupportedFieldTypeException;
-use eZ\Publish\API\Repository\Values\Content\ContentStruct;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\Core\FieldType\Value;
+use Ibexa\Contracts\Core\FieldType\Value;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentStruct;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 
 class ContentStructFieldFiller implements ContentStructFieldFillerInterface
 {
@@ -26,8 +26,8 @@ class ContentStructFieldFiller implements ContentStructFieldFillerInterface
     /**
      * {@inheritdoc}
      *
-     * @throws UnknownFieldException
-     * @throws UnsupportedFieldTypeException
+     * @throws \CodeRhapsodie\EzDataflowBundle\Exception\UnknownFieldException
+     * @throws \CodeRhapsodie\EzDataflowBundle\Exception\UnsupportedFieldTypeException
      */
     public function fillFields(ContentType $contentType, ContentStruct $contentStruct, array $fieldHashes): void
     {
@@ -47,7 +47,7 @@ class ContentStructFieldFiller implements ContentStructFieldFillerInterface
     /**
      * @param mixed $hash
      *
-     * @throws UnsupportedFieldTypeException
+     * @throws \CodeRhapsodie\EzDataflowBundle\Exception\UnsupportedFieldTypeException
      */
     private function createFieldValue(string $fieldTypeIdentifier, $hash): Value
     {

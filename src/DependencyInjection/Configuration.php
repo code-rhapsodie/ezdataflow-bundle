@@ -16,13 +16,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('code_rhapsodie_ez_dataflow');
 
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC for symfony/config < 4.2
-            $rootNode = $treeBuilder->root('code_rhapsodie_ez_dataflow');
-        }
-
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode
             ->children()
                 ->scalarNode('admin_login_or_id')

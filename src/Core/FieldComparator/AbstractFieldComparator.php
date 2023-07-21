@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Core\FieldComparator;
 
-use eZ\Publish\API\Repository\FieldTypeService;
-use eZ\Publish\API\Repository\Values\Content\Field;
-use eZ\Publish\Core\FieldType\Value;
+use Ibexa\Contracts\Core\FieldType\Value;
+use Ibexa\Contracts\Core\Repository\FieldTypeService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Field;
 
 abstract class AbstractFieldComparator implements FieldComparatorInterface
 {
-    /** @var FieldTypeService */
+    /** @var \Ibexa\Contracts\Core\Repository\FieldTypeService */
     private $fieldTypeService;
 
     public function __construct(FieldTypeService $fieldTypeService)

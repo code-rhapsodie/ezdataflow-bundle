@@ -7,11 +7,10 @@ namespace CodeRhapsodie\EzDataflowBundle\Controller;
 use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
 use CodeRhapsodie\EzDataflowBundle\Form\CreateScheduledType;
 use CodeRhapsodie\EzDataflowBundle\Form\UpdateScheduledType;
-use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
 use CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway;
-use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute;
-use EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface;
-use EzSystems\EzPlatformAdminUiBundle\Controller\Controller;
+use Ibexa\Contracts\AdminUi\Controller\Controller;
+use Ibexa\Contracts\AdminUi\Notification\NotificationHandlerInterface;
+use Ibexa\Core\MVC\Symfony\Security\Authorization\Attribute;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,22 +22,18 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class ScheduledDataflowController extends Controller
 {
-    /** @var JobGateway */
-    private $jobGateway;
-    /** @var NotificationHandlerInterface */
+    /** @var \Ibexa\Contracts\AdminUi\Notification\NotificationHandlerInterface */
     private $notificationHandler;
-    /** @var ScheduledDataflowGateway */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway */
     private $scheduledDataflowGateway;
-    /** @var TranslatorInterface */
+    /** @var \Symfony\Contracts\Translation\TranslatorInterface */
     private $translator;
 
     public function __construct(
-        JobGateway $jobGateway,
         NotificationHandlerInterface $notificationHandler,
         ScheduledDataflowGateway $scheduledDataflowGateway,
         TranslatorInterface $translator
     ) {
-        $this->jobGateway = $jobGateway;
         $this->notificationHandler = $notificationHandler;
         $this->scheduledDataflowGateway = $scheduledDataflowGateway;
         $this->translator = $translator;
@@ -56,7 +51,7 @@ class ScheduledDataflowController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var ScheduledDataflow $newWorkflow */
+            /** @var \CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow $newWorkflow */
             $newWorkflow = $form->getData();
             try {
                 $this->scheduledDataflowGateway->save($newWorkflow);
@@ -70,7 +65,7 @@ class ScheduledDataflowController extends Controller
         }
 
         return new JsonResponse([
-            'form' => $this->renderView('@ezdesign/ezdataflow/parts/schedule_form.html.twig', [
+            'form' => $this->renderView('@ibexadesign/ezdataflow/parts/form_modal.html.twig', [
                 'form' => $form->createView(),
                 'type_action' => 'new',
             ]),
@@ -87,14 +82,12 @@ class ScheduledDataflowController extends Controller
         try {
             $this->scheduledDataflowGateway->delete($id);
             $this->notificationHandler->success($this->translator->trans('coderhapsodie.ezdataflow.workflow.delete.success'));
-
-            return new JsonResponse(['code' => 200]);
         } catch (\Exception $e) {
             $this->notificationHandler->error($this->translator->trans('coderhapsodie.ezdataflow.workflow.delete.error',
                 ['message' => $e->getMessage()]));
-
-            return new JsonResponse(['code' => $e->getCode()]);
         }
+
+        return $this->redirectToRoute('coderhapsodie.ezdataflow.main');
     }
 
     /**
@@ -108,7 +101,7 @@ class ScheduledDataflowController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var ScheduledDataflow $editDataflow */
+            /** @var \CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow $editDataflow */
             $editDataflow = $form->getData();
 
             try {
@@ -123,7 +116,7 @@ class ScheduledDataflowController extends Controller
         }
 
         return new JsonResponse([
-            'form' => $this->renderView('@ezdesign/ezdataflow/parts/schedule_form.html.twig', [
+            'form' => $this->renderView('@ibexadesign/ezdataflow/parts/form_modal.html.twig', [
                 'form' => $form->createView(),
                 'type_action' => 'edit',
             ]),
@@ -145,7 +138,7 @@ class ScheduledDataflowController extends Controller
     private function changeDataflowStatus(int $id, bool $status)
     {
         try {
-            /** @var ScheduledDataflow $workflow */
+            /** @var \CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow $workflow */
             $workflow = $this->scheduledDataflowGateway->find($id);
             $workflow->setEnabled($status);
             $this->scheduledDataflowGateway->save($workflow);

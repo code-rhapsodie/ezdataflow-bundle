@@ -7,23 +7,23 @@ namespace CodeRhapsodie\EzDataflowBundle\Core\Content;
 use CodeRhapsodie\EzDataflowBundle\Core\Field\ContentStructFieldFillerInterface;
 use CodeRhapsodie\EzDataflowBundle\Matcher\LocationMatcherInterface;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentCreateStructure;
-use eZ\Publish\API\Repository\ContentService;
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\LocationCreateStruct;
+use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\LocationCreateStruct;
 
 class ContentCreator implements ContentCreatorInterface
 {
-    /** @var ContentService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentService */
     private $contentService;
 
-    /** @var ContentTypeService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
     private $contentTypeService;
 
-    /** @var ContentStructFieldFillerInterface */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Core\Field\ContentStructFieldFillerInterface */
     private $filler;
 
-    /** @var LocationMatcherInterface */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Matcher\LocationMatcherInterface */
     private $matcher;
 
     public function __construct(ContentService $contentService, ContentTypeService $contentTypeService, ContentStructFieldFillerInterface $filler, LocationMatcherInterface $matcher)
@@ -35,12 +35,12 @@ class ContentCreator implements ContentCreatorInterface
     }
 
     /**
-     * @throws \eZ\Publish\API\Repository\Exceptions\BadStateException
-     * @throws \eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException
-     * @throws \eZ\Publish\API\Repository\Exceptions\ContentValidationException
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\BadStateException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\ContentFieldValidationException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\ContentValidationException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     public function createFromStructure(ContentCreateStructure $structure): Content
     {
@@ -54,7 +54,7 @@ class ContentCreator implements ContentCreatorInterface
     }
 
     /**
-     * @return LocationCreateStruct[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\LocationCreateStruct[]
      */
     private function getLocationCreateStructs(array $locations): array
     {

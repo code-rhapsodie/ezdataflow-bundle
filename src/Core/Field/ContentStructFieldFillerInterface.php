@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Core\Field;
 
-use eZ\Publish\API\Repository\Values\Content\ContentStruct;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentStruct;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 
 interface ContentStructFieldFillerInterface
 {

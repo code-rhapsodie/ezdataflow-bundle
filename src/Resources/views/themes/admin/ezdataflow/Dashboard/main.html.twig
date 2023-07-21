@@ -1,80 +1,101 @@
-{% extends ["@ezdesign/layout.html.twig", "@ezdesign/ui/layout.html.twig"] %}
+{% extends "@ibexadesign/ui/layout.html.twig" %}
 
-{% block body_class %}ez-has-full-width-footer{% endblock %}
+{% block body_class %}ibexa-ezdataflow{% endblock %}
 
 {% block breadcrumbs %}
-    {% include ['@ezdesign/parts/breadcrumbs.html.twig', '@ezdesign/ui/breadcrumbs.html.twig'] with { items: [
+    {% include '@ibexadesign/ui/breadcrumbs.html.twig' with { items: [
         { value: 'breadcrumb.admin'|trans(domain='messages')|desc('Admin') },
         { value: 'coderhapsodie.ezdataflow'|trans|desc('EzDataflow') }
     ]} %}
 {% endblock %}
 
-{% block page_title %}
-    {% include ['@ezdesign/parts/page_title.html.twig', '@ezdesign/ui/page_title.html.twig'] with {
+{% block header %}
+    {% include '@ibexadesign/ui/page_title.html.twig' with {
         title: 'coderhapsodie.ezdataflow'|trans|desc('EzDataflow'),
-        iconName: 'workflow'
     } %}
 {% endblock %}
 
 {% block content %}
-    {{ ez_render_component_group('coderhapsodie-ezdataflow', {'filter': app.request.query.get('filter', 0)}, '@ezdesign/ezdataflow/parts/tab/ezdataflow.html.twig') }}
+    {{ ibexa_render_component_group('coderhapsodie-ezdataflow', {'filter': app.request.query.get('filter', 0)}) }}
 
-    <div class="modal fade ez-modal show" id="ez-modal--history-details" tabindex="-1" role="dialog" aria-modal="true">
-        <div class="modal-dialog" role="document" style="max-width: 90%">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">{{ 'coderhapsodie.ezdataflow.workflow.history.title'|trans }}</h3>
-                    <button type="button" class="close" aria-label="Close">
-                        <svg class="ez-icon ez-icon--medium" aria-hidden="true">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#discard"></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body" id="modal_content-details"></div>
-            </div>
-        </div>
-    </div>
+    {% embed '@ibexadesign/ui/component/modal/modal.html.twig' with {
+        id: 'modal-history-details',
+        attr_dialog: {'style': 'max-width: 75vw;'},
+        title: 'coderhapsodie.ezdataflow.history.job.title'|trans,
+    } %}
+        {% block body_content '' %}
+    {% endembed %}
+
+    {% embed '@ibexadesign/ui/component/modal/modal.html.twig' with {
+        id: 'modal-history-log',
+        attr_dialog: {'style': 'max-width: 75vw;'},
+        title: 'coderhapsodie.ezdataflow.workflow.log.title'|trans,
+    } %}
+        {% block body_content '' %}
+    {% endembed %}
+
+    {% embed '@ibexadesign/ui/component/modal/modal.html.twig' with {
+        id: 'modal-history',
+        attr_dialog: {'style': 'max-width: 75vw;'},
+        title: 'coderhapsodie.ezdataflow.workflow.history.title'|trans,
+    } %}
+        {% block body_content '' %}
+    {% endembed %}
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bindModalLinks = (modalId, linkSelector) => {
+                const modal = document.getElementById(modalId);
+                const modalBody = modal.querySelector('.modal-body');
+                document.addEventListener('click', (e) => {
+                    const link = e.target.closest(linkSelector);
+                    if (link) {
+                        e.preventDefault();
+                        modalBody.innerHTML = '';
+                        fetch(link.href)
+                            .then((r) => r.text())
+                            .then((content) => {
+                                modalBody.innerHTML = content;
+                            })
+                        ;
 
-        (function ($) {
-            $(document).ready(function ($) {
-                $('#ez-modal--history-details').modal({keyboard: false, show: false});
-                $('.history-details-aware').delegate('.modal-history-details', 'click', function (e) {
-                    e.preventDefault();
-                    $('#modal_content-details').html('');
-                    $('#ez-modal--history-details h3').html("{{ 'coderhapsodie.ezdataflow.workflow.history.title'|trans }}");
-                    if ($(this).hasClass('modal-history-log')) {
-                        $('#ez-modal--history-details h3').html("{{ 'coderhapsodie.ezdataflow.workflow.log.title'|trans }}");
+                        return;
                     }
-                    $('#ez-modal--history-details').modal('show');
-                    $.ajax(this.href, {
-                        success: function (result) {
-                            $('#modal_content-details').html(result);
-                        }
-                    });
-                });
-                $('#ez-modal--history-details .close').click(function () {
-                    $('#ez-modal--history-details').modal('hide');
-                });
-                $(document).ready(function () {
-                    if (window.location.hash && window.location.hash === '#oneshot') {
-                        $('#ez-tab-list-coderhapsodie-ezdataflow li a').removeClass('active');
-                        $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane').removeClass('active');
+                })
+            }
+            bindModalLinks('modal-history-details', '.modal-history-details');
+            bindModalLinks('modal-history-log', '.modal-history-log');
+            bindModalLinks('modal-history', '.modal-history');
 
-                        $('#ez-tab-list-coderhapsodie-ezdataflow li a:eq(1)').addClass('active');
-                        $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(1)').addClass('active');
-                    }
-                    if (window.location.hash && window.location.hash === '#history') {
-                        $('#ez-tab-list-coderhapsodie-ezdataflow li a').removeClass('active');
-                        $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane').removeClass('active');
-
-                        $('#ez-tab-list-coderhapsodie-ezdataflow li a:eq(2)').addClass('active');
-                        $('#ez-tab-list-content-coderhapsodie-ezdataflow .tab-pane:eq(2)').addClass('active');
-                    }
-                });
-            });
-        })(jQuery);
+            const labels = document.getElementById('ibexa-tab-label-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-repeating')
+                .closest('ul').querySelectorAll('li.ibexa-tabs__tab');
+            const tabs = document.getElementById('ibexa-tab-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-repeating')
+                .closest('.tab-content').querySelectorAll('.tab-pane');
+            if (window.location.hash && window.location.hash === '#oneshot') {
+                labels.forEach((link) => link.classList.remove('active'));
+                tabs.forEach((tab) => tab.classList.remove('active'));
+                document.getElementById('ibexa-tab-label-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-oneshot')
+                    .closest('li.ibexa-tabs__tab').classList.add('active');
+                document.getElementById('ibexa-tab-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-oneshot')
+                    .closest('.tab-pane').classList.add('active');
+            }
+            if (window.location.hash && window.location.hash === '#history') {
+                labels.forEach((link) => link.classList.remove('active'));
+                tabs.forEach((tab) => tab.classList.remove('active'));
+                document.getElementById('ibexa-tab-label-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-history')
+                    .closest('li.ibexa-tabs__tab').classList.add('active');
+                document.getElementById('ibexa-tab-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-history')
+                    .closest('.tab-pane').classList.add('active');
+            }
+        });
     </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .ezdataflow-date .ibexa-dropdown {
+            min-width: 0;
+        }
+    </style>
 {% endblock %}

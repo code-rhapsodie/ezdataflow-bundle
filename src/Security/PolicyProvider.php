@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Security;
 
-use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Security\PolicyProvider\PolicyProviderInterface;
-use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Security\PolicyProvider\YamlPolicyProvider;
+use Ibexa\Bundle\Core\DependencyInjection\Security\PolicyProvider\PolicyProviderInterface;
+use Ibexa\Bundle\Core\DependencyInjection\Security\PolicyProvider\YamlPolicyProvider;
 
 class PolicyProvider extends YamlPolicyProvider implements PolicyProviderInterface
 {

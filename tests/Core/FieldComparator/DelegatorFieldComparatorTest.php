@@ -4,12 +4,12 @@ namespace CodeRhapsodie\EzDataflowBundle\Tests\Core\FieldComparator;
 
 use CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\DelegatorFieldComparator;
 use CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface;
-use eZ\Publish\API\Repository\Values\Content\Field;
+use Ibexa\Contracts\Core\Repository\Values\Content\Field;
 use PHPUnit\Framework\TestCase;
 
 class DelegatorFieldComparatorTest extends TestCase
 {
-    /** @var DelegatorFieldComparator */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\DelegatorFieldComparator */
     private $delegatorFieldComparator;
 
     protected function setUp(): void

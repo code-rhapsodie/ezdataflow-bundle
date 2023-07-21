@@ -1,0 +1,23 @@
+{% form_theme form '@ibexadesign/ezdataflow/form_theme.html.twig' %}
+
+{% embed '@ibexadesign/ui/component/modal/modal.html.twig' with {
+    id: id ?? '',
+    title: ('coderhapsodie.ezdataflow.workflow.'~(mode|default('repeating'))~'.'~(type_action|default('new'))~'.title')|trans,
+} %}
+    {% block body_content %}
+        {{ form_start(form) }}
+            <div class="form-fields">
+                {{ form_widget(form) }}
+            </div>
+            <button type="submit" hidden id="{{ id ~ '-submit' }}"></button>
+        {{ form_end(form) }}
+    {% endblock %}
+    {% block footer_content %}
+        <button class="btn ibexa-btn ibexa-btn--primary ibexa-btn--trigger" data-click="#{{ id ~ '-submit' }}">
+            {{ ('coderhapsodie.ezdataflow.workflow.'~(type_action|default('new'))~'.submit')|trans }}
+        </button>
+        <button type="button" class="btn ibexa-btn ibexa-btn--secondary" data-bs-dismiss="modal">
+            {{ 'coderhapsodie.ezdataflow.workflow.new.cancel'|trans }}
+        </button>
+    {% endblock %}
+{% endembed %}

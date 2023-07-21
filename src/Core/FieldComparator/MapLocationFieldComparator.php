@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Core\FieldComparator;
 
-use eZ\Publish\Core\FieldType\Value;
+use Ibexa\Contracts\Core\FieldType\Value;
 
 class MapLocationFieldComparator extends AbstractFieldComparator
 {
