@@ -7,19 +7,19 @@ namespace CodeRhapsodie\EzDataflowBundle\Core\Content;
 use CodeRhapsodie\EzDataflowBundle\Core\Field\ContentStructFieldFillerInterface;
 use CodeRhapsodie\EzDataflowBundle\Exception\NoMatchFoundException;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
-use eZ\Publish\API\Repository\ContentService;
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 
 class ContentUpdater implements ContentUpdaterInterface
 {
-    /** @var ContentService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentService */
     private $contentService;
 
-    /** @var ContentTypeService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
     private $contentTypeService;
 
-    /** @var ContentStructFieldFillerInterface */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Core\Field\ContentStructFieldFillerInterface */
     private $filler;
 
     public function __construct(ContentService $contentService, ContentTypeService $contentTypeService, ContentStructFieldFillerInterface $filler)
@@ -30,13 +30,13 @@ class ContentUpdater implements ContentUpdaterInterface
     }
 
     /**
-     * @throws NoMatchFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\BadStateException
-     * @throws \eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException
-     * @throws \eZ\Publish\API\Repository\Exceptions\ContentValidationException
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \CodeRhapsodie\EzDataflowBundle\Exception\NoMatchFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\BadStateException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\ContentFieldValidationException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\ContentValidationException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     public function updateFromStructure(ContentUpdateStructure $structure): Content
     {

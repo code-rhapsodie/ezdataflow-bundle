@@ -1,3 +1,7 @@
+# Version 4.0.0
+
+* Add compatibility with Ibexa 4.0+ and drop compatibility for eZPlatform 2 and Ibexa 3 
+
 # Version 3.2.0
 
 * Fixed History page pagination is hidden by footer on Ibexa 3.3 #38

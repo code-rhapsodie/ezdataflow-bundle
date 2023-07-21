@@ -7,21 +7,21 @@ namespace CodeRhapsodie\EzDataflowBundle\Tests\Filter;
 use CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface;
 use CodeRhapsodie\EzDataflowBundle\Filter\NotModifiedContentFilter;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
-use eZ\Publish\API\Repository\ContentService;
-use eZ\Publish\API\Repository\Values\Content\Field;
-use eZ\Publish\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Field;
+use Ibexa\Core\Repository\Values\Content\Content;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class NotModifiedContentFilterTest extends TestCase
 {
-    /** @var ContentService|MockObject */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentService|\PHPUnit\Framework\MockObject\MockObject */
     private $contentServiceMock;
 
-    /** @var FieldComparatorInterface|MockObject */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface|\PHPUnit\Framework\MockObject\MockObject */
     private $comparatorMock;
 
-    /** @var NotModifiedContentFilter */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Filter\NotModifiedContentFilter */
     private $notModifiedContentFilter;
 
     protected function setUp(): void

@@ -6,7 +6,7 @@ namespace CodeRhapsodie\EzDataflowBundle\Filter;
 
 use CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
-use eZ\Publish\API\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\ContentService;
 use Psr\Log\LoggerAwareTrait;
 
 /**
@@ -16,10 +16,10 @@ class NotModifiedContentFilter
 {
     use LoggerAwareTrait;
 
-    /** @var ContentService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentService */
     private $contentService;
 
-    /** @var FieldComparatorInterface */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface */
     private $comparator;
 
     public function __construct(ContentService $contentService, FieldComparatorInterface $comparator)

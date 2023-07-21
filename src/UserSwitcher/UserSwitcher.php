@@ -4,22 +4,21 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\UserSwitcher;
 
-use eZ\Publish\API\Repository\PermissionResolver;
-use eZ\Publish\API\Repository\UserService;
-use eZ\Publish\API\Repository\Values\User\UserReference;
+use Ibexa\Contracts\Core\Repository\PermissionResolver;
+use Ibexa\Contracts\Core\Repository\UserService;
 
 class UserSwitcher implements UserSwitcherInterface
 {
-    /** @var PermissionResolver */
+    /** @var \Ibexa\Contracts\Core\Repository\PermissionResolver */
     private $permissionResolver;
 
-    /** @var UserService */
+    /** @var \Ibexa\Contracts\Core\Repository\UserService */
     private $userService;
 
     /** @var string|int */
     private $adminLoginOrId;
 
-    /** @var UserReference[] */
+    /** @var \Ibexa\Contracts\Core\Repository\Values\User\UserReference[] */
     private $userStack;
 
     public function __construct(PermissionResolver $permissionResolver, UserService $userService, $adminLoginOrId)

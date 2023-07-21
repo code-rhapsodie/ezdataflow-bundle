@@ -1,4 +1,4 @@
-{% import '@ezdesign/ezdataflow/macros.twig' as macros %}
+{% import '@ibexadesign/ezdataflow/macros.twig' as macros %}
 
 {% block content %}
     <div class="container ez-main-container history-details-aware">
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.request'|trans }}</td>
-                <td>{{ date(item.requestedDate)|ez_short_datetime }}</td>
+                <td>{{ date(item.requestedDate)|ibexa_short_datetime }}</td>
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.status'|trans }}</td>
@@ -28,11 +28,11 @@
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.start'|trans }}</td>
-                <td>{{ item.startTime ? date(item.startTime)|ez_short_datetime : '—' }}</td>
+                <td>{{ item.startTime ? date(item.startTime)|ibexa_short_datetime : '—' }}</td>
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.end'|trans }}</td>
-                <td>{{ item.endTime ? date(item.endTime)|ez_short_datetime : '—' }}</td>
+                <td>{{ item.endTime ? date(item.endTime)|ibexa_short_datetime : '—' }}</td>
             </tr>
             <tr>
                 <td>{{ 'coderhapsodie.ezdataflow.history.details.count'|trans }}</td>

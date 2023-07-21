@@ -1,35 +1,60 @@
-<h2>{{ 'coderhapsodie.ezdataflow.history.title'|trans }}</h2>
+{%- block content -%}
+    {% set choices = [
+        {
+            'value': 0,
+            'label': 'coderhapsodie.ezdataflow.history.filter.none'|trans,
+        },
+        {
+            'value': 1,
+            'label': 'coderhapsodie.ezdataflow.history.filter.non_empty_only'|trans,
+        },
+    ] %}
 
-<div class="ez-table-header">
-    <div class="ez-table-header__headline">{{ 'coderhapsodie.ezdataflow.history.list.title'|trans }}</div>
-    <div class="ez-table-header__tools">
-        <label for="ezdataflow_history_filter">{{ 'coderhapsodie.ezdataflow.history.filter.label'|trans }}</label>
-        <select id="ezdataflow_history_filter" name="filter">
-            <option value="0" {{ filter == 0 ? 'selected="selected"' }}>{{ 'coderhapsodie.ezdataflow.history.filter.none'|trans }}</option>
-            <option value="1" {{ filter == 1 ? 'selected="selected"' }}>{{ 'coderhapsodie.ezdataflow.history.filter.non_empty_only'|trans }}</option>
+    {% set source %}
+        <select id="ezdataflow_history_filter" class="form-control ibexa-input">
+            {% for choice in choices %}
+                <option value="{{ choice.value }}">
+                    {{ choice.label }}
+                </option>
+            {% endfor %}
         </select>
-    </div>
-</div>
+    {% endset %}
 
-{% include '@ezdesign/ezdataflow/parts/tab/job_list.html.twig' with {
-    identifier: 'ezdataflow_history_results',
-    paginate_route: 'coderhapsodie.ezdataflow.history',
-    paginate_params: {'filter': filter}
-} %}
+    {% set actions %}
+        {{ include('@ibexadesign/ui/component/dropdown/dropdown.html.twig', {
+            source: source,
+            choices: choices,
+            value: filter,
+        }) }}
+    {% endset %}
 
-<script>
-    (function ($) {
-        $(document).ready(function ($) {
+    {{ include('@ibexadesign/ezdataflow/parts/tab/job_list.html.twig', {
+        identifier: 'ezdataflow_history_results',
+        paginate_route: 'coderhapsodie.ezdataflow.history',
+        paginate_params: {'filter': filter},
+        headline: 'coderhapsodie.ezdataflow.history.title'|trans,
+        actions: actions
+    }) }}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
             // Manage ajax pagination
-            $('#ezdataflow_history_filter').change(function (e) {
+            document.getElementById('ezdataflow_history_filter').addEventListener('change', function (e) {
                 e.preventDefault();
-                $('#loading_ezdataflow_history_results').removeClass('d-none');
-                $('#ezdataflow_history_results')
-                    .html('')
-                    .load('{{ path('coderhapsodie.ezdataflow.history') }}?filter=' + this.value + ' #ezdataflow_history_results>*', null, function () {
-                        $('#loading_ezdataflow_history_results').addClass('d-none');
-                    });
+                const loading = document.getElementById('loading_ezdataflow_history_results');
+                const results = document.getElementById('ezdataflow_history_results').querySelector('.ibexa-table');
+                loading.hidden = false;
+                results.innerHTML = '';
+                fetch('{{ path('coderhapsodie.ezdataflow.history') }}?filter=' + this.value)
+                    .then((r) => r.text())
+                    .then((content) => {
+                        const node = document.createElement('div');
+                        node.innerHTML = content;
+                        results.innerHTML = node.querySelector('#ezdataflow_history_results .ibexa-table').innerHTML;
+                        loading.hidden = true;
+                    })
+                ;
             });
-        });
-    })(jQuery);
-</script>
+        })
+    </script>
+{%- endblock -%}

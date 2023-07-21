@@ -1,0 +1,10 @@
+{% extends '@ibexadesign/ui/form_fields.html.twig' %}
+
+{%- block checkbox_widget -%}
+    {{ block('toggle_widget') }}
+{%- endblock -%}
+
+{% block datetime_widget -%}
+    {% set attr = attr|merge({class: (attr.class|default('') ~ ' ezdataflow-date')|trim}) %}
+    {{ parent() }}
+{%- endblock datetime_widget %}

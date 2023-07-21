@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace CodeRhapsodie\EzDataflowBundle\Tab;
 
 use CodeRhapsodie\EzDataflowBundle\Controller\DashboardController;
-use EzSystems\EzPlatformAdminUi\Tab\AbstractControllerBasedTab;
-use EzSystems\EzPlatformAdminUi\Tab\OrderedTabInterface;
+use Ibexa\Contracts\AdminUi\Tab\AbstractControllerBasedTab;
+use Ibexa\Contracts\AdminUi\Tab\OrderedTabInterface;
 use Symfony\Component\HttpKernel\Controller\ControllerReference;
 
 class RepeatingTab extends AbstractControllerBasedTab implements OrderedTabInterface

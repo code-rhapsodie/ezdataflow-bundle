@@ -7,9 +7,9 @@ namespace CodeRhapsodie\EzDataflowBundle\Controller;
 use CodeRhapsodie\DataflowBundle\Entity\Job;
 use CodeRhapsodie\EzDataflowBundle\Form\CreateOneshotType;
 use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
-use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute;
-use EzSystems\EzPlatformAdminUi\Notification\NotificationHandlerInterface;
-use EzSystems\EzPlatformAdminUiBundle\Controller\Controller;
+use Ibexa\Contracts\AdminUi\Controller\Controller;
+use Ibexa\Contracts\AdminUi\Notification\NotificationHandlerInterface;
+use Ibexa\Core\MVC\Symfony\Security\Authorization\Attribute;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,11 +22,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class JobController extends Controller
 {
-    /** @var JobGateway */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway */
     private $jobGateway;
-    /** @var NotificationHandlerInterface */
+    /** @var \Ibexa\Contracts\AdminUi\Notification\NotificationHandlerInterface */
     private $notificationHandler;
-    /** @var Symfony\Component\Translation\TranslatorInterface|Symfony\Contracts\Translation\TranslatorInterface */
+    /** @var \Symfony\Contracts\Translation\TranslatorInterface */
     private $translator;
 
     public function __construct(
@@ -46,7 +46,7 @@ class JobController extends Controller
     {
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
 
-        return $this->render('@ezdesign/ezdataflow/Item/details.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Item/details.html.twig', [
             'item' => $this->jobGateway->find($id),
         ]);
     }
@@ -62,7 +62,7 @@ class JobController extends Controller
             return preg_replace('~#\d+~', "\n$0", $line);
         }, $item->getExceptions());
 
-        return $this->render('@ezdesign/ezdataflow/Item/log.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Item/log.html.twig', [
             'log' => $log,
         ]);
     }
@@ -78,7 +78,7 @@ class JobController extends Controller
         $form = $this->createForm(CreateOneshotType::class, $newOneshot);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var Job $newOneshot */
+            /** @var \CodeRhapsodie\DataflowBundle\Entity\Job $newOneshot */
             $newOneshot = $form->getData();
             $newOneshot->setStatus(Job::STATUS_PENDING);
 
@@ -97,7 +97,7 @@ class JobController extends Controller
         }
 
         return new JsonResponse([
-            'form' => $this->renderView('@ezdesign/ezdataflow/parts/schedule_form.html.twig', [
+            'form' => $this->renderView('@ibexadesign/ezdataflow/parts/form_modal.html.twig', [
                 'form' => $form->createView(),
                 'type_action' => 'new',
                 'mode' => 'oneshot',

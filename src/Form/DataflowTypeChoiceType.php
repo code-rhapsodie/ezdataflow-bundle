@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DataflowTypeChoiceType extends AbstractType
 {
-    /** @var DataflowTypeRegistryInterface */
+    /** @var \CodeRhapsodie\DataflowBundle\Registry\DataflowTypeRegistryInterface */
     private $registry;
 
     public function __construct(DataflowTypeRegistryInterface $registry)

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Form;
 
-use eZ\Publish\API\Repository\Exceptions\NotFoundException;
-use eZ\Publish\API\Repository\UserPreferenceService;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\UserPreferenceService;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class UserTimezoneAwareDateTimeTransformer implements DataTransformerInterface
 {
-    /** @var UserPreferenceService */
+    /** @var \Ibexa\Contracts\Core\Repository\UserPreferenceService */
     private $userPreferenceService;
 
     public function __construct(UserPreferenceService $userPreferenceService)

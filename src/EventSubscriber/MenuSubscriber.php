@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\EventSubscriber;
 
-use EzSystems\EzPlatformAdminUi\Menu\Event\ConfigureMenuEvent;
-use EzSystems\EzPlatformAdminUi\Menu\MainMenuBuilder;
-use Knp\Menu\ItemInterface;
+use Ibexa\AdminUi\Menu\Event\ConfigureMenuEvent;
+use Ibexa\AdminUi\Menu\MainMenuBuilder;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class MenuSubscriber implements EventSubscriberInterface
@@ -21,7 +20,7 @@ class MenuSubscriber implements EventSubscriberInterface
 
     public function onConfigureMenu(ConfigureMenuEvent $event)
     {
-        /** @var ItemInterface $menu */
+        /** @var \Knp\Menu\ItemInterface $menu */
         $menu = $event->getMenu();
         if (!isset($menu[MainMenuBuilder::ITEM_ADMIN])) {
             return;

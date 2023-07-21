@@ -10,7 +10,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 
 final class ScheduledDataflowGateway
 {
-    /** @var ScheduledDataflowRepository */
+    /** @var \CodeRhapsodie\DataflowBundle\Repository\ScheduledDataflowRepository */
     private $scheduledDataflowRepository;
 
     public function __construct(ScheduledDataflowRepository $scheduledDataflowRepository)

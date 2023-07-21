@@ -1,106 +1,152 @@
 {% set id = identifier|default('ezdataflow_schedule_results') %}
 
-<div id="loading_{{ id }}" class="text-center d-none">
+<div id="loading_{{ id }}" class="text-center" hidden>
     <svg class="ez-icon ez-icon--extra-large">
         <use xmlns:xlink="http://www.w3.org/1999/xlink"
-             xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#spinner"></use>
+             xlink:href="{{ ibexa_icon_path('spinner') }}"></use>
     </svg>
 </div>
 
 <div id="{{ id }}" class="history-details-aware">
-    {% if pager.currentPageResults|length %}
-        <table class="table">
-            <thead>
-            <tr>
-                <th>{{ 'coderhapsodie.ezdataflow.workflow.list.name'|trans }}</th>
-                <th>{{ 'coderhapsodie.ezdataflow.workflow.list.frequency'|trans }}</th>
-                <th>{{ 'coderhapsodie.ezdataflow.workflow.list.next_execution'|trans }}</th>
-                <th>{{ 'coderhapsodie.ezdataflow.workflow.list.enabled'|trans }}</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for item in pager.currentPageResults %}
-                <tr>
-                    <td>{{ item.label }}</td>
-                    <td>{{ item.frequency }}</td>
-                    <td>{{ date(item.next)|ez_short_datetime }}</td>
-                    <td>{{ ('coderhapsodie.ezdataflow.' ~ (item.enabled ? 'yes' : 'no'))|trans }}</td>
-                    <td class="ez-table__cell ez-table__cell--has-action-btns text-right">
-                        <a href="{{ path('coderhapsodie.ezdataflow.history.workflow', {id: item.id}) }}"
-                           class="btn btn-icon mx-2 modal-history"
-                           title="{{ 'coderhapsodie.ezdataflow.workflow.list.history'|trans }}">
-                            <svg class="ez-icon ez-icon--small-medium">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#history"></use>
-                            </svg>
-                        </a>
-                        <a href="{{ path('coderhapsodie.ezdataflow.workflow.edit', {id: item.id}) }}" type="button"
-                           class="btn btn-icon mx-2 modal-edit"
-                           title="{{ 'coderhapsodie.ezdataflow.workflow.list.edit'|trans }}">
-                            <svg class="ez-icon ez-icon--small-medium ez-icon-edit">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#edit"></use>
-                            </svg>
-                        </a>
-                        {% if item.enabled %}
-                            <a href="{{ path('coderhapsodie.ezdataflow.workflow.disable', {id: item.id}) }}"
-                               class="btn btn-icon mx-2"
-                               title="{{ 'coderhapsodie.ezdataflow.workflow.list.disable'|trans }}">
-                                <svg class="ez-icon ez-icon--small-medium" style="fill: #f7d000;">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#logout"></use>
-                                </svg>
-                            </a>
-                        {% else %}
-                            <a href="{{ path('coderhapsodie.ezdataflow.workflow.enable', {id: item.id}) }}"
-                               class="btn btn-icon mx-2"
-                               title="{{ 'coderhapsodie.ezdataflow.workflow.list.enable'|trans }}">
-                                <svg class="ez-icon ez-icon--small-medium" style="fill: #00825c;">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#approved"></use>
-                                </svg>
-                            </a>
-                        {% endif %}
-                        <button type="button" class="btn btn-icon mx-2 ez-btn--content-trash modal-delete"
-                                data-name="{{ item.label }}"
-                                data-path="{{ path('coderhapsodie.ezdataflow.workflow.delete', {id: item.id}) }}"
-                                title="{{ 'coderhapsodie.ezdataflow.workflow.list.delete'|trans }}">
-                            <svg class="ez-icon ez-icon--small-medium ez-icon-trash">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#trash"></use>
-                            </svg>
-                        </button>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p class="ez-table-no-content">{{ 'coderhapsodie.ezdataflow.workflow.list.empty'|trans }}</p>
-    {% endif %}
+    {% set body_rows = [] %}
+
+    {% for item in pager.currentPageResults %}
+        {% set body_row_cols = [] %}
+        {% set body_row_cols = body_row_cols|merge([
+            {content: item.label},
+            {content: item.frequency},
+            {content: date(item.next)|ibexa_short_datetime},
+            {content: ('coderhapsodie.ezdataflow.' ~ (item.enabled ? 'yes' : 'no'))|trans},
+        ]) %}
+
+        {% set col_raw %}
+            <a href="{{ path('coderhapsodie.ezdataflow.history.workflow', {id: item.id}) }}"
+               class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text modal-history"
+               title="{{ 'coderhapsodie.ezdataflow.workflow.list.history'|trans }}"
+               data-bs-toggle="modal"
+               data-bs-target="#modal-history"
+            >
+                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--history">
+                    <use xlink:href="{{ ibexa_icon_path('history') }}"></use>
+                </svg>
+            </a>
+            <a href="{{ path('coderhapsodie.ezdataflow.workflow.edit', {id: item.id}) }}"
+               class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text modal-edit"
+               title="{{ 'coderhapsodie.ezdataflow.workflow.list.edit'|trans }}"
+               data-bs-toggle="modal"
+               data-bs-target="#modal-edit-scheduled"
+            >
+                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
+                    <use xlink:href="{{ ibexa_icon_path('edit') }}"></use>
+                </svg>
+            </a>
+            {% if item.enabled %}
+                <a href="{{ path('coderhapsodie.ezdataflow.workflow.disable', {id: item.id}) }}"
+                   class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text"
+                   title="{{ 'coderhapsodie.ezdataflow.workflow.list.disable'|trans }}"
+                >
+                    <svg class="ibexa-icon ibexa-icon--small ibexa-icon--logout" style="fill: #f7d000;">
+                        <use xlink:href="{{ ibexa_icon_path('logout') }}"></use>
+                    </svg>
+                </a>
+            {% else %}
+                <a href="{{ path('coderhapsodie.ezdataflow.workflow.enable', {id: item.id}) }}"
+                   class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text"
+                   title="{{ 'coderhapsodie.ezdataflow.workflow.list.enable'|trans }}"
+                >
+                    <svg class="ibexa-icon ibexa-icon--small ibexa-icon--logout" style="fill: #00825c;">
+                        <use xlink:href="{{ ibexa_icon_path('approved') }}"></use>
+                    </svg>
+                </a>
+            {% endif %}
+            <a href="{{ path('coderhapsodie.ezdataflow.workflow.delete', {id: item.id}) }}"
+               class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text modal-delete"
+               title="{{ 'coderhapsodie.ezdataflow.workflow.list.delete'|trans }}"
+               data-name="{{ item.label }}"
+               data-bs-toggle="modal"
+               data-bs-target="#modal-delete-confirm"
+            >
+                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--trash">
+                    <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
+                </svg>
+            </a>
+        {% endset %}
+        {% set body_row_cols = body_row_cols|merge([{
+            has_action_btns: true,
+            content: col_raw,
+            raw: true,
+        }]) %}
+
+        {% set body_rows = body_rows|merge([{ cols: body_row_cols }]) %}
+    {% endfor %}
+
+    {% embed '@ibexadesign/ui/component/table/table.html.twig' with {
+        headline: 'coderhapsodie.ezdataflow.workflow.list.title'|trans,
+        head_cols: [
+            { content: 'coderhapsodie.ezdataflow.workflow.list.name'|trans },
+            { content: 'coderhapsodie.ezdataflow.workflow.list.frequency'|trans },
+            { content: 'coderhapsodie.ezdataflow.workflow.list.next_execution'|trans },
+            { content: 'coderhapsodie.ezdataflow.workflow.list.enabled'|trans },
+            { },
+        ],
+        body_rows,
+        empty_table_info_text: 'coderhapsodie.ezdataflow.workflow.list.empty'|trans,
+    } %}
+        {% block header %}
+            {% embed '@ibexadesign/ui/component/table/table_header.html.twig' %}
+                {% block actions %}
+                    <button
+                        type="button"
+                        class="btn ibexa-btn ibexa-btn--tertiary ibexa-btn--small"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-new-scheduled"
+                    >
+                        <svg class="ibexa-icon ibexa-icon--small ibexa-icon--create">
+                            <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
+                        </svg>
+                        <span class="ibexa-btn__label">
+                            {{ 'coderhapsodie.ezdataflow.workflow.new.submit'|trans|desc('Create') }}
+                        </span>
+                    </button>
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
 
     {% if pager.haveToPaginate %}
-        <div class="ez-pagination justify-content-center align-items-center ez-pagination__spacing">
-            {{ pagerfanta(pager, 'ez', {routeName: paginate_route, routeParams: paginate_params|default({})}) }}
-        </div>
+        {% include '@ibexadesign/ui/pagination.html.twig' with {
+            'pager': pager,
+            'paginaton_params': {
+                'routeName': paginate_route,
+                'routeParams': paginate_params|default({})
+            }
+        } %}
     {% endif %}
 </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Manage ajax pagination
+        const display = document.getElementById('{{ id }}');
+        display.addEventListener('click', (e) => {
+            const link = e.target.closest('.ibexa-pagination a');
+            if (!link) {
+                return;
+            }
 
-    (function ($) {
-        $(document).ready(function ($) {
-            // Manage ajax pagination
-            $('#{{ id }}').delegate('.ez-pagination a', 'click', function (e) {
-                e.preventDefault();
-                $('#loading_{{ id }}').removeClass('d-none');
-                $('#{{ id }}')
-                    .html('')
-                    .load(this.href + ' #{{ id }}>*', null, function () {
-                        $('#loading_{{ id }}').addClass('d-none');
-                    });
-            });
+            const loader = document.getElementById('loading_{{ id }}');
+            e.preventDefault();
+            loader.hidden = false;
+            display.innerHTML = '';
+            fetch(link.href)
+                .then((r) => r.text())
+                .then((content) => {
+                    const node = document.createElement('div');
+                    node.innerHTML = content;
+                    display.innerHTML = node.querySelector('#{{ id }}').innerHTML;
+                    loader.hidden = true;
+                })
+            ;
         });
-    })(jQuery);
+    });
 </script>

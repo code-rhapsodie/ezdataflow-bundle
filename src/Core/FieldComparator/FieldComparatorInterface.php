@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Core\FieldComparator;
 
-use eZ\Publish\API\Repository\Values\Content\Field;
+use Ibexa\Contracts\Core\Repository\Values\Content\Field;
 
 interface FieldComparatorInterface
 {

@@ -7,7 +7,7 @@ namespace CodeRhapsodie\EzDataflowBundle;
 use CodeRhapsodie\EzDataflowBundle\DependencyInjection\CodeRhapsodieEzDataflowExtension;
 use CodeRhapsodie\EzDataflowBundle\DependencyInjection\Compiler\FieldComparatorCompilerPass;
 use CodeRhapsodie\EzDataflowBundle\Security\PolicyProvider;
-use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension;
+use Ibexa\Bundle\Core\DependencyInjection\IbexaCoreExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -26,8 +26,8 @@ class CodeRhapsodieEzDataflowBundle extends Bundle
 
         $container->addCompilerPass(new FieldComparatorCompilerPass());
 
-        /** @var EzPublishCoreExtension $eZExtension */
-        $eZExtension = $container->getExtension('ezpublish');
-        $eZExtension->addPolicyProvider(new PolicyProvider());
+        /** @var IbexaCoreExtension $ibexaExtension */
+        $ibexaExtension = $container->getExtension('ibexa');
+        $ibexaExtension->addPolicyProvider(new PolicyProvider());
     }
 }

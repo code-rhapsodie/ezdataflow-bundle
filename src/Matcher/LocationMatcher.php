@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace CodeRhapsodie\EzDataflowBundle\Matcher;
 
 use CodeRhapsodie\EzDataflowBundle\Exception\NoMatchFoundException;
-use eZ\Publish\API\Repository\Exceptions\NotFoundException;
-use eZ\Publish\API\Repository\LocationService;
-use eZ\Publish\API\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\LocationService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 
 class LocationMatcher implements LocationMatcherInterface
 {
-    /** @var LocationService */
+    /** @var \Ibexa\Contracts\Core\Repository\LocationService */
     private $locationService;
 
     public function __construct(LocationService $locationService)
@@ -22,8 +22,8 @@ class LocationMatcher implements LocationMatcherInterface
     /**
      * @param mixed $valueToMatch
      *
-     * @throws NoMatchFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \CodeRhapsodie\EzDataflowBundle\Exception\NoMatchFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     public function matchLocation($valueToMatch): Location
     {

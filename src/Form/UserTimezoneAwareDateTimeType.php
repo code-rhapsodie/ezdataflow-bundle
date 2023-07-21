@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace CodeRhapsodie\EzDataflowBundle\Form;
 
-use eZ\Publish\API\Repository\UserPreferenceService;
+use Ibexa\Contracts\Core\Repository\UserPreferenceService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class UserTimezoneAwareDateTimeType extends AbstractType
 {
-    /** @var UserPreferenceService */
+    /** @var \Ibexa\Contracts\Core\Repository\UserPreferenceService */
     private $userPreferenceService;
 
     public function __construct(UserPreferenceService $userPreferenceService)

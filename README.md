@@ -1,7 +1,7 @@
 # Code Rhapsodie eZ Dataflow Bundle
 
-EzDataflowBundle is a bundle integrating [Code Rhapsodie Dataflow bundle](https://github.com/code-rhapsodie/dataflow-bundle) into eZ Platfom 2.0+.
-Dataflows can be piloted from an interface integrated in eZ Platform backoffice.
+EzDataflowBundle is a bundle integrating [Code Rhapsodie Dataflow bundle](https://github.com/code-rhapsodie/dataflow-bundle) into Ibexa 4.0+.
+Dataflows can be piloted from an interface integrated into the Ibexa backoffice.
 EzDataflow bundle is intended to manage content imports from external data sources.
 
 > Note: before using this bundle, please read the [Code Rhapsodie Dataflow bundle documentation](https://github.com/code-rhapsodie/dataflow-bundle/blob/master/README.md).
@@ -28,9 +28,7 @@ $ composer require code-rhapsodie/ezdataflow-bundle
 
 > Note: The loading order between the Dataflow bundle and Ez Dataflow bundle is important. Dataflow must be loaded first.
 
-#### Symfony 4 (new tree)
-
-For Symfony 4, add those two lines in the `config/bundles.php` file:
+Add those two lines in the `config/bundles.php` file:
 
 ```php
 <?php
@@ -43,29 +41,10 @@ return [
 ];
 ```
 
-#### Symfony 3.4 (old tree)
-
-For Symfony 3.4, add those two lines in the `app/AppKernel.php` file:
-
-```php
-<?php
-// app/AppKernel.php
-
-public function registerBundles()
-{
-    $bundles = [
-        // ...
-        new CodeRhapsodie\DataflowBundle\CodeRhapsodieDataflowBundle(),
-        new CodeRhapsodie\EzDataflowBundle\CodeRhapsodieEzDataflowBundle(),
-        // ...
-    ];
-}
-```
-
 ### Step 3: Import bundle routing file
 
 ```yaml
-# app/config/routing.yml or config/routing.yaml
+# config/routing/ezdataflow.yaml
 
 _cr.dataflow:
     resource: '@CodeRhapsodieEzDataflowBundle/Resources/config/routing.yaml'
@@ -84,7 +63,7 @@ Please refer to the [Code-Rhapsodie Dataflow Bundle Queue section](https://githu
 By default, the `ContentWriter` will publish contents using the `admin` user. If you want to use another user (with sufficient permissions), you can configure it like this:
 
 ```yaml
-# app/config/config.yml or config/packages/code_rhapsodie_ez_dataflow.yaml
+# config/packages/code_rhapsodie_ez_dataflow.yaml
 
 code_rhapsodie_ez_dataflow:
     # Integer values are assumed to be user ids, non-integer values are assumed to be user logins
@@ -97,7 +76,7 @@ Before using the admin UI to manage your dataflows, you need to define them. Ple
 
 ## Use the ContentWriter
 
-To add or update eZ Platform contents, you can use the `CodeRhapsodie\EzDataflowBundle\Writer\ContentWriter` writer.
+To add or update Ibexa contents, you can use the `CodeRhapsodie\EzDataflowBundle\Writer\ContentWriter` writer.
 
 ### Step 1: Inject the dependencies and add the writer
 
@@ -133,7 +112,7 @@ class MyDataflowType extends AbstractDataflowType
 
 ### Step 2: Add a step for prepare the content
 
-To process eZ Platform content into your Dataflow, you need to transform the data into `ContentCreateStructure` or `ContentUpdateStructure` objects.
+To process Ibexa contents into your Dataflow, you need to transform the data into `ContentCreateStructure` or `ContentUpdateStructure` objects.
 in order to respectively create or update contents.
 
 But, in order to determine if the content already exists or not, you first need to look up for it.
@@ -141,19 +120,19 @@ But, in order to determine if the content already exists or not, you first need 
 One way is to use the remote id to search for the content.
 
 In the following example, the remote id pattern is `article-<id>` with the `<id>` replaced by the data id provided by the reader.
-To check if the content exists or not, I use the service `ContentService` provided by eZ Platform.
+To check if the content exists or not, I use the service `ContentService` provided by Ibexa.
 
 The step is added as an anonymous function and has 3 types of return values:
 
 * When the step returns `false`, the data is dropped.
-* When the step returns a `ContentCreateStructure`, the data will be saved into a new eZ Platform content.
-* When the step returns a `ContentUpdateStructure`, the existing eZ Platform content will be updated by overwriting all defined fields in the data.
+* When the step returns a `ContentCreateStructure`, the data will be saved into a new Ibexa content.
+* When the step returns a `ContentUpdateStructure`, the existing Ibexa content will be updated by overwriting all defined fields in the data.
 
 For the new content, you must provide one or more "parent location id" as the 3rd argument of the `ContentCreateStructure` constructor.
 
 In this example, I have added a new folder to store all articles.
 
-To get the location id of the parent eZ Platform content, go to the admin UI and select the future parent content, click on the details tabs, and read the "Location id" like this:
+To get the location id of the parent Ibexa content, go to the admin UI and select the future parent content, click on the details tabs, and read the "Location id" like this:
 
 ![parent folder](src/Resources/doc/dest_folder.jpg)
 
@@ -272,7 +251,7 @@ If you want to add support for a field type, simply create your own comparator.
 <?php
 
 use CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\AbstractFieldComparator;
-use eZ\Publish\Core\FieldType\Value;
+use Ibexa\Core\FieldType\Value;
 //[...]
 
 class MyFieldComparator extends AbstractFieldComparator
@@ -298,7 +277,7 @@ class MyFieldComparator extends AbstractFieldComparator
 
 ## Access to the eZ Dataflow UI
 
-You can access the eZ Dataflow administration UI from your eZ Platform admin back-office.
+You can access the eZ Dataflow administration UI from your Ibexa admin back-office.
 
 ![Admin menu](src/Resources/doc/ez_dataflow_admin_menu.jpg)
 

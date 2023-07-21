@@ -11,9 +11,9 @@ use CodeRhapsodie\EzDataflowBundle\Form\CreateScheduledType;
 use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
 use CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway;
 use Doctrine\DBAL\Query\QueryBuilder;
-use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute;
-use EzSystems\EzPlatformAdminUiBundle\Controller\Controller;
-use Pagerfanta\Adapter\DoctrineDbalAdapter;
+use Ibexa\Contracts\AdminUi\Controller\Controller;
+use Ibexa\Core\MVC\Symfony\Security\Authorization\Attribute;
+use Pagerfanta\Doctrine\DBAL\QueryAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,9 +24,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class DashboardController extends Controller
 {
-    /** @var JobGateway */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway */
     private $jobGateway;
-    /** @var ScheduledDataflowGateway */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway */
     private $scheduledDataflowGateway;
 
     public function __construct(JobGateway $jobGateway, ScheduledDataflowGateway $scheduledDataflowGateway)
@@ -42,7 +42,7 @@ class DashboardController extends Controller
     {
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
 
-        return $this->render('@ezdesign/ezdataflow/Dashboard/main.html.twig');
+        return $this->render('@ibexadesign/ezdataflow/Dashboard/main.html.twig');
     }
 
     public function repeating(Request $request): Response
@@ -55,7 +55,7 @@ class DashboardController extends Controller
             'action' => $this->generateUrl('coderhapsodie.ezdataflow.workflow.create'),
         ]);
 
-        return $this->render('@ezdesign/ezdataflow/Dashboard/repeating.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Dashboard/repeating.html.twig', [
             'pager' => $this->getPager($this->scheduledDataflowGateway->getListQueryForAdmin(), $request),
             'form' => $form->createView(),
         ]);
@@ -68,7 +68,7 @@ class DashboardController extends Controller
     {
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
 
-        return $this->render('@ezdesign/ezdataflow/Dashboard/repeating.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Dashboard/repeating.html.twig', [
             'pager' => $this->getPager($this->scheduledDataflowGateway->getListQueryForAdmin(), $request),
         ]);
     }
@@ -83,7 +83,7 @@ class DashboardController extends Controller
             'action' => $this->generateUrl('coderhapsodie.ezdataflow.job.create'),
         ]);
 
-        return $this->render('@ezdesign/ezdataflow/Dashboard/oneshot.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Dashboard/oneshot.html.twig', [
             'pager' => $this->getPager($this->jobGateway->getOneshotListQueryForAdmin(), $request),
             'form' => $form->createView(),
         ]);
@@ -96,7 +96,7 @@ class DashboardController extends Controller
     {
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
 
-        return $this->render('@ezdesign/ezdataflow/Dashboard/oneshot.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Dashboard/oneshot.html.twig', [
             'pager' => $this->getPager($this->jobGateway->getOneshotListQueryForAdmin(), $request),
         ]);
     }
@@ -106,7 +106,7 @@ class DashboardController extends Controller
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
         $filter = (int) $request->query->get('filter', JobGateway::FILTER_NONE);
 
-        return $this->render('@ezdesign/ezdataflow/Dashboard/history.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Dashboard/history.html.twig', [
             'pager' => $this->getPager($this->jobGateway->getListQueryForAdmin($filter), $request),
             'filter' => $filter,
         ]);
@@ -120,7 +120,7 @@ class DashboardController extends Controller
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
         $filter = (int) $request->query->get('filter', JobGateway::FILTER_NONE);
 
-        return $this->render('@ezdesign/ezdataflow/Dashboard/history.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Dashboard/history.html.twig', [
             'pager' => $this->getPager($this->jobGateway->getListQueryForAdmin($filter), $request),
             'filter' => $filter,
         ]);
@@ -133,7 +133,7 @@ class DashboardController extends Controller
     {
         $this->denyAccessUnlessGranted(new Attribute('ezdataflow', 'view'));
 
-        return $this->render('@ezdesign/ezdataflow/Dashboard/schedule_history.html.twig', [
+        return $this->render('@ibexadesign/ezdataflow/Dashboard/schedule_history.html.twig', [
             'id' => $id,
             'pager' => $this->getPager($this->jobGateway->getListQueryForScheduleAdmin($id), $request),
         ]);
@@ -141,7 +141,7 @@ class DashboardController extends Controller
 
     private function getPager(QueryBuilder $query, Request $request): Pagerfanta
     {
-        $pager = new Pagerfanta(new DoctrineDbalAdapter($query, function ($queryBuilder) {
+        $pager = new Pagerfanta(new QueryAdapter($query, function ($queryBuilder) {
             return $queryBuilder->select('COUNT(DISTINCT id) AS total_results')
                 ->resetQueryPart('orderBy')
                 ->setMaxResults(1);

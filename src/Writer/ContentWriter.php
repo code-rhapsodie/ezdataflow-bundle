@@ -16,10 +16,10 @@ class ContentWriter extends RepositoryWriter implements DelegateWriterInterface
 {
     use LoggerAwareTrait;
 
-    /** @var ContentCreatorInterface */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Core\Content\ContentCreatorInterface */
     private $creator;
 
-    /** @var ContentUpdaterInterface */
+    /** @var \CodeRhapsodie\EzDataflowBundle\Core\Content\ContentUpdaterInterface */
     private $updater;
 
     public function __construct(ContentCreatorInterface $creator, ContentUpdaterInterface $updater)
@@ -29,7 +29,7 @@ class ContentWriter extends RepositoryWriter implements DelegateWriterInterface
     }
 
     /**
-     * @param ContentStructure $item
+     * @param \CodeRhapsodie\EzDataflowBundle\Model\ContentStructure $item
      */
     public function write($item)
     {
@@ -44,14 +44,14 @@ class ContentWriter extends RepositoryWriter implements DelegateWriterInterface
                 'content_type' => $item->getContentTypeIdentifier(),
                 'content_location' => $item->getLocations(),
             ]);
+            $this->creator->createFromStructure($item);
 
-            return $this->creator->createFromStructure($item);
+            return;
         }
 
         if ($item instanceof ContentUpdateStructure) {
             $this->log('info', 'Update content', ['id' => $item->getId(), 'remote_id' => $item->getRemoteId()]);
-
-            return $this->updater->updateFromStructure($item);
+            $this->updater->updateFromStructure($item);
         }
     }
 
