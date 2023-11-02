@@ -1,3 +1,7 @@
+# Version 4.1.0
+
+* Allow Dataflow 4 by @jeremycr in https://github.com/code-rhapsodie/ezdataflow-bundle/pull/44
+
 # Version 4.0.0
 
 * Add compatibility with Ibexa 4.0+ and drop compatibility for eZPlatform 2 and Ibexa 3 
