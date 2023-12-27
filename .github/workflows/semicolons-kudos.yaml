@@ -1,0 +1,26 @@
+
+name: Kudos for Code
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+jobs:
+  kudos:
+    name: Semicolons Kudos
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: LoremLabs/kudos-for-code-action@latest
+        with:
+          search-dir: "."
+          destination: "artifact"
+          generate-nomerges: true
+          generate-validemails: true
+          generate-limitdepth: 0
+          generate-fromrepo: true
+          analyze-repo: false
+          skip-ids: ""
