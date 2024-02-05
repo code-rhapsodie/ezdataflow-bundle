@@ -7,6 +7,7 @@ namespace CodeRhapsodie\EzDataflowBundle\Filter;
 use CodeRhapsodie\EzDataflowBundle\Core\FieldComparator\FieldComparatorInterface;
 use CodeRhapsodie\EzDataflowBundle\Model\ContentUpdateStructure;
 use eZ\Publish\API\Repository\ContentService;
+use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use Psr\Log\LoggerAwareTrait;
 
 /**
@@ -37,7 +38,12 @@ class NotModifiedContentFilter
         if ($data->getId()) {
             $content = $this->contentService->loadContent($data->getId(), [$data->getLanguageCode()]);
         } else {
-            $content = $this->contentService->loadContentByRemoteId($data->getRemoteId(), [$data->getLanguageCode()]);
+            try {
+                $content = $this->contentService->loadContentByRemoteId($data->getRemoteId(), [$data->getLanguageCode()]);
+            } catch (NotFoundException $e) {
+                // New translation
+                return $data;
+            }
         }
 
         foreach ($data->getFields() as $identifier => $hash) {
