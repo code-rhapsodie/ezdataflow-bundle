@@ -44,6 +44,7 @@
                     .then((result) => {
                         if (result.redirect) {
                             window.location = result.redirect;
+                            window.location.reload();
                             return;
                         }
                         const node = document.createElement('div');

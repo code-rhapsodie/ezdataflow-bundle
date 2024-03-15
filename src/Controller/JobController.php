@@ -91,7 +91,7 @@ class JobController extends Controller
             }
 
             return new JsonResponse([
-                'redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main', ['_fragment' => 'oneshot'],
+                'redirect' => $this->generateUrl('coderhapsodie.ezdataflow.main', ['_fragment' => 'ibexa-tab-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-oneshot'],
                     UrlGeneratorInterface::ABSOLUTE_URL),
             ]);
         }

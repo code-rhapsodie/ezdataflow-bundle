@@ -71,22 +71,6 @@
                 .closest('ul').querySelectorAll('li.ibexa-tabs__tab');
             const tabs = document.getElementById('ibexa-tab-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-repeating')
                 .closest('.tab-content').querySelectorAll('.tab-pane');
-            if (window.location.hash && window.location.hash === '#oneshot') {
-                labels.forEach((link) => link.classList.remove('active'));
-                tabs.forEach((tab) => tab.classList.remove('active'));
-                document.getElementById('ibexa-tab-label-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-oneshot')
-                    .closest('li.ibexa-tabs__tab').classList.add('active');
-                document.getElementById('ibexa-tab-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-oneshot')
-                    .closest('.tab-pane').classList.add('active');
-            }
-            if (window.location.hash && window.location.hash === '#history') {
-                labels.forEach((link) => link.classList.remove('active'));
-                tabs.forEach((tab) => tab.classList.remove('active'));
-                document.getElementById('ibexa-tab-label-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-history')
-                    .closest('li.ibexa-tabs__tab').classList.add('active');
-                document.getElementById('ibexa-tab-coderhapsodie-ezdataflow-code-rhapsodie-ezdataflow-history')
-                    .closest('.tab-pane').classList.add('active');
-            }
         });
     </script>
 {% endblock %}
