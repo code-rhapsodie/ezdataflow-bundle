@@ -1,3 +1,12 @@
+# Version 4.1.2
+
+* Fix main menu label
+* Fix redirection after adding a new oneshot job
+
+# Version 4.1.1
+
+* Fix NotModifiedContentFilter when creating new translation
+
 # Version 4.1.0
 
 * Allow Dataflow 4 by @jeremycr in https://github.com/code-rhapsodie/ezdataflow-bundle/pull/44
