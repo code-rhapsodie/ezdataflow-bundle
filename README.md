@@ -1,9 +1,9 @@
-# Code Rhapsodie eZ Dataflow Bundle
+# Code Rhapsodie Ibexa Dataflow Bundle
 
-EzDataflowBundle is a bundle
+Ibexa DataflowBundle is a bundle
 integrating [Code Rhapsodie Dataflow bundle](https://github.com/code-rhapsodie/dataflow-bundle) into Ibexa 4.0+.
 Dataflows can be piloted from an interface integrated into the Ibexa backoffice.
-EzDataflow bundle is intended to manage content imports from external data sources.
+Ibexa Dataflow bundle is intended to manage content imports from external data sources.
 
 > Note: before using this bundle, please read
 > the [Code Rhapsodie Dataflow bundle documentation](https://github.com/code-rhapsodie/dataflow-bundle/blob/master/README.md).
@@ -11,7 +11,7 @@ EzDataflow bundle is intended to manage content imports from external data sourc
 > Command line notice: When you use Dataflow commands, **use `--siteaccess` instead of `--connection`** expect
 > for `code-rhapsodie:dataflow:dump-schema` command.
 
-| eZ Dataflow Version | Ibexa Content Version | Status                       |
+| Ibexa Dataflow Version | Ibexa Content Version | Status                       |
 |---------------------|-----------------------|------------------------------|
 | 4.x                 | 4.x                   | :white_check_mark: Maintened |
 | 3.x                 | 3.x                   | :white_check_mark: Maintened |
@@ -305,18 +305,18 @@ App\FieldComparator\MyFieldComparator:
 
 # Admin UI
 
-## Access to the eZ Dataflow UI
+## Access to the Ibexa Dataflow UI
 
-You can access the eZ Dataflow administration UI from your Ibexa admin back-office.
+You can access the Ibexa Dataflow administration UI from your Ibexa admin back-office.
 
 ![Admin menu](src/Resources/doc/ez_dataflow_admin_menu.jpg)
 
 1. Click to "Admin"
-1. Click to "eZ Dataflow"
+1. Click to "Ibexa Dataflow"
 
 ## Scheduled dataflow list
 
-When you access to the eZ Dataflow administration UI, you going here:
+When you access to the Ibexa Dataflow administration UI, you going here:
 
 ![Scheduled dataflow list](src/Resources/doc/scheduled_list.jpg)
 
@@ -332,7 +332,7 @@ When you access to the eZ Dataflow administration UI, you going here:
 
 ## Add a new schedule
 
-Go to the eZ Dataflow admin, and click on the "+" orange button.
+Go to the Ibexa Dataflow admin, and click on the "+" orange button.
 
 In the new popin, fill in the fields:
 
@@ -353,7 +353,7 @@ Finally, click on the "Create" button.
 
 ## Read the history
 
-When you click on the "History" tab in the eZ Dataflow admin UI, the job history for all Dataflow configured and
+When you click on the "History" tab in the Ibexa Dataflow admin UI, the job history for all Dataflow configured and
 executed is displayed.
 
 ![History list](src/Resources/doc/history_list.jpg)
@@ -370,7 +370,7 @@ Details of one scheduled job:
 
 If you don't want to run a Dataflow periodically, you can add a single execution at the time and date that you want.
 
-Go to the eZ Dataflow admin UI and click on the "Oneshot" tab.
+Go to the Ibexa Dataflow admin UI and click on the "Oneshot" tab.
 
 ![Oneshot list](src/Resources/doc/oneshot_list.jpg)
 
@@ -386,7 +386,7 @@ Here the job has fail.
 
 ## Add a one-shot job
 
-Go to the eZ Dataflow admin UI and click on the "Oneshot" tab. Click on the "+" orange button to open the adding popin.
+Go to the Ibexa Dataflow admin UI and click on the "Oneshot" tab. Click on the "+" orange button to open the adding popin.
 
 ![The add one-shot popin](src/Resources/doc/one_shot_job.jpg)
 
@@ -403,7 +403,7 @@ Finally, click on the "Create" button.
 # Rights
 
 If a non-administrator user needs read-only access to the dataflow interface, add the `Setup / Administrate`
-and `eZ Dataflow / View` policies in one of their roles.
+and `Ibexa Dataflow / View` policies in one of their roles.
 
 # Issues and feature requests
 
