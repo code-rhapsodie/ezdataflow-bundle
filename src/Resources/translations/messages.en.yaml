@@ -20,8 +20,8 @@ coderhapsodie.ezdataflow.history.title: History
 coderhapsodie.ezdataflow.history.list.title: 'Executions list'
 coderhapsodie.ezdataflow.history.list.name: Name
 coderhapsodie.ezdataflow.history.list.request: 'Requested on'
-coderhapsodie.ezdataflow.history.list.count: 'Items count'
-coderhapsodie.ezdataflow.history.list.error_count: 'Errors count'
+coderhapsodie.ezdataflow.history.list.count: 'Number of successes'
+coderhapsodie.ezdataflow.history.list.errors: 'Number of errors'
 coderhapsodie.ezdataflow.history.list.start: 'Started on'
 coderhapsodie.ezdataflow.history.list.end: 'Finished on'
 coderhapsodie.ezdataflow.history.list.view: 'View details'

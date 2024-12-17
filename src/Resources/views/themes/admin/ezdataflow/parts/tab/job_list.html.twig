@@ -17,6 +17,7 @@
                 <th>{{ 'coderhapsodie.ezdataflow.history.list.name'|trans }}</th>
                 <th>{{ 'coderhapsodie.ezdataflow.history.list.request'|trans }}</th>
                 <th>{{ 'coderhapsodie.ezdataflow.history.list.count'|trans }}</th>
+                <th>{{ 'coderhapsodie.ezdataflow.history.list.errors'|trans }}</th>
                 <th>{{ 'coderhapsodie.ezdataflow.history.list.start'|trans }}</th>
                 <th>{{ 'coderhapsodie.ezdataflow.history.list.end'|trans }}</th>
                 <th>{{ 'coderhapsodie.ezdataflow.history.list.status'|trans }}</th>
@@ -29,6 +30,7 @@
                     <td>{{ job.label }}</td>
                     <td>{{ date(job.requested_date)|ez_short_datetime }}</td>
                     <td>{{ job.count|default('—') }}</td>
+                    <td>{{ job.exceptions|length }}</td>
                     <td>{{ job.start_time ? date(job.start_time)|ez_short_datetime : '—' }}</td>
                     <td>{{ job.end_time ? date(job.end_time)|ez_short_datetime : '—' }}</td>
                     <td>{{ macros.translateStatus(job.status) }}</td>

@@ -42,9 +42,11 @@
     },
     "require": {
         "php": "^7.3||^8.0",
+        "ext-json": "*",
         "code-rhapsodie/dataflow-bundle": "^3.0||^4.0",
         "ezsystems/ezplatform-admin-ui": "^2.3",
-        "ezsystems/ezplatform-kernel": "^1.3"
+        "ezsystems/ezplatform-kernel": "^1.3",
+        "http-interop/http-factory-guzzle": "^1.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^7||^8||^9",

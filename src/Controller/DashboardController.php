@@ -8,6 +8,7 @@ use CodeRhapsodie\DataflowBundle\Entity\Job;
 use CodeRhapsodie\DataflowBundle\Entity\ScheduledDataflow;
 use CodeRhapsodie\EzDataflowBundle\Form\CreateOneshotType;
 use CodeRhapsodie\EzDataflowBundle\Form\CreateScheduledType;
+use CodeRhapsodie\EzDataflowBundle\Gateway\ExceptionJSONDecoderAdapter;
 use CodeRhapsodie\EzDataflowBundle\Gateway\JobGateway;
 use CodeRhapsodie\EzDataflowBundle\Gateway\ScheduledDataflowGateway;
 use Doctrine\DBAL\Query\QueryBuilder;
@@ -141,11 +142,15 @@ class DashboardController extends Controller
 
     private function getPager(QueryBuilder $query, Request $request): Pagerfanta
     {
-        $pager = new Pagerfanta(new DoctrineDbalAdapter($query, function ($queryBuilder) {
-            return $queryBuilder->select('COUNT(DISTINCT id) AS total_results')
-                ->resetQueryPart('orderBy')
-                ->setMaxResults(1);
-        }));
+        $pager = new Pagerfanta(
+            new ExceptionJSONDecoderAdapter(
+                new DoctrineDbalAdapter($query, function ($queryBuilder) {
+                    return $queryBuilder->select('COUNT(DISTINCT id) AS total_results')
+                        ->resetQueryPart('orderBy')
+                        ->setMaxResults(1);
+                })
+            )
+        );
         $pager->setMaxPerPage(20);
         $pager->setCurrentPage($request->query->get('page', 1));
 
