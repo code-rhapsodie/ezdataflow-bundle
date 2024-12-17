@@ -1,3 +1,15 @@
+# Version 3.4.0
+
+* Added error count columns to job tables
+
+# Version 3.3.2
+
+* Fix NotModifiedContentFilter when creating new translation
+
+# Version 3.3.1
+
+* Allow Dataflow 4
+
 # Version 3.2.0
 
 * Fixed History page pagination is hidden by footer on Ibexa 3.3 #38
