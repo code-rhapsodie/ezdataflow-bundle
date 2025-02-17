@@ -59,6 +59,9 @@
             "php-http/discovery": true
         }
     },
+    "replace": {
+        "code-rhapsodie/ibexa-dataflow-bundle": "^4"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "4.x-dev",

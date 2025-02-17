@@ -1,5 +1,7 @@
 # Code Rhapsodie Ibexa Dataflow Bundle
 
+### ⚠️ This project has been relocated to [ibexa-dataflow-bundle](https://github.com/code-rhapsodie/ibexa-dataflow-bundle).  All future development and issues will be tracked there.
+
 Ibexa DataflowBundle is a bundle
 integrating [Code Rhapsodie Dataflow bundle](https://github.com/code-rhapsodie/dataflow-bundle) into Ibexa 4.0+.
 Dataflows can be piloted from an interface integrated into the Ibexa backoffice.
