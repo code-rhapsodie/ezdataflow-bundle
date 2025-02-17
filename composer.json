@@ -59,8 +59,8 @@
             "php-http/discovery": true
         }
     },
-    "replace": {
-        "code-rhapsodie/ibexa-dataflow-bundle": "^4"
+    "suggest": {
+        "code-rhapsodie/ibexa-dataflow-bundle": "Use the new rebranded package."
     },
     "extra": {
         "branch-alias": {
