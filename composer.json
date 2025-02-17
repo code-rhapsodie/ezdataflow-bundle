@@ -59,6 +59,9 @@
             "php-http/discovery": true
         }
     },
+    "suggest": {
+        "code-rhapsodie/ibexa-dataflow-bundle": "Use the new rebranded package."
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "4.x-dev",
